@@ -5,12 +5,10 @@ const router = express.Router();
 const { userSignupValidator } = require("../validator");
 
 // controllers
-const { signup } = require("../controllers/auth");
-const { userById } = require("../controllers/user");
+const { signup, signin, signout } = require("../controllers/auth");
 
 router.post("/signup", userSignupValidator, signup);
-
-// param middleware
-router.param("userId", userById);
+router.get("/signin", signin);
+router.get("/signout", signout);
 
 module.exports = router;

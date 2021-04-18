@@ -1,22 +1,52 @@
 // import user model
 const User = require("../models/user");
 
+const bcrypt = require("bcrypt");
+
+// JWT imports
+const jwt = require("jsonwebtoken");
+const expressJwt = require("express-jwt");
+
 exports.signup = (req, res) => {
   const user = new User(req.body);
   if (req.body.isAdmin) {
-    res.status(401).json({
+    return res.status(401).json({
       error: "You do not have permission to set admin",
     });
-  } else {
-    user.save((err, user) => {
-      if (err) {
-        return res.status(400).json({
-          error: err,
-        });
-      }
-      res.json({ user });
-    });
   }
+  user.save((err, user) => {
+    if (err) {
+      return res.status(400).json({
+        error: err,
+      });
+    }
+    res.json({ user });
+  });
 };
 
-exports.signin = (req, res) => {};
+exports.signin = (req, res) => {
+  const { email, password } = req.body;
+  User.findOne({ email }, (err, user) => {
+    if (err || !user) {
+      res.status(400).json({
+        error: "User with that email does not exist.  Please signup.",
+      });
+    }
+    bcrypt.compare(password, user.password, (err, results) => {
+      if (err || !results) {
+        return res.status(401).json({
+          error: "Email and password do not match.",
+        });
+      }
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+      res.cookie("t", token, { expire: new Date() + 9999 });
+      const { _id, name, email, isAdmin } = user;
+      return res.json({ token, user: { _id, email, name, isAdmin } });
+    });
+  });
+};
+
+exports.signout = (req, res) => {
+  res.clearCookie("t");
+  res.json({ message: "Signout success" });
+};

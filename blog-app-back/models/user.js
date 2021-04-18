@@ -37,19 +37,4 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// schema methods
-userSchema.methods = {
-  authenticate: async function (password) {
-    const user = this;
-    bcrypt.compare(password, user.password, (err, res) => {
-      if (err) {
-        return false;
-      }
-      if (res) {
-        return true;
-      }
-    });
-  },
-};
-
 module.exports = mongoose.model("User", userSchema);
