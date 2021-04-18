@@ -2,7 +2,11 @@ const User = require("../models/user");
 
 exports.signup = (req, res) => {
   const user = new User(req.body);
-  if (!req.body.isAdmin) {
+  if (req.body.isAdmin) {
+    res.status(401).json({
+      error: "You do not have permission to set admin",
+    });
+  } else {
     user.save((err, user) => {
       if (err) {
         return res.status(400).json({
@@ -12,7 +16,4 @@ exports.signup = (req, res) => {
       res.json({ user });
     });
   }
-  res.status(401).json({
-    error: "You do not have permission to set admin",
-  });
 };
