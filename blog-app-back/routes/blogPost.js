@@ -9,6 +9,7 @@ const {
   create,
   listAll,
   update,
+  remove,
 } = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
@@ -31,7 +32,13 @@ router.put(
 );
 
 // delete a post
-router.delete("/post/delete/:postId");
+router.delete(
+  "/post/remove/:postId/:userId",
+  requireSignin,
+  isAuth,
+  isAdmin,
+  remove
+);
 
 // route params
 router.param("userId", userById);

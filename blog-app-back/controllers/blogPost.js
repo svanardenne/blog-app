@@ -4,6 +4,7 @@ const _ = require("lodash");
 
 // imports blog post model
 const BlogPost = require("../models/blogPost");
+const blogPost = require("../models/blogPost");
 
 // finds a single post by id
 exports.postById = (req, res, next, id) => {
@@ -122,6 +123,20 @@ exports.update = (req, res) => {
         });
       }
       res.json(result);
+    });
+  });
+};
+
+exports.remove = (req, res) => {
+  let post = req.post;
+  post.remove((err, deletedProduct) => {
+    if (err) {
+      return res.status(400).json({
+        error: "post could not be deleted",
+      });
+    }
+    res.json({
+      message: "Post successfully deleted",
     });
   });
 };
