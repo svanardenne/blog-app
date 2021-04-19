@@ -5,6 +5,7 @@ const router = express.Router();
 const { userById } = require("../controllers/user");
 const {
   postById,
+  read,
   create,
   listAll,
   update,
@@ -18,7 +19,7 @@ router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 router.get("/posts", listAll);
 
 // get and read a post by id
-router.get("/post/:postId");
+router.get("/post/:postId", read);
 
 // update a post
 router.put(
