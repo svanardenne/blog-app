@@ -3,14 +3,14 @@ const router = express.Router();
 
 // controllers
 const { userById } = require("../controllers/user");
-const { postById, create } = require("../controllers/blogPost");
+const { postById, create, listAll } = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
 // create post
 router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
 // get and read all posts
-router.get("/posts");
+router.get("/posts", listAll);
 
 // get and read a post by id
 router.get("/post/:postId");

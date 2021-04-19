@@ -83,7 +83,3 @@ exports.listAll = (req, res) => {
       res.json(post);
     });
 };
-
-exports.createPost = (req, res) => {
-  BlogPost.create((req, res) => {});
-};
