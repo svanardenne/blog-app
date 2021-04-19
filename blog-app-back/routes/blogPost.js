@@ -3,7 +3,12 @@ const router = express.Router();
 
 // controllers
 const { userById } = require("../controllers/user");
-const { postById, create, listAll } = require("../controllers/blogPost");
+const {
+  postById,
+  create,
+  listAll,
+  update,
+} = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
 // create post
@@ -16,7 +21,13 @@ router.get("/posts", listAll);
 router.get("/post/:postId");
 
 // update a post
-router.put("/post/update/:postId");
+router.put(
+  "/post/update/:postId/:userId",
+  requireSignin,
+  isAuth,
+  isAdmin,
+  update
+);
 
 // delete a post
 router.delete("/post/delete/:postId");
