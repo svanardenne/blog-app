@@ -9,6 +9,7 @@ require("dotenv").config();
 // import routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const postRoutes = require("./routes/blogPost");
 
 // set up React app
 const app = express();
@@ -29,6 +30,7 @@ mongoose.connection.on("error", (err) => {
 // middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use(body());
@@ -36,6 +38,7 @@ app.use(body());
 // routes middleware
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", postRoutes);
 
 // set up server
 const port = process.env.PORT || 8000;

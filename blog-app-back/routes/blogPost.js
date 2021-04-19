@@ -2,13 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 // controllers
-const { postById } = require("../controllers/blogPost");
+const { userById } = require("../controllers/user");
+const { postById, create } = require("../controllers/blogPost");
+const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
 // create post
-router.post("/post/create");
+router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
-// get and readd all posts
-router.get("/post");
+// get and read all posts
+router.get("/posts");
 
 // get and read a post by id
 router.get("/post/:postId");
@@ -20,6 +22,7 @@ router.put("/post/update/:postId");
 router.delete("/post/delete/:postId");
 
 // route params
+router.param("userId", userById);
 router.param("postId", postById);
 
 module.exports = router;

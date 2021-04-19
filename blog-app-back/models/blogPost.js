@@ -14,10 +14,6 @@ const postSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
-    slug: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );

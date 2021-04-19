@@ -1,3 +1,7 @@
+const fs = require("fs");
+const formidable = require("formidable");
+
+// imports blog post model
 const BlogPost = require("../models/blogPost");
 
 // finds a single post by id
@@ -16,6 +20,48 @@ exports.postById = (req, res, next, id) => {
 // reads a single post
 exports.read = (req, res) => {
   return res.json(req.post);
+};
+
+// creates a post
+exports.create = (req, res) => {
+  let form = formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Something went wrong",
+      });
+    }
+    // deconstruct and check for all fields
+    const { title, markdown } = fields;
+    if (!title || !markdown) {
+      return res.status(400).json({
+        error: "All fields are required",
+      });
+    }
+
+    // creates new post using field info
+    let post = new BlogPost(fields);
+    // adds photo data to post if size is under 1mb
+    if (files.photo) {
+      if (files.photo.size > 1000000) {
+        return res.status(400).json({
+          error: "Image should be under 1mb in size",
+        });
+      }
+      post.photo.data = fs.readFileSync(files.photo.path);
+      post.photo.contentType = files.photo.type;
+    }
+    // saves new post to database
+    post.save((err, result) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Something went wrong",
+        });
+      }
+      res.json(result);
+    });
+  });
 };
 
 // lists all post with queries
@@ -39,5 +85,5 @@ exports.listAll = (req, res) => {
 };
 
 exports.createPost = (req, res) => {
-  BlogPost.create();
+  BlogPost.create((req, res) => {});
 };
