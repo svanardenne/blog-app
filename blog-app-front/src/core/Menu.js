@@ -69,7 +69,7 @@ const Menu = () => {
         size="lg"
         style={{ flexBasis: "30%" }}
       />
-      <h1 style={{ flexBasis: "40%", textAlign: "center" }}>My Blog</h1>
+      <h1 style={{ flexBasis: "40%", textAlign: "center" }}>Logo</h1>
       <NavLinksModal className="nav-links-modal">
         <FontAwesomeIcon
           onClick={handleMenuClose}
