@@ -84,7 +84,7 @@ const Menu = () => {
         />
         <NavList>
           <NavItem>
-            <Link to="/" activeStyle={activeLink}>
+            <Link to="/" exact activeStyle={activeLink}>
               Home
             </Link>
           </NavItem>
