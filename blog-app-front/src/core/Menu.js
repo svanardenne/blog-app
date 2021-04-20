@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,7 +39,7 @@ const NavItem = styled.li`
     border-bottom: none;
   }
 `;
-const Link = styled(NavLink)`
+const Link = styled.div`
   text-decoration: none;
   font-size: 22px;
   color: #f7f7f7;
@@ -51,11 +51,34 @@ const activeLink = {
 };
 
 const Menu = () => {
+  // brings the useHistory hook into the component
+  const history = useHistory();
+
+  /**
+   * Handles the linking of nav items and allows the nav menu to
+   * close before the link is made
+   */
+  const handleLink = (e) => {
+    const mobileLinks = document.querySelector(".nav-links-modal");
+    mobileLinks.style.width = "0";
+    if (e.target.textContent !== "Home") {
+      setTimeout(() => {
+        history.push(`/${e.target.textContent.toLowerCase()}`);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        history.push("/");
+      }, 500);
+    }
+  };
+
+  // Handles the opening of nav menu
   const handleMenuClick = () => {
     const mobileLinks = document.querySelector(".nav-links-modal");
     mobileLinks.style.width = "100vw";
   };
 
+  // Handles the closing of the nav menu
   const handleMenuClose = () => {
     const mobileLinks = document.querySelector(".nav-links-modal");
     mobileLinks.style.width = "0";
@@ -84,25 +107,25 @@ const Menu = () => {
         />
         <NavList>
           <NavItem>
-            <Link to="/" exact activeStyle={activeLink}>
+            <Link onClick={handleLink} exact activeStyle={activeLink}>
               Home
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/dashboard" activeStyle={activeLink}>
+            <Link onClick={handleLink} activeStyle={activeLink}>
               Dashboard
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/signin" activeStyle={activeLink}>
+            <Link onClick={handleLink} activeStyle={activeLink}>
               Signin
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/signout">Signout</Link>
+            <Link onClick={handleLink}>Signout</Link>
           </NavItem>
           <NavItem>
-            <Link to="/signup" activeStyle={activeLink}>
+            <Link onClick={handleLink} activeStyle={activeLink}>
               Signup
             </Link>
           </NavItem>
