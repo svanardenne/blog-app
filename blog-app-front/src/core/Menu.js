@@ -61,7 +61,13 @@ const Menu = () => {
         <FontAwesomeIcon
           onClick={handleMenuClose}
           icon={["fas", "window-close"]}
-          style={{ color: "#fff" }}
+          size="2x"
+          style={{
+            color: "#fff",
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+          }}
         />
         <NavList>
           <li>
