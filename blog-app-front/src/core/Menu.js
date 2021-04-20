@@ -14,7 +14,7 @@ const Nav = styled.nav`
 const NavLinksModal = styled.div`
   position: fixed;
   top: 0;
-  background: rgba(2, 2, 2, 0.8);
+  background: rgba(22, 22, 22, 0.9);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   height: 100vh;
@@ -27,14 +27,25 @@ const NavList = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
+  margin-top: 56px;
+  margin-left: 24px;
+  margin-right: 24px;
+`;
+const NavItem = styled.li`
+  border-bottom: 1px solid rgba(76, 76, 76, 0.5);
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 const Link = styled(NavLink)`
   text-decoration: none;
   font-size: 22px;
-  color: #fff;
+  color: #f7f7f7;
+  display: block;
+  padding: 16px 24px;
 `;
 const activeLink = {
-  fontWeight: 900,
+  fontWeight: 700,
 };
 
 const Menu = () => {
@@ -70,29 +81,29 @@ const Menu = () => {
           }}
         />
         <NavList>
-          <li>
+          <NavItem>
             <Link to="/" activeStyle={activeLink}>
               Home
             </Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/dashboard" activeStyle={activeLink}>
               Dashboard
             </Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/signin" activeStyle={activeLink}>
               Signin
             </Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/signout">Signout</Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/signup" activeStyle={activeLink}>
               Signup
             </Link>
-          </li>
+          </NavItem>
         </NavList>
       </NavLinksModal>
     </Nav>

@@ -1,6 +1,7 @@
 import React from "react";
 import Routes from "./Routes";
 import { Normalize } from "styled-normalize";
+import GlobalStyles from "./styles/globalStyle";
 
 // Font Awesome imports
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -13,6 +14,7 @@ library.add(fab, fas);
 const App = () => (
   <React.Fragment>
     <Normalize />
+    <GlobalStyles />
     <Routes />
   </React.Fragment>
 );
