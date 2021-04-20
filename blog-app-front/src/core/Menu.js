@@ -10,6 +10,8 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: #f7f7f7;
+  background: #161616;
 `;
 const NavLinksModal = styled.div`
   position: fixed;
@@ -18,10 +20,10 @@ const NavLinksModal = styled.div`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   height: 100vh;
-  width: 100vw;
+  width: 0;
   margin: 0;
-  transform: translateX(-100vw);
-  transition: transform 0.5s ease;
+  transition: width 0.4s ease;
+  overflow: hidden;
 `;
 const NavList = styled.ul`
   margin: 0;
@@ -51,12 +53,12 @@ const activeLink = {
 const Menu = () => {
   const handleMenuClick = () => {
     const mobileLinks = document.querySelector(".nav-links-modal");
-    mobileLinks.style.transform = "translateX(0)";
+    mobileLinks.style.width = "100vw";
   };
 
   const handleMenuClose = () => {
     const mobileLinks = document.querySelector(".nav-links-modal");
-    mobileLinks.style.transform = "translateX(-100vw)";
+    mobileLinks.style.width = "0";
   };
 
   return (
@@ -64,7 +66,7 @@ const Menu = () => {
       <FontAwesomeIcon
         onClick={handleMenuClick}
         icon={["fas", "bars"]}
-        size="2x"
+        size="lg"
         style={{ flexBasis: "30%" }}
       />
       <h1 style={{ flexBasis: "40%", textAlign: "center" }}>My Blog</h1>
@@ -72,7 +74,7 @@ const Menu = () => {
         <FontAwesomeIcon
           onClick={handleMenuClose}
           icon={["fas", "window-close"]}
-          size="2x"
+          size="lg"
           style={{
             color: "#fff",
             position: "absolute",
