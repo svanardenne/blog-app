@@ -25,7 +25,6 @@ const Signup = () => {
   return (
     <Layout title="Signup" description="Signup to the Blog App">
       <div>
-        <h1 style={{ textAlign: "center" }}>My Blog</h1>
         <form>
           <div>
             <label>Name</label>
