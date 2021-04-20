@@ -17,7 +17,6 @@ const NavLinksModal = styled.div`
   background: rgba(2, 2, 2, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   height: 100vh;
   width: 100vw;
   margin: 0;
