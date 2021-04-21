@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../core/Layout";
+
+// Method imports
+import { signup } from "../auth";
 
 // styled components
 const Form = styled.form`
@@ -26,35 +30,88 @@ const Signup = () => {
   const { name, email, password, error, success } = values;
 
   // Handles changes in the input fields
-  const handleChange = (name) => (event) => {
+  const handleChange = (name) => (e) => {
     setValues({
       ...values,
       error: false,
-      [name]: event.target.value,
+      [name]: e.target.value,
     });
   };
 
+  // Handles form submission
+  const clickSubmit = (e) => {
+    e.preventDefault();
+    setValues({ ...values, error: false });
+    signup({ name, email, password }).then((data) => {
+      if (data.error) {
+        if (data.error.code) {
+          setValues({
+            ...values,
+            error: "Email must be unique",
+            success: false,
+          });
+        } else {
+          setValues({
+            ...values,
+            error: data.error,
+            success: false,
+          });
+        }
+      } else {
+        setValues({
+          ...values,
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          success: true,
+        });
+      }
+    });
+  };
+
+  // Creates a signup form
+  const signupForm = () => (
+    <Form>
+      <FormGroup>
+        <label>Name</label>
+        <input onChange={handleChange("name")} type="text" value={name} />
+      </FormGroup>
+      <FormGroup>
+        <label>Email</label>
+        <input onChange={handleChange("email")} type="text" value={email} />
+      </FormGroup>
+      <FormGroup>
+        <label>Password</label>
+        <input
+          onChange={handleChange("password")}
+          type="text"
+          value={password}
+        />
+      </FormGroup>
+      <button onClick={clickSubmit} type="submit">
+        Submit
+      </button>
+    </Form>
+  );
+
+  // Shows error message if error
+  const showError = () => (
+    <div style={{ display: error ? "" : "none" }}>{error}</div>
+  );
+
+  // Shows success message if form submit is successful
+  const showSuccess = () => (
+    <div style={{ display: success ? "" : "none" }}>
+      New account is created. Please <Link to="/signin">Signin</Link>
+    </div>
+  );
+
   return (
     <Layout title="Signup" description="Signup to the Blog App">
-      <Form>
-        <FormGroup>
-          <label>Name</label>
-          <input onChange={handleChange("name")} type="text" value={name} />
-        </FormGroup>
-        <FormGroup>
-          <label>Email</label>
-          <input onChange={handleChange("email")} type="text" value={email} />
-        </FormGroup>
-        <FormGroup>
-          <label>Password</label>
-          <input
-            onChange={handleChange("password")}
-            type="text"
-            value={password}
-          />
-        </FormGroup>
-        <button type="submit">Submit</button>
-      </Form>
+      {showError()}
+      {showSuccess()}
+      {signupForm()}
     </Layout>
   );
 };
