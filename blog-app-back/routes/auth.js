@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-// validator import
+// Validator import
 const { userSignupValidator } = require("../validator");
 
-// controllers
+// Controllers
 const { signup, signin, signout } = require("../controllers/auth");
 
 router.post("/signup", userSignupValidator, signup);
