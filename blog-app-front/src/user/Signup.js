@@ -61,6 +61,13 @@ const Success = styled.div`
     max-width: 70%;
   }
 `;
+const Button = styled.button`
+  color: ${colors.offWhite};
+  background: ${colors.lightBlue};
+  border: 1px solid ${colors.lightBlue};
+  border-radius: 0.25em;
+  padding: 10px 25px;
+`;
 
 const Signup = () => {
   // State
@@ -135,9 +142,9 @@ const Signup = () => {
           value={password}
         />
       </FormGroup>
-      <button onClick={clickSubmit} type="submit">
+      <Button onClick={clickSubmit} type="submit">
         Submit
-      </button>
+      </Button>
     </Form>
   );
 
