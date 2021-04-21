@@ -1,17 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { device } from "../styles/device";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // styled components
 const Nav = styled.nav`
-  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #f7f7f7;
   background: #161616;
+  @media ${device.laptop} {
+    justify-content: space-around;
+  }
+`;
+const NavLogo = styled.div`
+  flex-basis: 40%;
+  text-align: center;
+  @media ${device.laptop} {
+    flex-basis: initial;
+  }
 `;
 const NavLinksModal = styled.div`
   position: fixed;
@@ -24,20 +34,47 @@ const NavLinksModal = styled.div`
   margin: 0;
   transition: width 0.4s ease;
   overflow: hidden;
-`;
-const NavList = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  margin-top: 56px;
-  margin-left: 24px;
-  margin-right: 24px;
-`;
-const NavItem = styled.li`
-  border-bottom: 1px solid rgba(76, 76, 76, 0.5);
-  &:last-child {
-    border-bottom: none;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-top: 56px;
+    margin-left: 24px;
+    margin-right: 24px;
+    li {
+      border-bottom: 1px solid rgba(76, 76, 76, 0.5);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
+`;
+const NavLinks = styled.div`
+  display: none;
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+  }
+  @media ${device.laptop} {
+    display: block;
+  } ;
+`;
+const MenuButton = styled.div`
+  flex-basis: 30%;
+  cursor: pointer;
+  text-align: center;
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+const MenuClose = styled.div`
+  color: #fff;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 `;
 const Link = styled.div`
   text-decoration: none;
@@ -45,6 +82,7 @@ const Link = styled.div`
   color: #f7f7f7;
   display: block;
   padding: 16px 24px;
+  cursor: pointer;
 `;
 const activeLink = {
   fontWeight: 700,
@@ -86,50 +124,76 @@ const Menu = () => {
 
   return (
     <Nav>
-      <FontAwesomeIcon
-        onClick={handleMenuClick}
-        icon={["fas", "bars"]}
-        size="lg"
-        style={{ flexBasis: "30%" }}
-      />
-      <h1 style={{ flexBasis: "40%", textAlign: "center" }}>Logo</h1>
-      <NavLinksModal className="nav-links-modal">
+      <MenuButton>
         <FontAwesomeIcon
-          onClick={handleMenuClose}
-          icon={["fas", "window-close"]}
+          onClick={handleMenuClick}
+          icon={["fas", "bars"]}
           size="lg"
-          style={{
-            color: "#fff",
-            position: "absolute",
-            top: "15px",
-            right: "15px",
-          }}
         />
-        <NavList>
-          <NavItem>
+      </MenuButton>
+      <NavLogo>
+        <h1>Logo</h1>
+      </NavLogo>
+      <NavLinks>
+        <ul>
+          <li>
             <Link onClick={handleLink} exact activeStyle={activeLink}>
               Home
             </Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li>
             <Link onClick={handleLink} activeStyle={activeLink}>
               Dashboard
             </Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li>
             <Link onClick={handleLink} activeStyle={activeLink}>
               Signin
             </Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li>
             <Link onClick={handleLink}>Signout</Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li>
             <Link onClick={handleLink} activeStyle={activeLink}>
               Signup
             </Link>
-          </NavItem>
-        </NavList>
+          </li>
+        </ul>
+      </NavLinks>
+      <NavLinksModal className="nav-links-modal">
+        <MenuClose>
+          <FontAwesomeIcon
+            onClick={handleMenuClose}
+            icon={["fas", "window-close"]}
+            size="lg"
+          />
+        </MenuClose>
+        <ul>
+          <li>
+            <Link onClick={handleLink} exact activeStyle={activeLink}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link onClick={handleLink} activeStyle={activeLink}>
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link onClick={handleLink} activeStyle={activeLink}>
+              Signin
+            </Link>
+          </li>
+          <li>
+            <Link onClick={handleLink}>Signout</Link>
+          </li>
+          <li>
+            <Link onClick={handleLink} activeStyle={activeLink}>
+              Signup
+            </Link>
+          </li>
+        </ul>
       </NavLinksModal>
     </Nav>
   );
