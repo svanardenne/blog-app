@@ -48,6 +48,9 @@ const NavLinksModal = styled.div`
       }
     }
   }
+  @media ${device.laptop} {
+    display: none;
+  } ;
 `;
 const NavLinks = styled.div`
   display: none;
@@ -93,10 +96,17 @@ const Menu = () => {
   const history = useHistory();
 
   /**
-   * Handles the linking of nav items and allows the nav menu to
+   * Handles the linking of nav items and allows the modal nav menu to
    * close before the link is made
    */
   const handleLink = (e) => {
+    if (e.target.textContent !== "Home") {
+      history.push(`/${e.target.textContent.toLowerCase()}`);
+    } else {
+      history.push("/");
+    }
+  };
+  const handleLinkModal = (e) => {
     const mobileLinks = document.querySelector(".nav-links-modal");
     mobileLinks.style.width = "0";
     if (e.target.textContent !== "Home") {
@@ -171,25 +181,25 @@ const Menu = () => {
         </MenuClose>
         <ul>
           <li>
-            <Link onClick={handleLink} exact activeStyle={activeLink}>
+            <Link onClick={handleLinkModal} exact activeStyle={activeLink}>
               Home
             </Link>
           </li>
           <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
+            <Link onClick={handleLinkModal} activeStyle={activeLink}>
               Dashboard
             </Link>
           </li>
           <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
+            <Link onClick={handleLinkModal} activeStyle={activeLink}>
               Signin
             </Link>
           </li>
           <li>
-            <Link onClick={handleLink}>Signout</Link>
+            <Link onClick={handleLinkModal}>Signout</Link>
           </li>
           <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
+            <Link onClick={handleLinkModal} activeStyle={activeLink}>
               Signup
             </Link>
           </li>
