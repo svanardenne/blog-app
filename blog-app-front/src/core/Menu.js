@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../styles/device";
+import { colors } from "../styles/colors";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,8 +11,8 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #f7f7f7;
-  background: #161616;
+  color: ${colors.offWhite};
+  background: ${colors.dark};
   @media ${device.laptop} {
     justify-content: space-around;
   }
@@ -73,7 +74,7 @@ const MenuButton = styled.div`
   }
 `;
 const MenuClose = styled.div`
-  color: #fff;
+  color: ${colors.offWhite};
   position: absolute;
   top: 15px;
   right: 15px;
@@ -82,7 +83,7 @@ const MenuClose = styled.div`
 const Link = styled.div`
   text-decoration: none;
   font-size: 22px;
-  color: #f7f7f7;
+  color: ${colors.offWhite};
   display: block;
   padding: 16px 24px;
   cursor: pointer;
