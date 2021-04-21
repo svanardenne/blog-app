@@ -9,7 +9,7 @@ import { signup } from "../auth";
 // styled components
 const Form = styled.form`
   width: 90%;
-  margin: 50px auto 50px;
+  margin: 0 auto 50px;
 `;
 const FormGroup = styled.div`
   display: flex;
@@ -97,12 +97,32 @@ const Signup = () => {
 
   // Shows error message if error
   const showError = () => (
-    <div style={{ display: error ? "" : "none" }}>{error}</div>
+    <div
+      style={{
+        display: error ? "" : "none",
+        width: "90%",
+        margin: "0 auto 16px",
+        borderRadius: "5px",
+        padding: "16px 24px",
+        background: "pink",
+      }}
+    >
+      {error}
+    </div>
   );
 
   // Shows success message if form submit is successful
   const showSuccess = () => (
-    <div style={{ display: success ? "" : "none" }}>
+    <div
+      style={{
+        display: success ? "" : "none",
+        width: "90%",
+        margin: "0 auto 16px",
+        borderRadius: "5px",
+        padding: "16px 24px",
+        background: "lightblue",
+      }}
+    >
       New account is created. Please <Link to="/signin">Signin</Link>
     </div>
   );

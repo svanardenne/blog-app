@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Jumbotron = styled.div`
   height: 200px;
   margin-top: 0;
+  margin-bottom: 32px;
   background: lightgrey;
   display: flex;
   flex-direction: column;
