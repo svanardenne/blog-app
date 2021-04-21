@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// controllers
+// Controllers
 const { userById } = require("../controllers/user");
 const {
   postById,
@@ -13,16 +13,16 @@ const {
 } = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
-// create post
+// Create post
 router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
-// get and read all posts
+// Get and read all posts
 router.get("/posts", listAll);
 
-// get and read a post by id
+// Get and read a post by id
 router.get("/post/:postId", read);
 
-// update a post
+// Update a post
 router.put(
   "/post/update/:postId/:userId",
   requireSignin,
@@ -31,7 +31,7 @@ router.put(
   update
 );
 
-// delete a post
+// Delete a post
 router.delete(
   "/post/remove/:postId/:userId",
   requireSignin,
@@ -40,7 +40,7 @@ router.delete(
   remove
 );
 
-// route params
+// Route params
 router.param("userId", userById);
 router.param("postId", postById);
 

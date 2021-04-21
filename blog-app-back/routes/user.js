@@ -1,9 +1,9 @@
 const express = require("express");
 
-// router
+// Router
 const router = express.Router();
 
-// imports signup controller
+// Imports signup controller
 const { userById, read } = require("../controllers/user");
 
 router.get("/user/:userId", read);

@@ -6,15 +6,15 @@ const cookieParser = require("cookie-parser");
 const { body } = require("express-validator");
 require("dotenv").config();
 
-// import routes
+// Import routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/blogPost");
 
-// set up React app
+// Set up React app
 const app = express();
 
-// db
+// DB
 mongoose
   .connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
@@ -27,7 +27,7 @@ mongoose.connection.on("error", (err) => {
   console.log(`DB connection error: ${err.message}`);
 });
 
-// middleware
+// Middleware
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,12 +35,12 @@ app.use(cookieParser());
 app.use(cors());
 app.use(body());
 
-// routes middleware
+// Routes middleware
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", postRoutes);
 
-// set up server
+// Set up server
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
