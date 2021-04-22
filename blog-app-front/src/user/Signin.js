@@ -56,6 +56,9 @@ const Button = styled.button`
   border-radius: 0.25em;
   padding: 10px 25px;
 `;
+const Loading = styled.div`
+  text-align: center;
+`;
 
 const Signin = () => {
   // State
@@ -132,9 +135,9 @@ const Signin = () => {
 
   const showLoading = () =>
     loading && (
-      <div>
+      <Loading>
         <h2>Loading...</h2>
-      </div>
+      </Loading>
     );
 
   const redirectUser = () => {
