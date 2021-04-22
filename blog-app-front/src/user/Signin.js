@@ -133,6 +133,7 @@ const Signin = () => {
     <Warning style={{ display: error ? "" : "none" }}>{error}</Warning>
   );
 
+  // Shows or hides loading text when loading state is true
   const showLoading = () =>
     loading && (
       <Loading>
@@ -140,6 +141,7 @@ const Signin = () => {
       </Loading>
     );
 
+  // Redirects user to respective dashboards based on their "isAdmin" attribute
   const redirectUser = () => {
     if (redirectToReferrer) {
       if (user && user.isAdmin === true) {
