@@ -8,11 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // styled components
 const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   color: ${colors.offWhite};
   background: ${colors.dark};
+  z-index: 1000;
   @media ${device.laptop} {
     justify-content: space-around;
   }
