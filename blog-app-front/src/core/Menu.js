@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../styles/device";
 import { colors } from "../styles/colors";
+import { isAuthenticated, signout } from "../auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -137,6 +138,11 @@ const Menu = () => {
     mobileLinks.style.width = "0";
   };
 
+  const clickSignout = () => {
+    signout();
+    history.push(history.location.pathname);
+  };
+
   return (
     <Nav>
       <MenuButton>
@@ -161,19 +167,25 @@ const Menu = () => {
               Dashboard
             </Link>
           </li>
-          <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
-              Signin
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleLink}>Signout</Link>
-          </li>
-          <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
-              Signup
-            </Link>
-          </li>
+          {!isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+                Signin
+              </Link>
+            </li>
+          ) : null}
+          {isAuthenticated() ? (
+            <li>
+              <Link onClick={clickSignout}>Signout</Link>
+            </li>
+          ) : null}
+          {!isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+                Signup
+              </Link>
+            </li>
+          ) : null}
         </ul>
       </NavLinks>
       <NavLinksModal className="nav-links-modal">
@@ -195,19 +207,25 @@ const Menu = () => {
               Dashboard
             </Link>
           </li>
-          <li>
-            <Link onClick={handleLinkModal} activeStyle={activeLink}>
-              Signin
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleLinkModal}>Signout</Link>
-          </li>
-          <li>
-            <Link onClick={handleLinkModal} activeStyle={activeLink}>
-              Signup
-            </Link>
-          </li>
+          {!isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+                Signin
+              </Link>
+            </li>
+          ) : null}
+          {isAuthenticated() ? (
+            <li>
+              <Link onClick={clickSignout}>Signout</Link>
+            </li>
+          ) : null}
+          {!isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+                Signup
+              </Link>
+            </li>
+          ) : null}
         </ul>
       </NavLinksModal>
     </Nav>
