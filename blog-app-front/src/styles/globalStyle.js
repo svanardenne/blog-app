@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./colors";
 
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -11,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: 'Roboto', arial, sans-serif;
+  background-color: ${colors.offWhite};
 }
 h1, h2 {
   font-family: 'Montserrat', sans-serif;

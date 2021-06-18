@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { colors } from "../styles/colors";
 
 const Headline = styled.div`
+  margin-top: 100px;
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.25) 0%,

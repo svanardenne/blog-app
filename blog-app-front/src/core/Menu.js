@@ -18,6 +18,7 @@ const Nav = styled.nav`
   color: ${colors.offWhite};
   background: ${colors.dark};
   z-index: 1000;
+  height: 100px;
   @media ${device.laptop} {
     justify-content: space-around;
   }
@@ -106,7 +107,13 @@ const Menu = () => {
    * close before the link is made
    */
   const handleLink = (e) => {
-    if (e.target.textContent !== "Home") {
+    if (e.target.textContent === "Dashboard") {
+      if (isAuthenticated() && isAuthenticated().user.isAdmin == true) {
+        history.push(`/admin/dashboard`);
+      } else {
+        history.push(`/user/dashboard`);
+      }
+    } else if (e.target.textContent !== "Home") {
       history.push(`/${e.target.textContent.toLowerCase()}`);
     } else {
       history.push("/");
@@ -115,7 +122,17 @@ const Menu = () => {
   const handleLinkModal = (e) => {
     const mobileLinks = document.querySelector(".nav-links-modal");
     mobileLinks.style.width = "0";
-    if (e.target.textContent !== "Home") {
+    if (e.target.textContent === "Dashboard") {
+      if (isAuthenticated() && isAuthenticated().user.isAdmin == true) {
+        setTimeout(() => {
+          history.push(`/admin/dashboard`);
+        }, 500);
+      } else {
+        setTimeout(() => {
+          history.push(`/user/dashboard`);
+        }, 500);
+      }
+    } else if (e.target.textContent !== "Home") {
       setTimeout(() => {
         history.push(`/${e.target.textContent.toLowerCase()}`);
       }, 500);
@@ -163,14 +180,17 @@ const Menu = () => {
               Home
             </Link>
           </li>
-          <li>
-            <Link onClick={handleLink} activeStyle={activeLink}>
-              Dashboard
-            </Link>
-          </li>
+          {isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLink} activeStyle={activeLink}>
+                Dashboard
+              </Link>
+            </li>
+          ) : null}
+
           {!isAuthenticated() ? (
             <li>
-              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+              <Link onClick={handleLink} activeStyle={activeLink}>
                 Signin
               </Link>
             </li>
@@ -182,7 +202,7 @@ const Menu = () => {
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+              <Link onClick={handleLink} activeStyle={activeLink}>
                 Signup
               </Link>
             </li>
@@ -203,11 +223,13 @@ const Menu = () => {
               Home
             </Link>
           </li>
-          <li>
-            <Link onClick={handleLinkModal} activeStyle={activeLink}>
-              Dashboard
-            </Link>
-          </li>
+          {isAuthenticated() ? (
+            <li>
+              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+                Dashboard
+              </Link>
+            </li>
+          ) : null}
           {!isAuthenticated() ? (
             <li>
               <Link onClick={handleLinkModal} activeStyle={activeLink}>

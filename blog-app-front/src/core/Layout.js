@@ -12,12 +12,13 @@ const Jumbotron = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 `;
 
 const Layout = ({ title, description, className, children }) => (
   <React.Fragment>
     <Menu />
-    {title && description ? (
+    {title || description ? (
       <Jumbotron>
         <h2>{title}</h2>
         <p>{description}</p>
