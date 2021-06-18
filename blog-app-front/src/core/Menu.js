@@ -138,6 +138,7 @@ const Menu = () => {
     mobileLinks.style.width = "0";
   };
 
+  // Handles signout
   const clickSignout = () => {
     signout();
     history.push(history.location.pathname);
