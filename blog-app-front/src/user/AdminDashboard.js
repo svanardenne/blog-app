@@ -7,7 +7,7 @@ import { colors } from "../styles/colors";
 const AdminDashboard = () => {
   return (
     <Layout title="Admin Dashboard" description="Manage your app!">
-      <Link to="/create/post">Create Post</Link>
+      <Link to="/post/create">Create Post</Link>
     </Layout>
   );
 };

@@ -1,10 +1,13 @@
 // Main imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { authenticate } from "../auth";
+import { isAuthenticated } from "../auth";
 import Layout from "../core/Layout";
 import { colors } from "../styles/colors";
 import { device } from "../styles/device";
+import { createPost } from "./apiAdmin";
 
 // Styled Components
 const Form = styled.form`
@@ -52,7 +55,7 @@ const Button = styled.button`
   padding: 10px 25px;
 `;
 
-const Loading = styled.div`
+const CreatingPost = styled.div`
   text-align: center;
 `;
 
@@ -78,22 +81,51 @@ const NewPost = () => {
     error: "",
     success: false,
     creatingPost: false,
+    formData: "",
   });
 
   // Deconstruct values from state
-  const { title, body, slug, error, success, creatingPost } = values;
+  const { title, body, slug, error, success, creatingPost, formData } = values;
+
+  // for user authentication
+  const { user, token } = isAuthenticated();
+
+  const init = () => {
+    setValues({ ...values, formData: new FormData() });
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
 
   // Handles changes in the input fields
   const handleChange = (name) => (e) => {
-    setValues({
-      ...values,
-      error: false,
-      [name]: e.target.value,
-    });
+    const value = name === "photo" ? e.target.files[0] : e.target.value;
+    formData.set(name, value);
+    setValues({ ...values, error: false, [name]: value });
   };
 
-  const clickSubmit = () => {
-    //
+  const clickSubmit = (e) => {
+    e.preventDefault();
+    setValues({ ...values, error: false, creatingPost: true });
+    createPost(user._id, token, formData).then((data) => {
+      if (data.error) {
+        setValues({
+          ...values,
+          error: data.error,
+          creatingPost: false,
+        });
+      } else {
+        setValues({
+          title: "",
+          body: "",
+          slug: "",
+          error: "",
+          success: false,
+          creatingPost: false,
+        });
+      }
+    });
   };
 
   // Form for submitting posts
@@ -113,12 +145,12 @@ const NewPost = () => {
     </Form>
   );
 
-  // Shows or hides loading text when loading state is true
+  // Shows or hides "creating post" text when creatingPost state is true
   const showCreating = () =>
     creatingPost && (
-      <Loading>
+      <CreatingPost>
         <h2>Creating Post...</h2>
-      </Loading>
+      </CreatingPost>
     );
 
   // Shows error message if error
