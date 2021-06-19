@@ -78,6 +78,7 @@ const NewPost = () => {
     title: "",
     body: "",
     slug: "",
+    photo: "",
     error: "",
     success: false,
     creatingPost: false,
@@ -85,7 +86,8 @@ const NewPost = () => {
   });
 
   // Deconstruct values from state
-  const { title, body, slug, error, success, creatingPost, formData } = values;
+  const { title, body, slug, photo, error, success, creatingPost, formData } =
+    values;
 
   // for user authentication
   const { user, token } = isAuthenticated();
@@ -131,6 +133,15 @@ const NewPost = () => {
   // Form for submitting posts
   const createPostForm = () => (
     <Form>
+      <FormGroup>
+        <label>Photo</label>
+        <input
+          onChange={handleChange("photo")}
+          name="photo"
+          type="file"
+          accept="image/*"
+        />
+      </FormGroup>
       <FormGroup>
         <label>Title</label>
         <input onChange={handleChange("title")} type="text" value={title} />
