@@ -1,14 +1,10 @@
-const fs = require("fs");
+const Post = require("../models/blogPost");
 const formidable = require("formidable");
-const _ = require("lodash");
+const fs = require("fs");
 
-// imports blog post model
-const BlogPost = require("../models/blogPost");
-const blogPost = require("../models/blogPost");
-
-// finds a single post by id
+// Finds post by Id and attaches it to request body
 exports.postById = (req, res, next, id) => {
-  BlogPost.findById(id).exec((err, post) => {
+  Post.findById(id).exec((err, post) => {
     if (err || !post) {
       return res.status(400).json({
         error: "User not found",
@@ -19,124 +15,48 @@ exports.postById = (req, res, next, id) => {
   });
 };
 
-// reads a single post
-exports.read = (req, res) => {
-  return res.json(req.post);
-};
-
-// creates a post
+// Method for creating and saving a post
 exports.create = (req, res) => {
-  let form = formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
+  let formData = new formidable.IncomingForm();
+  formData.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({
-        error: "Something went wrong",
+        error: "Image could not be uploaded",
       });
     }
-    // deconstruct and check for all fields
-    const { title, markdown } = fields;
-    if (!title || !markdown) {
+
+    // check for all fields
+    const { title, body, slug, photo } = fields;
+
+    // Checks for required data
+    if (!title || !body) {
       return res.status(400).json({
         error: "All fields are required",
       });
     }
-    // creates new post using field info
-    let post = new BlogPost(fields);
-    // adds photo data to post if size is under 1mb
+
+    // creates post variable using field info
+    let post = new Post(fields);
+
+    // Adds photo data to product if size is under 1mb
     if (files.photo) {
       if (files.photo.size > 1000000) {
         return res.status(400).json({
-          error: "Image should be under 1mb in size",
+          error: "Image should be less than 1mb in size",
         });
       }
       post.photo.data = fs.readFileSync(files.photo.path);
       post.photo.contentType = files.photo.type;
     }
-    // saves new post to database
+
+    // Saves product to database
     post.save((err, result) => {
       if (err) {
         return res.status(400).json({
-          error: "Something went wrong",
+          error: err,
         });
       }
       res.json(result);
-    });
-  });
-};
-
-// lists all post with queries
-exports.listAll = (req, res) => {
-  let order = req.query.order ? req.query.order : "asc";
-  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
-
-  BlogPost.find()
-    .select("-photo")
-    .sort([[sortBy, order]])
-    .limit(limit)
-    .exec((err, post) => {
-      if (err) {
-        return res.status(400).json({
-          error: "Products not found",
-        });
-      }
-      res.json(post);
-    });
-};
-
-// creates a post
-exports.update = (req, res) => {
-  let form = formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Something went wrong",
-      });
-    }
-    // deconstruct and check for all fields
-    const { title, markdown } = fields;
-    if (!title || !markdown) {
-      return res.status(400).json({
-        error: "All fields are required",
-      });
-    }
-    // creates new post using field info
-    let post = req.post;
-    product = _.extend(post, fields);
-    // adds photo data to post if size is under 1mb
-    if (files.photo) {
-      if (files.photo.size > 1000000) {
-        return res.status(400).json({
-          error: "Image should be under 1mb in size",
-        });
-      }
-      post.photo.data = fs.readFileSync(files.photo.path);
-      post.photo.contentType = files.photo.type;
-    }
-    // saves new post to database
-    post.save((err, result) => {
-      if (err) {
-        return res.status(400).json({
-          error: "Something went wrong",
-        });
-      }
-      res.json(result);
-    });
-  });
-};
-
-exports.remove = (req, res) => {
-  let post = req.post;
-  post.remove((err, deletedProduct) => {
-    if (err) {
-      return res.status(400).json({
-        error: "post could not be deleted",
-      });
-    }
-    res.json({
-      message: "Post successfully deleted",
     });
   });
 };
