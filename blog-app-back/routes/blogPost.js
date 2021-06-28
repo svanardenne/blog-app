@@ -16,6 +16,9 @@ const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 // Create post
 router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
+// Show posts
+router.get("/posts", listAll);
+
 // Route params
 router.param("userId", userById);
 router.param("postId", postById);

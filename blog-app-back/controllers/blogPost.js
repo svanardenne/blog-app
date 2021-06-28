@@ -15,6 +15,25 @@ exports.postById = (req, res, next, id) => {
   });
 };
 
+exports.listAll = (req, res) => {
+  let order = req.query.order ? req.query.order : "desc";
+  let sortBy = req.query.sortBy ? req.query.sortBy : "createdAt";
+  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+  Post.find()
+    .select("-photo")
+    .select("-slug")
+    .sort([[sortBy, order]])
+    .exec((err, posts) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Posts not found",
+        });
+      }
+      res.json(posts);
+    });
+};
+
 // Method for creating and saving a post
 exports.create = (req, res) => {
   let formData = new formidable.IncomingForm();
