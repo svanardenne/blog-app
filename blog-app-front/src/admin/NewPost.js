@@ -103,6 +103,15 @@ const NewPost = () => {
   // Handles changes in the input fields
   const handleChange = (name) => (e) => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
+    if (name === "title") {
+      formData.set(
+        "slug",
+        value
+          .replace(/\s+/g, "-")
+          .replace(/[^\w-]+/g, "")
+          .toLowerCase()
+      );
+    }
     formData.set(name, value);
     setValues({ ...values, error: false, [name]: value });
   };
