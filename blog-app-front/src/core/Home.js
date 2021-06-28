@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "./Layout";
 import backgroundImg from "../assets/images/jr-korpa-4GUhXYfabvs-unsplash.jpg";
 import styled from "styled-components";
 import { colors } from "../styles/colors";
+import moment from "moment";
 
-const Headline = styled.div`
+import { getPosts } from "./apiCore";
+
+const Headline = styled.header`
   margin-top: 100px;
   background: linear-gradient(
       to bottom,
@@ -34,7 +38,7 @@ const Headline = styled.div`
   }
 `;
 
-const About = styled.div`
+const About = styled.section`
   background-color: ${colors.bgBlue};
   color: ${colors.offWhite};
   text-align: center;
@@ -49,8 +53,11 @@ const About = styled.div`
   }
 `;
 
-const Home = () => (
-  <Layout>
+const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState([]);
+
+  const headline = () => (
     <Headline style={{ textAlign: "center" }}>
       <div>
         <h1>Creative Misgivings</h1>
@@ -59,6 +66,9 @@ const Home = () => (
         </p>
       </div>
     </Headline>
+  );
+
+  const about = () => (
     <About>
       <h4>Hello, Dear Reader</h4>
       <p>
@@ -76,7 +86,42 @@ const Home = () => (
         </span>
       </p>
     </About>
-  </Layout>
-);
+  );
+
+  const projectsDisplay = () => (
+    <section>
+      <h2>The Journey</h2>
+      {posts.map((post, i) => (
+        <div key={i} className="post-card">
+          <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
+          <h4>{post.title}</h4>
+          <Link to={`/posts/${post.slug}`}>Continue Reading</Link>
+        </div>
+      ))}
+    </section>
+  );
+
+  const loadPosts = () => {
+    getPosts().then((data) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setPosts(data);
+      }
+    });
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
+  return (
+    <Layout>
+      {headline()}
+      {about()}
+      {projectsDisplay()}
+    </Layout>
+  );
+};
 
 export default Home;

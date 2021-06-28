@@ -22,8 +22,8 @@ exports.listAll = (req, res) => {
 
   Post.find()
     .select("-photo")
-    .select("-slug")
     .sort([[sortBy, order]])
+    .limit(limit)
     .exec((err, posts) => {
       if (err) {
         return res.status(400).json({
