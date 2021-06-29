@@ -73,8 +73,12 @@ const About = styled.section`
 
 const Projects = styled.section`
   text-align: center;
-  background-color: teal;
+  background-color: ${colors.muted};
+  padding: 40px 0 40px 0;
   h2 {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 56px;
     color: ${colors.offWhite};
   }
 `;
