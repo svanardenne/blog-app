@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
+import Card from "./Card";
 import backgroundImg from "../assets/images/jr-korpa-4GUhXYfabvs-unsplash.jpg";
 import styled from "styled-components";
 import { colors } from "../styles/colors";
 import moment from "moment";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { getPosts } from "./apiCore";
 
@@ -48,14 +51,51 @@ const About = styled.section`
     font-weight: 400;
     margin: 0 0 24px 0;
   }
+  p {
+    margin: 0 auto;
+  }
   span {
     font-size: 18px;
+  }
+  @media (min-width: 768px) {
+    padding: 56px 24px 56px 24px;
+    p {
+      max-width: 83.33333333333334%;
+    }
+  }
+  @media (min-width: 1024px) {
+    p {
+      width: 600px;
+      max-width: 66.66666666666666%;
+    }
+  }
+`;
+
+const Projects = styled.section`
+  text-align: center;
+  background-color: teal;
+  h2 {
+    color: ${colors.offWhite};
   }
 `;
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState([]);
+
+  const loadPosts = () => {
+    getPosts().then((data) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setPosts(data);
+      }
+    });
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
 
   const headline = () => (
     <Headline style={{ textAlign: "center" }}>
@@ -85,35 +125,23 @@ const Home = () => {
           grow with me.{" "}
         </span>
       </p>
+      <br />
+      <p>
+        <span>Won't you come along? Let's see where this leads... </span>
+      </p>
     </About>
   );
 
   const projectsDisplay = () => (
-    <section>
+    <Projects id="projects">
       <h2>The Journey</h2>
-      {posts.map((post, i) => (
-        <div key={i} className="post-card">
-          <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
-          <h4>{post.title}</h4>
-          <Link to={`/posts/${post.slug}`}>Continue Reading</Link>
-        </div>
-      ))}
-    </section>
+      <Carousel showThumbs={false}>
+        {posts.map((post, i) => (
+          <Card post={post} key={i} />
+        ))}
+      </Carousel>
+    </Projects>
   );
-
-  const loadPosts = () => {
-    getPosts().then((data) => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setPosts(data);
-      }
-    });
-  };
-
-  useEffect(() => {
-    loadPosts();
-  }, []);
 
   return (
     <Layout>
