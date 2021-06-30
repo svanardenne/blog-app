@@ -10,12 +10,13 @@ const CardWrapper = styled.div`
   height: 330px;
   background-color: ${colors.offWhite};
   margin-bottom: 48px;
+  box-shadow: 7px 7px 14px #4c5258;
   img {
     max-width: 243px;
     margin-top: 2px;
   }
   @media (max-width: 1024px) {
-    margin: 0 auto;
+    margin: 0 auto 48px;
   }
 `;
 

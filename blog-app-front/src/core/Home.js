@@ -98,7 +98,7 @@ const Home = () => {
   const [carousel, setCarousel] = useState(true);
 
   const loadPosts = () => {
-    getPosts().then((data) => {
+    getPosts("desc", "createdAt", "3").then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -162,7 +162,7 @@ const Home = () => {
     <Projects id="projects">
       <h2>The Journey</h2>
       {carousel ? (
-        <Carousel>
+        <Carousel showThumbs={false} showStatus={false}>
           {posts.map((post, i) => (
             <Card post={post} key={i} />
           ))}
