@@ -74,13 +74,22 @@ const About = styled.section`
 const Projects = styled.section`
   text-align: center;
   background-color: ${colors.muted};
-  padding: 40px 0 40px 0;
+  padding: 40px 0 0 0;
   h2 {
     font-size: 40px;
     margin-top: 0;
     margin-bottom: 56px;
     color: ${colors.offWhite};
   }
+`;
+
+const ProjectCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10%;
+  margin: 0 48px 0 48px;
 `;
 
 const Home = () => {
@@ -139,11 +148,11 @@ const Home = () => {
   const projectsDisplay = () => (
     <Projects id="projects">
       <h2>The Journey</h2>
-      <Carousel showThumbs={false}>
+      <ProjectCards>
         {posts.map((post, i) => (
           <Card post={post} key={i} />
         ))}
-      </Carousel>
+      </ProjectCards>
     </Projects>
   );
 

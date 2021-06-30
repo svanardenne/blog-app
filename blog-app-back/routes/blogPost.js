@@ -10,6 +10,7 @@ const {
   listAll,
   update,
   remove,
+  photo,
 } = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 
@@ -18,6 +19,9 @@ router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
 // Show posts
 router.get("/posts", listAll);
+
+// Get photos
+router.get("/post/photo/:postId", photo);
 
 // Route params
 router.param("userId", userById);

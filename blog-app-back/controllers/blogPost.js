@@ -79,3 +79,10 @@ exports.create = (req, res) => {
     });
   });
 };
+
+exports.photo = (req, res) => {
+  if (req.post.photo.data) {
+    res.set("Content-Type", req.post.photo.contentType);
+    return res.send(req.post.photo.data);
+  }
+};

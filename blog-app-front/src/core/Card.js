@@ -8,8 +8,8 @@ import PostImage from "./ShowImage";
 const CardWrapper = styled.div`
   width: 245px;
   height: 330px;
-  margin: 0 auto;
   background-color: ${colors.offWhite};
+  margin-bottom: 48px;
   img {
     max-width: 243px;
     margin-top: 2px;
