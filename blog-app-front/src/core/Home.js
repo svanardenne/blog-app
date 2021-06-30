@@ -39,6 +39,16 @@ const Headline = styled.header`
     font-size: 28px;
     margin: 0;
   }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 72px;
+    }
+  }
+  @media (min-width: 1280px) {
+    h1 {
+      font-size: 96px;
+    }
+  }
 `;
 
 const About = styled.section`
@@ -69,6 +79,11 @@ const About = styled.section`
       max-width: 66.66666666666666%;
     }
   }
+  @media (min-width: 1536px) {
+    span {
+      font-size: 20px;
+    }
+  }
 `;
 
 const Projects = styled.section`
@@ -81,6 +96,16 @@ const Projects = styled.section`
     margin-bottom: 40px;
     color: ${colors.offWhite};
   }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 48px;
+    }
+  }
+  @media (min-width: 1280px) {
+    h2 {
+      font-size: 62px;
+    }
+  }
 `;
 
 const ProjectCards = styled.div`
@@ -90,6 +115,58 @@ const ProjectCards = styled.div`
   justify-content: center;
   gap: 10%;
   margin: 0 48px 0 48px;
+`;
+
+const Info = styled.section`
+  text-align: center;
+  color: ${colors.offWhite};
+  background-color: ${colors.dark};
+  padding: 40px 24px 40px 24px;
+  h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0 0 24px 0;
+  }
+  a {
+    color: ${colors.offWhite};
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 20px 32px 20px 32px;
+    background-color: ${colors.bgBlue};
+  }
+  p {
+    margin: 0 auto 48px;
+  }
+  span {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    padding: 56px 24px 56px 24px;
+    h4 {
+      font-size: 48px;
+    }
+    p {
+      max-width: 83.33333333333334%;
+    }
+  }
+  @media (min-width: 1024px) {
+    p {
+      width: 600px;
+      max-width: 66.66666666666666%;
+    }
+  }
+  @media (min-width: 1280px) {
+    h4 {
+      font-size: 62px;
+    }
+  }
+  @media (min-width: 1536px) {
+    span {
+      font-size: 18px;
+    }
+  }
 `;
 
 const Home = () => {
@@ -135,7 +212,7 @@ const Home = () => {
   );
 
   const about = () => (
-    <About>
+    <About id="about">
       <h4>Hello, Dear Reader</h4>
       <p>
         <span>
@@ -177,11 +254,26 @@ const Home = () => {
     </Projects>
   );
 
+  const info = () => (
+    <Info>
+      <h4>The Promises</h4>
+      <p>
+        <span>
+          In order to hold myself accountable, I have made some promises to
+          myself, and to you, Dear Reader, that will guide me through this
+          journey.
+        </span>
+      </p>
+      <Link to="/the-promises">I Promise...</Link>
+    </Info>
+  );
+
   return (
     <Layout>
       {headline()}
       {about()}
       {projectsDisplay()}
+      {info()}
     </Layout>
   );
 };
