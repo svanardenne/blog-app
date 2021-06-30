@@ -12,6 +12,7 @@ const CardWrapper = styled.div`
   margin-bottom: 48px;
   box-shadow: 7px 7px 14px #4c5258;
   img {
+    width: 243px;
     max-width: 243px;
     margin-top: 2px;
   }
