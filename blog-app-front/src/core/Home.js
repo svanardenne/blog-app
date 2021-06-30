@@ -78,7 +78,7 @@ const Projects = styled.section`
   h2 {
     font-size: 40px;
     margin-top: 0;
-    margin-bottom: 56px;
+    margin-bottom: 40px;
     color: ${colors.offWhite};
   }
 `;
