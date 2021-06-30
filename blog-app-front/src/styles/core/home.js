@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../device";
 import { colors } from "../colors";
 import backgroundImg from "../../assets/images/jr-korpa-4GUhXYfabvs-unsplash.jpg";
 
@@ -30,15 +31,15 @@ export const Headline = styled.header`
     font-size: 28px;
     margin: 0;
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${device.tablet}) {
     h1 {
       font-size: 72px;
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${device.laptopS}) {
     min-height: 75vh;
   }
-  @media (min-width: 1280px) {
+  @media (min-width: ${device.laptopM}) {
     h1 {
       font-size: 96px;
     }
@@ -61,7 +62,7 @@ export const About = styled.section`
   span {
     font-size: 18px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${device.tablet}) {
     padding: 56px 24px 56px 24px;
     h4 {
       font-size: 30px;
@@ -70,13 +71,13 @@ export const About = styled.section`
       max-width: 83.33333333333334%;
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${device.laptopS}) {
     p {
       width: 600px;
       max-width: 66.66666666666666%;
     }
   }
-  @media (min-width: 1280px) {
+  @media (min-width: ${device.laptopM}) {
     h4 {
       font-size: 32px;
     }
@@ -84,7 +85,7 @@ export const About = styled.section`
       width: 700px;
     }
   }
-  @media (min-width: 1536px) {
+  @media (min-width: ${device.desktopS}) {
     h4 {
       font-size: 36px;
     }
@@ -107,12 +108,12 @@ export const Projects = styled.section`
     margin-bottom: 40px;
     color: ${colors.offWhite};
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${device.tablet}) {
     h2 {
       font-size: 48px;
     }
   }
-  @media (min-width: 1280px) {
+  @media (min-width: ${device.laptopM}) {
     h2 {
       font-size: 62px;
     }
@@ -156,7 +157,7 @@ export const Info = styled.section`
   span {
     font-size: 16px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${device.tablet}) {
     padding: 56px 24px 56px 24px;
     h4 {
       font-size: 48px;
@@ -165,18 +166,18 @@ export const Info = styled.section`
       max-width: 83.33333333333334%;
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${device.laptopS}) {
     p {
       width: 600px;
       max-width: 66.66666666666666%;
     }
   }
-  @media (min-width: 1280px) {
+  @media (min-width: ${device.laptopM}) {
     h4 {
       font-size: 62px;
     }
   }
-  @media (min-width: 1536px) {
+  @media (min-width: ${device.desktopS}) {
     span {
       font-size: 18px;
     }
@@ -207,7 +208,7 @@ export const Contact = styled.section`
       }
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${device.tablet}) {
     h2 {
       font-size: 38px;
     }
@@ -217,7 +218,7 @@ export const Contact = styled.section`
       }
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${device.laptopS}) {
     div {
       a {
         width: 96px;
@@ -229,12 +230,12 @@ export const Contact = styled.section`
       }
     }
   }
-  @media (min-width: 1280px) {
+  @media (min-width: ${device.laptopM}) {
     h2 {
       font-size: 44px;
     }
   }
-  @media (min-width: 1536px) {
+  @media (min-width: ${device.desktopS}) {
     h2 {
       font-size: 48px;
     }
