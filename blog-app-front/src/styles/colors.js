@@ -3,6 +3,7 @@ export const colors = {
   offWhite: "#f7f7f7",
   muted: "#6c757d",
   bgBlue: "rgb(2, 73, 89)",
+  bgBlueDarker: "rgb(10, 85, 100)",
   lightBlue: "#007bff",
   warningText: "#721c24",
   warningBG: "#f8d7da",

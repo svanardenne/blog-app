@@ -137,6 +137,9 @@ const Info = styled.section`
     padding: 20px 32px 20px 32px;
     background-color: ${colors.bgBlue};
   }
+  a:hover {
+    background-color: ${colors.bgBlueDarker};
+  }
   p {
     margin: 0 auto 48px;
   }
@@ -186,7 +189,9 @@ const Contact = styled.section`
     a {
       width: 56px;
       height: 48px;
+      cursor: pointer;
       svg {
+        color: ${colors.offWhite};
         width: 40px !important;
         height: 40px;
       }
@@ -329,13 +334,13 @@ const Home = () => {
     <Contact>
       <h2>Connect With Me</h2>
       <div>
-        <a>
+        <a target="blank" href="https://www.facebook.com/creativemisgivings">
           <FontAwesomeIcon icon={["fab", "facebook-square"]} />
         </a>
-        <a>
+        <a target="blank" href="https://twitter.com/CreateMis">
           <FontAwesomeIcon icon={["fab", "twitter-square"]} />
         </a>
-        <a>
+        <a target="blank" href="https://www.instagram.com/creativemisgivings/">
           <FontAwesomeIcon icon={["fab", "instagram-square"]} />
         </a>
       </div>
