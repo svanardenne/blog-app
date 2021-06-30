@@ -95,6 +95,7 @@ const ProjectCards = styled.div`
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState([]);
+  const [carousel, setCarousel] = useState(true);
 
   const loadPosts = () => {
     getPosts().then((data) => {
@@ -106,8 +107,20 @@ const Home = () => {
     });
   };
 
+  const cardFormat = () => {
+    if (window.innerWidth >= 1024) {
+      setCarousel(false);
+    } else if (window.innerWidth < 1024) {
+      setCarousel(true);
+    }
+  };
+
   useEffect(() => {
     loadPosts();
+    cardFormat();
+    window.addEventListener("resize", () => {
+      cardFormat();
+    });
   }, []);
 
   const headline = () => (
@@ -148,11 +161,19 @@ const Home = () => {
   const projectsDisplay = () => (
     <Projects id="projects">
       <h2>The Journey</h2>
-      <ProjectCards>
-        {posts.map((post, i) => (
-          <Card post={post} key={i} />
-        ))}
-      </ProjectCards>
+      {carousel ? (
+        <Carousel>
+          {posts.map((post, i) => (
+            <Card post={post} key={i} />
+          ))}
+        </Carousel>
+      ) : (
+        <ProjectCards>
+          {posts.map((post, i) => (
+            <Card post={post} key={i} />
+          ))}
+        </ProjectCards>
+      )}
     </Projects>
   );
 

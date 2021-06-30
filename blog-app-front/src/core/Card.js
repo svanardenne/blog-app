@@ -14,6 +14,9 @@ const CardWrapper = styled.div`
     max-width: 243px;
     margin-top: 2px;
   }
+  @media (max-width: 1024px) {
+    margin: 0 auto;
+  }
 `;
 
 const Card = ({ post }) => (
