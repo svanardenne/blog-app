@@ -8,6 +8,7 @@ import { colors } from "../styles/colors";
 import moment from "moment";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { getPosts } from "./apiCore";
 
@@ -169,6 +170,62 @@ const Info = styled.section`
   }
 `;
 
+const Contact = styled.section`
+  text-align: center;
+  color: ${colors.offWhite};
+  background-color: ${colors.bgBlue};
+  padding: 56px 0 56px 0;
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 40px 0;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+    a {
+      width: 56px;
+      height: 48px;
+      svg {
+        width: 40px !important;
+        height: 40px;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 38px;
+    }
+    div {
+      a {
+        width: 72px;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    div {
+      a {
+        width: 96px;
+        height: 56px;
+        svg {
+          width: 48px !important;
+          height: 48px;
+        }
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    h2 {
+      font-size: 44px;
+    }
+  }
+  @media (min-width: 1536px) {
+    h2 {
+      font-size: 48px;
+    }
+  }
+`;
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState([]);
@@ -268,12 +325,30 @@ const Home = () => {
     </Info>
   );
 
+  const contact = () => (
+    <Contact>
+      <h2>Connect With Me</h2>
+      <div>
+        <a>
+          <FontAwesomeIcon icon={["fab", "facebook-square"]} />
+        </a>
+        <a>
+          <FontAwesomeIcon icon={["fab", "twitter-square"]} />
+        </a>
+        <a>
+          <FontAwesomeIcon icon={["fab", "instagram-square"]} />
+        </a>
+      </div>
+    </Contact>
+  );
+
   return (
     <Layout>
       {headline()}
       {about()}
       {projectsDisplay()}
       {info()}
+      {contact()}
     </Layout>
   );
 };
