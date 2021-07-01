@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
+import Footer from "./Footer";
 
 import styled from "styled-components";
 
@@ -25,6 +26,7 @@ const Layout = ({ title, description, className, children }) => (
       </Jumbotron>
     ) : null}
     <div className={className}>{children}</div>
+    <Footer />
   </React.Fragment>
 );
 
