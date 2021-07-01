@@ -19,10 +19,18 @@ const FooterSection = styled.section`
 `;
 
 const Footer = () => {
+  // Gets the year for the footer
+  const getYear = () => {
+    const year = new Date();
+    return year.getFullYear();
+  };
+
   return (
     <FooterSection>
       <div>
-        <span>Copyright © 2021 Creative Misgivings - All Rights Reserved.</span>
+        <span>
+          Copyright © {getYear()} Creative Misgivings - All Rights Reserved.
+        </span>
       </div>
     </FooterSection>
   );
