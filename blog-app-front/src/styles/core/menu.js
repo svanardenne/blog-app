@@ -13,14 +13,14 @@ export const Nav = styled.nav`
   background: ${colors.dark};
   z-index: 1000;
   height: 100px;
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     justify-content: space-around;
   }
 `;
 export const NavLogo = styled.div`
   flex-basis: 40%;
   text-align: center;
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     flex-basis: initial;
   }
 `;
@@ -49,7 +49,7 @@ export const NavLinksModal = styled.div`
       }
     }
   }
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     display: none;
   } ;
 `;
@@ -61,7 +61,7 @@ export const NavLinks = styled.div`
     list-style: none;
     padding: 0;
   }
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     display: block;
   } ;
 `;
@@ -69,7 +69,7 @@ export const MenuButton = styled.div`
   flex-basis: 30%;
   cursor: pointer;
   text-align: center;
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     display: none;
   }
 `;
