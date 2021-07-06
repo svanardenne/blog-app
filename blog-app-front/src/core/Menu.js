@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { isAuthenticated, signout } from "../auth";
 import {
@@ -6,9 +7,10 @@ import {
   NavLogo,
   NavLinksModal,
   NavLinks,
+  NavLinkItem,
   MenuButton,
   MenuClose,
-  Link,
+  MenuLink,
   activeLink,
 } from "../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -90,37 +92,43 @@ const Menu = () => {
       </NavLogo>
       <NavLinks>
         <ul>
-          <li>
-            <Link onClick={handleLink} exact activeStyle={activeLink}>
+          <NavLinkItem>
+            <NavLink exact to="/" activeStyle={activeLink}>
               Home
-            </Link>
-          </li>
-          {isAuthenticated() ? (
-            <li>
-              <Link onClick={handleLink} activeStyle={activeLink}>
+            </NavLink>
+          </NavLinkItem>
+          {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
+            <NavLinkItem>
+              <NavLink to="/admin/dashboard" activeStyle={activeLink}>
                 Dashboard
-              </Link>
-            </li>
+              </NavLink>
+            </NavLinkItem>
           ) : null}
-
+          {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+            <NavLinkItem>
+              <NavLink to="/user/dashboard" activeStyle={activeLink}>
+                Dashboard
+              </NavLink>
+            </NavLinkItem>
+          ) : null}
           {!isAuthenticated() ? (
-            <li>
-              <Link onClick={handleLink} activeStyle={activeLink}>
+            <NavLinkItem>
+              <NavLink to="/signin" activeStyle={activeLink}>
                 Signin
-              </Link>
-            </li>
+              </NavLink>
+            </NavLinkItem>
           ) : null}
           {isAuthenticated() ? (
             <li>
-              <Link onClick={clickSignout}>Signout</Link>
+              <MenuLink onClick={clickSignout}>Signout</MenuLink>
             </li>
           ) : null}
           {!isAuthenticated() ? (
-            <li>
-              <Link onClick={handleLink} activeStyle={activeLink}>
+            <NavLinkItem>
+              <NavLink to="/signup" activeStyle={activeLink}>
                 Signup
-              </Link>
-            </li>
+              </NavLink>
+            </NavLinkItem>
           ) : null}
         </ul>
       </NavLinks>
@@ -134,34 +142,34 @@ const Menu = () => {
         </MenuClose>
         <ul>
           <li>
-            <Link onClick={handleLinkModal} exact activeStyle={activeLink}>
+            <MenuLink onClick={handleLinkModal} exact activeStyle={activeLink}>
               Home
-            </Link>
+            </MenuLink>
           </li>
           {isAuthenticated() ? (
             <li>
-              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
                 Dashboard
-              </Link>
+              </MenuLink>
             </li>
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
                 Signin
-              </Link>
+              </MenuLink>
             </li>
           ) : null}
           {isAuthenticated() ? (
             <li>
-              <Link onClick={clickSignout}>Signout</Link>
+              <MenuLink onClick={clickSignout}>Signout</MenuLink>
             </li>
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <Link onClick={handleLinkModal} activeStyle={activeLink}>
+              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
                 Signup
-              </Link>
+              </MenuLink>
             </li>
           ) : null}
         </ul>

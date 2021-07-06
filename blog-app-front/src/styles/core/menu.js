@@ -80,13 +80,23 @@ export const MenuClose = styled.div`
   right: 15px;
   cursor: pointer;
 `;
-export const Link = styled.div`
+export const MenuLink = styled.div`
   text-decoration: none;
   font-size: 22px;
   color: ${colors.offWhite};
   display: block;
   padding: 16px 24px;
   cursor: pointer;
+`;
+export const NavLinkItem = styled.li`
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: ${colors.offWhite};
+    display: block;
+    padding: 16px 24px;
+    cursor: pointer;
+  }
 `;
 export const activeLink = {
   fontWeight: 700,

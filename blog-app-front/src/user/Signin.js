@@ -147,7 +147,7 @@ const Signin = () => {
       if (user && user.isAdmin === true) {
         return <Redirect to="/admin/dashboard" />;
       } else {
-        return <Redirect to="/" />;
+        return <Redirect to="/user/dashboard" />;
       }
     }
   };
