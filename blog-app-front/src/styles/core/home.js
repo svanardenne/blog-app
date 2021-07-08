@@ -113,7 +113,7 @@ export const About = styled.section`
 
 export const Projects = styled.section`
   text-align: center;
-  background-color: ${colors.muted};
+  background-color: ${colors.mediumGrey};
   padding: 40px 0 0 0;
   h2 {
     font-size: 40px;

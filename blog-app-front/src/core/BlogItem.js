@@ -24,6 +24,13 @@ const Title = styled.h4`
   overflow-wrap: break-word;
 `;
 
+const Body = styled.p`
+  font-size: 16px;
+  overflow-wrap: break-word;
+  font-weight: 400;
+  color: ${colors.muted};
+`;
+
 const BlogItem = ({ post }) => {
   return (
     <BlogItemContainer>
@@ -31,7 +38,7 @@ const BlogItem = ({ post }) => {
       <InfoContainer>
         <CreatedAt>{moment(post.createdAt).format("MMM Do, YYYY")}</CreatedAt>
         <Title>{post.title}</Title>
-        <p>{post.body}</p>
+        <Body>{post.body}</Body>
       </InfoContainer>
     </BlogItemContainer>
   );
