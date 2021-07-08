@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { colors } from "../styles/colors";
 import styled from "styled-components";
 import moment from "moment";
-import PostImage from "./ShowImage";
+import ShowImage from "./ShowImage";
 
 const CardWrapper = styled.div`
   width: 245px;
@@ -23,7 +23,7 @@ const CardWrapper = styled.div`
 
 const Card = ({ post }) => (
   <CardWrapper className="post-card">
-    <PostImage item={post} url="post" />
+    <ShowImage item={post} url="post" />
     <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
     <h4>{post.title}</h4>
     <Link to={`/posts/${post.slug}`}>Continue Reading</Link>
