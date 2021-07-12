@@ -66,7 +66,7 @@ const BlogItem = ({ post, truncatedPostContent }) => {
         <CreatedAt>{moment(post.createdAt).format("MMM Do, YYYY")}</CreatedAt>
         <Title>{post.title}</Title>
         <Body>{truncatedPostContent}</Body>
-        <Link to={`/posts/${post._id}`}>
+        <Link to={`/posts/${post.slug}`}>
           <PostLink>Continue Reading</PostLink>
         </Link>
       </InfoContainer>

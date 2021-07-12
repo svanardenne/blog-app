@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
 
-const Post = () => {
-  return <div>...</div>;
+const Post = (props) => {
+  return <div>{props.match.params.slug}</div>;
 };
 
 export default Post;
