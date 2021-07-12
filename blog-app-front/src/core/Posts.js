@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
 import BlogItem from "./BlogItem";
+import { device } from "../styles/device";
 
 const Title = styled.section`
   margin-top: 140px;
@@ -24,6 +25,10 @@ const PostsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 24px 0 24px;
+  @media ${device.laptopS} {
+    max-width: 50%;
+    margin: 0 auto;
+  }
 `;
 
 const Posts = () => {

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { colors } from "../styles/colors";
 import moment from "moment";
 import ShowBackgroundImage from "./ShowBackgroundImage";
+import { device } from "../styles/device";
 
 const BlogItemContainer = styled.div`
   border-bottom: 1px solid ${colors.lightGrey};
   margin-bottom: 40px;
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

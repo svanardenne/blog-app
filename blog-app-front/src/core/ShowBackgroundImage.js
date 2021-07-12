@@ -1,6 +1,7 @@
 import React from "react";
 import { API } from "../config";
 import styled from "styled-components";
+import { device } from "../styles/device";
 
 const PostImage = styled.div`
   width: 100%;
@@ -8,7 +9,7 @@ const PostImage = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     background-position: center top;
   }
 `;
