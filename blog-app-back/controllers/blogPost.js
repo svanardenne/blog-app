@@ -17,7 +17,6 @@ exports.postById = (req, res, next, id) => {
 
 // finds post by slug and attaches it to the request body
 exports.postBySlug = (req, res) => {
-  console.log(req.params.slug);
   Post.find({ slug: req.params.slug })
     .select("-photo")
     .exec((err, post) => {
@@ -26,7 +25,7 @@ exports.postBySlug = (req, res) => {
           error: "Post not found",
         });
       }
-      res.json(post);
+      res.json(post[0]);
     });
 };
 
