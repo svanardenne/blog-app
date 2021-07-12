@@ -9,3 +9,13 @@ export const getPosts = (order = "desc", sortBy = "createdAt", limit = "6") => {
     })
     .catch((err) => console.log(err));
 };
+
+export const postBySlug = (slug) => {
+  return fetch(`${API}/posts/${slug}`, {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => console.log(err));
+};

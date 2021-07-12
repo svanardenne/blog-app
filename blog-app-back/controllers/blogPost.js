@@ -7,12 +7,27 @@ exports.postById = (req, res, next, id) => {
   Post.findById(id).exec((err, post) => {
     if (err || !post) {
       return res.status(400).json({
-        error: "User not found",
+        error: "Post not found",
       });
     }
     req.post = post;
     next();
   });
+};
+
+// finds post by slug and attaches it to the request body
+exports.postBySlug = (req, res) => {
+  console.log(req.body);
+  Post.find(req.body)
+    .select("-photo")
+    .exec((err, post) => {
+      if (err || !post) {
+        return res.status(400).json({
+          error: "Post not found",
+        });
+      }
+      res.json(post);
+    });
 };
 
 exports.listAll = (req, res) => {

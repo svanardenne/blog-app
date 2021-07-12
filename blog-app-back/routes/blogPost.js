@@ -5,6 +5,7 @@ const router = express.Router();
 const { userById } = require("../controllers/user");
 const {
   postById,
+  postBySlug,
   read,
   create,
   listAll,
@@ -19,6 +20,9 @@ router.post("/post/create/:userId", requireSignin, isAuth, isAdmin, create);
 
 // Show posts
 router.get("/posts", listAll);
+
+// Get post with slug
+router.get("/posts/:slug", postBySlug);
 
 // Get photos
 router.get("/post/photo/:postId", photo);
