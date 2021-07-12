@@ -36,8 +36,9 @@ const Posts = () => {
   const [truncatedPostContent, setTruncatedPostContent] = useState([]);
   const [error, setError] = useState([]);
 
+  // loads posts into state
   const loadPosts = () => {
-    getPosts("DESC", "creaatedAt", 1000).then((data) => {
+    getPosts("DESC", "createdAt", 1000).then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -46,6 +47,7 @@ const Posts = () => {
     });
   };
 
+  // creates truncated post content to display in post items
   const truncatePostContent = () => {
     const truncatedPosts = posts.map((post, i) => {
       return post.body.split(" ").splice(0, 30).join(" ") + "...";
