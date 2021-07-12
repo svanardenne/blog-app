@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
@@ -17,7 +18,12 @@ const Post = (props) => {
     getPostBySlug(slug);
   }, []);
 
-  return <div>{JSON.stringify(post)}</div>;
+  return (
+    <div>
+      <Link to={`/posts`}>{`< Back`}</Link>
+      <div>{JSON.stringify(post)}</div>
+    </div>
+  );
 };
 
 export default Post;
