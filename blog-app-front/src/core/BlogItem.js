@@ -7,6 +7,15 @@ import ShowBackgroundImage from "./ShowBackgroundImage";
 const BlogItemContainer = styled.div`
   border-bottom: 1px solid ${colors.lightGrey};
   margin-bottom: 40px;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 40px;
+    .post-container {
+      flex-basis: 75%;
+    }
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -49,10 +58,10 @@ const PostLink = styled.span`
 const BlogItem = ({ post, truncatedPostContent }) => {
   return (
     <BlogItemContainer>
-      <PostImage>
+      <PostImage className="post-image">
         <ShowBackgroundImage item={post} url="post" />
       </PostImage>
-      <InfoContainer>
+      <InfoContainer className="post-container">
         <CreatedAt>{moment(post.createdAt).format("MMM Do, YYYY")}</CreatedAt>
         <Title>{post.title}</Title>
         <Body>{truncatedPostContent}</Body>

@@ -43,7 +43,7 @@ const Posts = () => {
 
   const truncatePostContent = () => {
     const truncatedPosts = posts.map((post, i) => {
-      return post.body.split(" ").splice(0, 50).join(" ") + "...";
+      return post.body.split(" ").splice(0, 30).join(" ") + "...";
     });
     setTruncatedPostContent(truncatedPosts);
   };
