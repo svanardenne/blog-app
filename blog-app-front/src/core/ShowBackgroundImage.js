@@ -3,15 +3,12 @@ import { API } from "../config";
 import styled from "styled-components";
 
 const PostImage = styled.div`
-  min-height: 100px;
-  max-height: 140px;
+  width: 100%;
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  height: 200px;
-  width: 200px;
-  margin: 0 auto 56px;
+  background-size: 100%;
 `;
 
 const ShowBackgroundImage = ({ item, url }) => (

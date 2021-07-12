@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { colors } from "../styles/colors";
 import moment from "moment";
 import ShowBackgroundImage from "./ShowBackgroundImage";
@@ -10,11 +11,15 @@ const BlogItemContainer = styled.div`
 
 const InfoContainer = styled.div`
   margin-bottom: 40px;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const CreatedAt = styled.p`
   color: ${colors.muted};
   margin: 0 0 16px 0;
+  font-size: 14px;
 `;
 
 const Title = styled.h4`
@@ -31,14 +36,29 @@ const Body = styled.p`
   color: ${colors.muted};
 `;
 
-const BlogItem = ({ post }) => {
+const PostImage = styled.div`
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 32px;
+`;
+
+const PostLink = styled.span`
+  color: ${colors.bgBlue};
+`;
+
+const BlogItem = ({ post, truncatedPostContent }) => {
   return (
     <BlogItemContainer>
-      <ShowBackgroundImage item={post} url="post" />
+      <PostImage>
+        <ShowBackgroundImage item={post} url="post" />
+      </PostImage>
       <InfoContainer>
         <CreatedAt>{moment(post.createdAt).format("MMM Do, YYYY")}</CreatedAt>
         <Title>{post.title}</Title>
-        <Body>{post.body}</Body>
+        <Body>{truncatedPostContent}</Body>
+        <Link to={`/posts/${post._id}`}>
+          <PostLink>Continue Reading</PostLink>
+        </Link>
       </InfoContainer>
     </BlogItemContainer>
   );

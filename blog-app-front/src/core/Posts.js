@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import moment from "moment";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
 import BlogItem from "./BlogItem";
@@ -29,6 +28,7 @@ const PostsContainer = styled.div`
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [truncatedPostContent, setTruncatedPostContent] = useState([]);
   const [error, setError] = useState([]);
 
   const loadPosts = () => {
@@ -41,15 +41,30 @@ const Posts = () => {
     });
   };
 
+  const truncatePostContent = () => {
+    const truncatedPosts = posts.map((post, i) => {
+      return post.body.split(" ").splice(0, 50).join(" ") + "...";
+    });
+    setTruncatedPostContent(truncatedPosts);
+  };
+
   useEffect(() => {
     loadPosts();
   }, []);
+
+  useEffect(() => {
+    truncatePostContent();
+  }, [posts]);
 
   const postList = () => {
     return (
       <PostsContainer>
         {posts.map((post, i) => (
-          <BlogItem key={i} post={post} />
+          <BlogItem
+            key={i}
+            post={post}
+            truncatedPostContent={truncatedPostContent[i]}
+          />
         ))}
       </PostsContainer>
     );
