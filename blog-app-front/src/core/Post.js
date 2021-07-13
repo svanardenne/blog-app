@@ -15,6 +15,17 @@ const BlogContainer = styled.section`
     font-size: 28px;
     font-family: "Roboto", arial, sans-serif;
     font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  a {
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+  span {
+    display: inline-block;
+    margin-bottom: 32px;
+    color: ${colors.muted};
   }
 `;
 
