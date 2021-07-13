@@ -59,10 +59,10 @@ exports.create = (req, res) => {
     }
 
     // check for all fields
-    const { title, body, slug, photo } = fields;
+    const { title, body, slug, photo, photo_info, photo_link } = fields;
 
     // Checks for required data
-    if (!title || !body) {
+    if (!title || !body || !slug) {
       return res.status(400).json({
         error: "All fields are required",
       });

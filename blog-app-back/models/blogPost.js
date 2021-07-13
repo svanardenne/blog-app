@@ -18,6 +18,12 @@ const postSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    photo_info: {
+      type: String,
+    },
+    photo_link: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

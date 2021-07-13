@@ -79,6 +79,8 @@ const NewPost = () => {
     body: "",
     slug: "",
     photo: "",
+    photo_info: "",
+    photo_link: "",
     error: "",
     success: false,
     creatingPost: false,
@@ -86,8 +88,18 @@ const NewPost = () => {
   });
 
   // Deconstruct values from state
-  const { title, body, slug, photo, error, success, creatingPost, formData } =
-    values;
+  const {
+    title,
+    body,
+    slug,
+    photo,
+    photo_info,
+    photo_link,
+    error,
+    success,
+    creatingPost,
+    formData,
+  } = values;
 
   // for user authentication
   const { user, token } = isAuthenticated();
@@ -130,7 +142,10 @@ const NewPost = () => {
         setValues({
           title: "",
           body: "",
+          photo_info: "",
+          photo_link: "",
           slug: "",
+          formData: new FormData(),
           error: "",
           success: false,
           creatingPost: false,
@@ -149,6 +164,24 @@ const NewPost = () => {
           name="photo"
           type="file"
           accept="image/*"
+        />
+      </FormGroup>
+      <FormGroup>
+        <label>Photo Information</label>
+        <input
+          onChange={handleChange("photo_info")}
+          name="photo_info"
+          type="text"
+          value={photo_info}
+        />
+      </FormGroup>
+      <FormGroup>
+        <label>Photo Link</label>
+        <input
+          onChange={handleChange("photo_link")}
+          name="photo_url"
+          type="text"
+          value={photo_link}
         />
       </FormGroup>
       <FormGroup>
