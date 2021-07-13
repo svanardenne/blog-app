@@ -45,28 +45,40 @@ const Post = (props) => {
 
   const [slug, setSlug] = useState(props.match.params.slug);
   const [post, setPost] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const getPostBySlug = async (slug) => {
-    setPost(await postBySlug(slug));
+  const getPostBySlug = (slug) => {
+    setLoading(true);
+    postBySlug(slug).then((data, err) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setPost(data);
+        setLoading(false);
+      }
+    });
   };
 
   useEffect(() => {
     getPostBySlug(slug);
   }, []);
 
-  return (
-    <Layout>
+  const blogContainer = () => {
+    return (
       <BlogContainer>
         <Link to={`/posts`}>{`< All Posts`}</Link>
         <h3>{post.title}</h3>
         <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
         <PostImage>
-          <ShowBackgroundImage item={post} url="post"></ShowBackgroundImage>
+          {loading ? null : <ShowBackgroundImage item={post} url="post" />}
         </PostImage>
         <PostContent>{post.body}</PostContent>
       </BlogContainer>
-    </Layout>
-  );
+    );
+  };
+
+  return <Layout>{blogContainer()}</Layout>;
 };
 
 export default Post;
