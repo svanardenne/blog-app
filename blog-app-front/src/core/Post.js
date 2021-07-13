@@ -73,6 +73,15 @@ const Post = (props) => {
         <PostImage>
           {loading ? null : <ShowBackgroundImage item={post} url="post" />}
         </PostImage>
+        <figcaption>
+          {post.photo_link ? (
+            <a target="_blank" href={`${post.photo_link}`}>
+              {post.photo_info}
+            </a>
+          ) : (
+            post.photo_info
+          )}
+        </figcaption>
         <PostContent>{post.body}</PostContent>
       </BlogContainer>
     );
