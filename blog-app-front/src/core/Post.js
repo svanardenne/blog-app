@@ -29,7 +29,7 @@ const BlogContainer = styled.section`
   }
 `;
 
-const PostImage = styled.div`
+const PostImage = styled.figure`
   width: 200px;
   height: 200px;
   margin: 0 auto 32px;
@@ -38,6 +38,16 @@ const PostImage = styled.div`
 const PostContent = styled.p`
   font-size: 16px;
   color: ${colors.muted};
+`;
+
+const Caption = styled.figcaption`
+  text-align: center;
+  color: ${colors.muted};
+`;
+
+const CaptionLink = styled.a`
+  color: ${colors.muted};
+  font-size: 14px;
 `;
 
 const Post = (props) => {
@@ -72,16 +82,17 @@ const Post = (props) => {
         <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
         <PostImage>
           {loading ? null : <ShowBackgroundImage item={post} url="post" />}
+          <Caption>
+            {post.photo_link ? (
+              <CaptionLink target="_blank" href={`${post.photo_link}`}>
+                {post.photo_info}
+              </CaptionLink>
+            ) : (
+              post.photo_info
+            )}
+          </Caption>
         </PostImage>
-        <figcaption>
-          {post.photo_link ? (
-            <a target="_blank" href={`${post.photo_link}`}>
-              {post.photo_info}
-            </a>
-          ) : (
-            post.photo_info
-          )}
-        </figcaption>
+
         <PostContent>{post.body}</PostContent>
       </BlogContainer>
     );
