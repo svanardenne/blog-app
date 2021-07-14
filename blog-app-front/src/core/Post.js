@@ -77,7 +77,7 @@ const Post = (props) => {
   const blogContainer = () => {
     return (
       <BlogContainer>
-        <Link to={`/posts`}>{`< All Posts`}</Link>
+        <Link to={`/the_journey`}>{`< All Posts`}</Link>
         <h3>{post.title}</h3>
         <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
         <PostImage>

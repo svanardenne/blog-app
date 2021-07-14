@@ -94,6 +94,7 @@ export const NavLinkItem = styled.li`
     font-size: 22px;
     color: ${colors.offWhite};
     display: block;
+    position: relative;
     padding: 16px 24px;
     cursor: pointer;
   }
@@ -101,3 +102,17 @@ export const NavLinkItem = styled.li`
 export const activeLink = {
   fontWeight: 700,
 };
+
+export const Dropdown = styled.button`
+  background-color: ${colors.dark};
+  color: ${colors.offWhite};
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+`;
+
+export const DropdownItems = styled.div`
+  position: absolute;
+  z-index: 10000;
+  background-color: ${colors.dark};
+`;

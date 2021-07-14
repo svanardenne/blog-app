@@ -12,6 +12,8 @@ import {
   MenuClose,
   MenuLink,
   activeLink,
+  Dropdown,
+  DropdownItems,
 } from "../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -97,6 +99,17 @@ const Menu = () => {
               Home
             </NavLink>
           </NavLinkItem>
+          <NavLinkItem>
+            <Dropdown>The Journey</Dropdown>
+            <DropdownItems>
+              <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                The Journey
+              </NavLink>
+              <NavLink exact to="/doodles_and_dawdles" activeStyle={activeLink}>
+                Doodles and Dawdles
+              </NavLink>
+            </DropdownItems>
+          </NavLinkItem>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <NavLinkItem>
               <NavLink to="/admin/dashboard" activeStyle={activeLink}>
@@ -142,7 +155,7 @@ const Menu = () => {
         </MenuClose>
         <ul>
           <li>
-            <MenuLink onClick={handleLinkModal} exact activeStyle={activeLink}>
+            <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
               Home
             </MenuLink>
           </li>
