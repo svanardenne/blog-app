@@ -107,7 +107,7 @@ export const activeLink = {
   fontWeight: 700,
 };
 
-export const Dropdown = styled.button`
+export const DropdownButton = styled.button`
   background-color: ${colors.dark};
   color: ${colors.offWhite};
   font-size: 22px;
@@ -122,4 +122,17 @@ export const DropdownItems = styled.div`
   position: absolute;
   bottom: -147px;
   width: 270px;
+`;
+
+export const DropdownModalButton = styled.button`
+  color: ${colors.offWhite};
+  background-color: transparent;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  padding: 16px 24px;
+`;
+
+export const Dropdown = styled.div`
+  position: relative;
 `;

@@ -12,8 +12,10 @@ import {
   MenuClose,
   MenuLink,
   activeLink,
-  Dropdown,
+  DropdownButton,
   DropdownItems,
+  DropdownModalButton,
+  Dropdown,
 } from "../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -110,21 +112,25 @@ const Menu = () => {
             </NavLink>
           </NavLinkItem>
           <NavLinkItem>
-            <Dropdown onClick={handleMenuPopup}>The Journey</Dropdown>
-            {menuPopup && (
-              <DropdownItems>
-                <NavLink exact to="/the_journey" activeStyle={activeLink}>
-                  The Journey
-                </NavLink>
-                <NavLink
-                  exact
-                  to="/doodles_and_dawdles"
-                  activeStyle={activeLink}
-                >
-                  Doodles and Dawdles
-                </NavLink>
-              </DropdownItems>
-            )}
+            <Dropdown>
+              <DropdownButton onClick={handleMenuPopup}>
+                The Journey
+              </DropdownButton>
+              {menuPopup && (
+                <DropdownItems>
+                  <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                    The Journey
+                  </NavLink>
+                  <NavLink
+                    exact
+                    to="/doodles_and_dawdles"
+                    activeStyle={activeLink}
+                  >
+                    Doodles and Dawdles
+                  </NavLink>
+                </DropdownItems>
+              )}
+            </Dropdown>
           </NavLinkItem>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <NavLinkItem>
@@ -174,6 +180,27 @@ const Menu = () => {
             <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
               Home
             </MenuLink>
+          </li>
+          <li>
+            <Dropdown>
+              <DropdownModalButton onClick={handleMenuPopup}>
+                The Journey
+              </DropdownModalButton>
+              {menuPopup && (
+                <DropdownItems>
+                  <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                    The Journey
+                  </NavLink>
+                  <NavLink
+                    exact
+                    to="/doodles_and_dawdles"
+                    activeStyle={activeLink}
+                  >
+                    Doodles and Dawdles
+                  </NavLink>
+                </DropdownItems>
+              )}
+            </Dropdown>
           </li>
           {isAuthenticated() ? (
             <li>
