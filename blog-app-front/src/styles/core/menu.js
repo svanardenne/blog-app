@@ -89,6 +89,10 @@ export const MenuLink = styled.div`
   cursor: pointer;
 `;
 export const NavLinkItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
   a {
     text-decoration: none;
     font-size: 22px;
@@ -106,7 +110,7 @@ export const activeLink = {
 export const Dropdown = styled.button`
   background-color: ${colors.dark};
   color: ${colors.offWhite};
-  font-size: 16px;
+  font-size: 22px;
   border: none;
   cursor: pointer;
 `;
@@ -115,4 +119,7 @@ export const DropdownItems = styled.div`
   position: absolute;
   z-index: 10000;
   background-color: ${colors.dark};
+  position: absolute;
+  bottom: -147px;
+  width: 270px;
 `;

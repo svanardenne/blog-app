@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { isAuthenticated, signout } from "../auth";
@@ -20,6 +20,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Menu = () => {
   // brings the useHistory hook into the component
   const history = useHistory();
+
+  const [menuPopup, setMenupopup] = useState(false);
 
   /**
    * Handles the linking of nav items and allows the modal nav menu to
@@ -80,6 +82,14 @@ const Menu = () => {
     history.push(history.location.pathname);
   };
 
+  const handleMenuPopup = () => {
+    if (menuPopup == false) {
+      setMenupopup(true);
+    } else {
+      setMenupopup(false);
+    }
+  };
+
   return (
     <Nav>
       <MenuButton>
@@ -100,15 +110,21 @@ const Menu = () => {
             </NavLink>
           </NavLinkItem>
           <NavLinkItem>
-            <Dropdown>The Journey</Dropdown>
-            <DropdownItems>
-              <NavLink exact to="/the_journey" activeStyle={activeLink}>
-                The Journey
-              </NavLink>
-              <NavLink exact to="/doodles_and_dawdles" activeStyle={activeLink}>
-                Doodles and Dawdles
-              </NavLink>
-            </DropdownItems>
+            <Dropdown onClick={handleMenuPopup}>The Journey</Dropdown>
+            {menuPopup && (
+              <DropdownItems>
+                <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                  The Journey
+                </NavLink>
+                <NavLink
+                  exact
+                  to="/doodles_and_dawdles"
+                  activeStyle={activeLink}
+                >
+                  Doodles and Dawdles
+                </NavLink>
+              </DropdownItems>
+            )}
           </NavLinkItem>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <NavLinkItem>
