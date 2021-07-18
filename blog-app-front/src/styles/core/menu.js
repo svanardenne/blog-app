@@ -141,7 +141,6 @@ export const Dropdown = styled.div`
 export const DropdownItemsModal = styled.div`
   display: block;
   background-color: transparent;
-  height: 0;
   overflow: hidden;
   a {
     text-decoration: none;
