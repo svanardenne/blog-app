@@ -16,6 +16,7 @@ import {
   DropdownItems,
   DropdownModalButton,
   Dropdown,
+  DropdownItemsModal,
 } from "../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -187,7 +188,7 @@ const Menu = () => {
                 The Journey
               </DropdownModalButton>
               {menuPopup && (
-                <DropdownItems>
+                <DropdownItemsModal>
                   <NavLink exact to="/the_journey" activeStyle={activeLink}>
                     The Journey
                   </NavLink>
@@ -198,7 +199,7 @@ const Menu = () => {
                   >
                     Doodles and Dawdles
                   </NavLink>
-                </DropdownItems>
+                </DropdownItemsModal>
               )}
             </Dropdown>
           </li>
