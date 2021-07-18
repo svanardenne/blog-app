@@ -9,6 +9,7 @@ import Signin from "./user/Signin";
 import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./user/AdminDashboard";
 import NewPost from "./admin/NewPost";
+import Promises from "./core/Promises";
 
 const Routes = () => {
   return (
@@ -16,9 +17,10 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/the_journey" component={Posts} />
+        <Route exact path="/the_journey/:slug" component={Post} />
+        <Route exact path="/promises" component={Promises} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
-        <Route exact path="/the_journey/:slug" component={Post} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/post/create" component={NewPost} />
       </Switch>
