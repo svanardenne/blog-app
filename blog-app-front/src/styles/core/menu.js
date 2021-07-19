@@ -82,7 +82,8 @@ export const MenuClose = styled.div`
 `;
 export const MenuLink = styled.div`
   text-decoration: none;
-  font-size: 22px;
+  font-size: 18px;
+  text-transform: uppercase;
   color: ${colors.offWhite};
   display: block;
   padding: 16px 24px;
@@ -95,7 +96,8 @@ export const NavLinkItem = styled.li`
   justify-content: center;
   a {
     text-decoration: none;
-    font-size: 22px;
+    text-transform: uppercase;
+    font-size: 18px;
     color: ${colors.offWhite};
     display: block;
     position: relative;
@@ -111,7 +113,8 @@ export const activeLink = {
 export const DropdownButton = styled.button`
   background-color: ${colors.dark};
   color: ${colors.offWhite};
-  font-size: 22px;
+  text-transform: uppercase;
+  font-size: 18px;
   border: none;
   cursor: pointer;
 `;

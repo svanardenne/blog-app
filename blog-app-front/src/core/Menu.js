@@ -19,6 +19,7 @@ import {
   DropdownItemsModal,
 } from "../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { colors } from "../styles/colors";
 
 const Menu = () => {
   // brings the useHistory hook into the component
@@ -119,10 +120,22 @@ const Menu = () => {
               </DropdownButton>
               {menuPopup && (
                 <DropdownItems>
-                  <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                  <NavLink
+                    style={{
+                      textTransform: "capitalize",
+                      color: `${colors.mutedLight}`,
+                    }}
+                    exact
+                    to="/the_journey"
+                    activeStyle={activeLink}
+                  >
                     The Journey
                   </NavLink>
                   <NavLink
+                    style={{
+                      textTransform: "capitalize",
+                      color: `${colors.mutedLight}`,
+                    }}
                     exact
                     to="/doodles_and_dawdles"
                     activeStyle={activeLink}
