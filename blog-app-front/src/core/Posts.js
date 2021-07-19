@@ -5,13 +5,13 @@ import Layout from "./Layout";
 import BlogItem from "./BlogItem";
 import { device } from "../styles/device";
 
-const Title = styled.section`
+const BlogsContainer = styled.section`
   margin-top: 140px;
+  margin-bottom: 40px;
   h1 {
     font-size: 40px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 80px;
   }
   @media (min-width: 768px) {
     margin-top: 156px;
@@ -79,10 +79,10 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Title>
+      <BlogsContainer>
         <h1>The Journey</h1>
         {postList()}
-      </Title>
+      </BlogsContainer>
     </Layout>
   );
 };
