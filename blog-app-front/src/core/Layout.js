@@ -1,8 +1,8 @@
 import React from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
-
 import styled from "styled-components";
+import { colors } from "../styles/colors";
 
 const Jumbotron = styled.div`
   height: 200px;
@@ -16,8 +16,21 @@ const Jumbotron = styled.div`
   margin-top: 100px;
 `;
 
-const Layout = ({ title, description, className, children }) => (
-  <React.Fragment>
+const Wrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Layout = ({
+  title,
+  description,
+  className,
+  color = `${colors.offWhite}`,
+  children,
+}) => (
+  <Wrapper style={{ backgroundColor: `${color}` }}>
     <Menu />
     {title || description ? (
       <Jumbotron>
@@ -27,7 +40,7 @@ const Layout = ({ title, description, className, children }) => (
     ) : null}
     <div className={className}>{children}</div>
     <Footer />
-  </React.Fragment>
+  </Wrapper>
 );
 
 export default Layout;

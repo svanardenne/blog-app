@@ -8,6 +8,9 @@ const FooterSection = styled.section`
   text-align: center;
   color: ${colors.offWhite};
   background-color: ${colors.dark};
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   span {
     font-size: 14px;
   }

@@ -7,9 +7,8 @@ import mainImage from "../assets/images/creativeLogo.jpg";
 
 const Container = styled.section`
   margin-top: 100px;
-  padding: 0 24px 0 24px;
+  padding: 35px 24px 24px 24px;
   background-color: ${colors.dark};
-  padding-top: 35px;
   h1 {
     color: ${colors.offWhite};
     font-size: 40px;
@@ -69,7 +68,7 @@ const ContentWrapper = styled.div`
 
 const About = () => {
   return (
-    <Layout>
+    <Layout color={colors.dark}>
       <Container>
         <ContentWrapper>
           <img src={mainImage} />

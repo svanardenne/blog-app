@@ -7,7 +7,7 @@ import mainImage from "../assets/images/people_hanging_out.jpeg";
 
 const Container = styled.section`
   margin-top: 100px;
-  padding: 0 24px 0 24px;
+  padding: 0 24px 24px 24px;
   background-color: ${colors.dark};
   h1 {
     margin: 0 auto 40px auto;
@@ -89,7 +89,7 @@ const ContentWrapper = styled.div`
 
 const Promises = () => {
   return (
-    <Layout>
+    <Layout color={colors.dark}>
       <Container>
         <h1>The Promises</h1>
         <ContentWrapper>
