@@ -111,7 +111,7 @@ const Home = () => {
           journey.
         </span>
       </p>
-      <Link to="/the-promises">I Promise...</Link>
+      <Link to="/the_promises">I Promise...</Link>
     </Info>
   );
 
