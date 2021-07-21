@@ -10,6 +10,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/blogPost");
+const imageRoutes = require("./routes/image");
 
 // Set up React app
 const app = express();
@@ -39,6 +40,7 @@ app.use(body());
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", postRoutes);
+app.use("/api", imageRoutes);
 
 // Set up server
 const port = process.env.PORT || 8000;
