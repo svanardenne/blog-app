@@ -11,6 +11,7 @@ const FooterSection = styled.section`
   position: absolute;
   bottom: 0;
   width: 100%;
+  max-height: 136px;
   span {
     font-size: 14px;
   }
