@@ -145,6 +145,11 @@ const Menu = () => {
               The Promises
             </NavLink>
           </NavLinkItem>
+          <NavLinkItem>
+            <NavLink exact to="/about" activeStyle={activeLink}>
+              About
+            </NavLink>
+          </NavLinkItem>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <NavLinkItem>
               <NavLink to="/admin/dashboard" activeStyle={activeLink}>
@@ -233,6 +238,15 @@ const Menu = () => {
               activeStyle={activeLinkModal}
             >
               The Promises
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={handleLinkModal}
+              to="/about"
+              activeStyle={activeLinkModal}
+            >
+              About
             </NavLink>
           </li>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
