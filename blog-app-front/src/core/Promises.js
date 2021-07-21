@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { colors } from "../styles/colors";
 import { device } from "../styles/device";
 import Layout from "./Layout";
-import image from "../assets/images/people_hanging_out.jpeg";
+import mainImage from "../assets/images/people_hanging_out.jpeg";
 
-const BlogsContainer = styled.section`
+const Container = styled.section`
   margin-top: 100px;
   padding: 0 24px 0 24px;
   background-color: ${colors.dark};
@@ -90,10 +90,10 @@ const ContentWrapper = styled.div`
 const Promises = () => {
   return (
     <Layout>
-      <BlogsContainer>
+      <Container>
         <h1>The Promises</h1>
         <ContentWrapper>
-          <img src={image} />
+          <img src={mainImage} />
           <div>
             <h4>I will face my Creative Misgivings</h4>
             <p>
@@ -151,7 +151,7 @@ const Promises = () => {
             </p>
           </div>
         </ContentWrapper>
-      </BlogsContainer>
+      </Container>
     </Layout>
   );
 };
