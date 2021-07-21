@@ -12,6 +12,7 @@ import {
   MenuClose,
   MenuLink,
   activeLink,
+  activeLinkModal,
   DropdownButton,
   DropdownItems,
   DropdownModalButton,
@@ -26,47 +27,6 @@ const Menu = () => {
   const history = useHistory();
 
   const [menuPopup, setMenupopup] = useState(false);
-
-  /**
-   * Handles the linking of nav items and allows the modal nav menu to
-   * close before the link is made
-   */
-  const handleLink = (e) => {
-    if (e.target.textContent === "Dashboard") {
-      if (isAuthenticated() && isAuthenticated().user.isAdmin == true) {
-        history.push(`/admin/dashboard`);
-      } else {
-        history.push(`/user/dashboard`);
-      }
-    } else if (e.target.textContent !== "Home") {
-      history.push(`/${e.target.textContent.toLowerCase()}`);
-    } else {
-      history.push("/");
-    }
-  };
-  const handleLinkModal = (e) => {
-    const mobileLinks = document.querySelector(".nav-links-modal");
-    mobileLinks.style.width = "0";
-    if (e.target.textContent === "Dashboard") {
-      if (isAuthenticated() && isAuthenticated().user.isAdmin == true) {
-        setTimeout(() => {
-          history.push(`/admin/dashboard`);
-        }, 500);
-      } else {
-        setTimeout(() => {
-          history.push(`/user/dashboard`);
-        }, 500);
-      }
-    } else if (e.target.textContent !== "Home") {
-      setTimeout(() => {
-        history.push(`/${e.target.textContent.toLowerCase()}`);
-      }, 500);
-    } else {
-      setTimeout(() => {
-        history.push("/");
-      }, 500);
-    }
-  };
 
   // Handles the opening of nav menu
   const handleMenuClick = () => {
@@ -86,7 +46,7 @@ const Menu = () => {
     history.push(history.location.pathname);
   };
 
-  const handleMenuPopup = () => {
+  const handleDropdown = () => {
     if (menuPopup == false) {
       setMenupopup(true);
     } else {
@@ -115,7 +75,7 @@ const Menu = () => {
           </NavLinkItem>
           <NavLinkItem>
             <Dropdown>
-              <DropdownButton onClick={handleMenuPopup}>
+              <DropdownButton onClick={handleDropdown}>
                 The Journey
               </DropdownButton>
               {menuPopup && (
@@ -196,24 +156,28 @@ const Menu = () => {
         </MenuClose>
         <ul>
           <li>
-            <NavLink to="/" activeStyle={activeLink}>
+            <NavLink exact to="/" activeStyle={activeLinkModal}>
               Home
             </NavLink>
           </li>
           <li>
             <Dropdown>
-              <DropdownModalButton onClick={handleMenuPopup}>
+              <DropdownModalButton onClick={handleDropdown}>
                 The Journey
               </DropdownModalButton>
               {menuPopup && (
                 <DropdownItemsModal>
-                  <NavLink exact to="/the_journey" activeStyle={activeLink}>
+                  <NavLink
+                    exact
+                    to="/the_journey"
+                    activeStyle={activeLinkModal}
+                  >
                     The Journey
                   </NavLink>
                   <NavLink
                     exact
                     to="/doodles_and_dawdles"
-                    activeStyle={activeLink}
+                    activeStyle={activeLinkModal}
                   >
                     Doodles and Dawdles
                   </NavLink>
@@ -222,13 +186,13 @@ const Menu = () => {
             </Dropdown>
           </li>
           <li>
-            <NavLink to="/promises" activeStyle={activeLink}>
+            <NavLink to="/promises" activeStyle={activeLinkModal}>
               The Promises
             </NavLink>
           </li>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <li>
-              <NavLink to="/admin/dashboard" activeStyle={activeLink}>
+              <NavLink to="/admin/dashboard" activeStyle={activeLinkModal}>
                 Dashboard
               </NavLink>
             </li>
@@ -240,7 +204,7 @@ const Menu = () => {
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <NavLink to="/signin" activeStyle={activeLink}>
+              <NavLink to="/signin" activeStyle={activeLinkModal}>
                 Signin
               </NavLink>
             </li>
@@ -252,7 +216,7 @@ const Menu = () => {
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <NavLink to="/signup" activeStyle={activeLink}>
+              <NavLink to="/signup" activeStyle={activeLinkModal}>
                 Signup
               </NavLink>
             </li>

@@ -35,6 +35,16 @@ export const NavLinksModal = styled.div`
   margin: 0;
   transition: width 0.4s ease;
   overflow: hidden;
+  a {
+    background-color: transparent;
+    color: ${colors.offWhite};
+    text-transform: uppercase;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 16px 24px;
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -111,6 +121,11 @@ export const activeLink = {
   fontWeight: 700,
   color: `${colors.menuBlue}`,
   borderBottom: `1px solid ${colors.menuBlue}`,
+};
+
+export const activeLinkModal = {
+  fontWeight: 700,
+  color: `${colors.offWhite}`,
 };
 
 export const DropdownButton = styled.button`
