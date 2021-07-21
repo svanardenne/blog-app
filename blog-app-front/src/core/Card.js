@@ -26,7 +26,7 @@ const Card = ({ post }) => (
     <ShowImage item={post} url="post" />
     <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
     <h4>{post.title}</h4>
-    <Link to={`/posts/${post.slug}`}>Continue Reading</Link>
+    <Link to={`/the_journey/${post.slug}`}>Continue Reading</Link>
   </CardWrapper>
 );
 

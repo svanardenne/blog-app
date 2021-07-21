@@ -34,10 +34,10 @@ const Menu = () => {
    */
   const handleLinkModal = (e) => {
     e.preventDefault();
-    const navString = e.target.textContent.split(" ").join("_");
     const mobileLinks = document.querySelector(".nav-links-modal");
     mobileLinks.style.width = "0";
-    if (navString.length > 1) {
+    if (e.target.textContent.split(" ").length > 1) {
+      const navString = e.target.textContent.split(" ").join("_");
       setTimeout(() => {
         history.push(`/${navString.toLowerCase()}`);
       }, 500);
