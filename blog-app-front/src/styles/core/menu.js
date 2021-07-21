@@ -94,6 +94,9 @@ export const NavLinkItem = styled.li`
   flex-direction: column;
   position: relative;
   justify-content: center;
+  padding: 16px 24px;
+  color: ${colors.offWhite};
+
   a {
     text-decoration: none;
     text-transform: uppercase;
@@ -101,13 +104,13 @@ export const NavLinkItem = styled.li`
     color: ${colors.offWhite};
     display: block;
     position: relative;
-    padding: 16px 24px;
     cursor: pointer;
   }
 `;
 export const activeLink = {
   fontWeight: 700,
-  color: `${colors.offWhite}`,
+  color: `${colors.menuBlue}`,
+  borderBottom: `1px solid ${colors.menuBlue}`,
 };
 
 export const DropdownButton = styled.button`
@@ -124,8 +127,13 @@ export const DropdownItems = styled.div`
   z-index: 10000;
   background-color: ${colors.dark};
   position: absolute;
-  bottom: -147px;
+  bottom: -100px;
   width: 270px;
+  padding: 16px;
+  a {
+    padding: 4px 0 4px 0;
+    border: none !important;
+  }
 `;
 
 export const DropdownModalButton = styled.button`
