@@ -146,6 +146,11 @@ const Menu = () => {
               )}
             </Dropdown>
           </NavLinkItem>
+          <NavLinkItem>
+            <NavLink exact to="/promises" activeStyle={activeLink}>
+              The Promises
+            </NavLink>
+          </NavLinkItem>
           {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <NavLinkItem>
               <NavLink to="/admin/dashboard" activeStyle={activeLink}>
