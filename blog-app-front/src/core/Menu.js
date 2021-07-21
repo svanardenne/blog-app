@@ -196,9 +196,9 @@ const Menu = () => {
         </MenuClose>
         <ul>
           <li>
-            <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
+            <NavLink to="/" activeStyle={activeLink}>
               Home
-            </MenuLink>
+            </NavLink>
           </li>
           <li>
             <Dropdown>
@@ -221,18 +221,28 @@ const Menu = () => {
               )}
             </Dropdown>
           </li>
-          {isAuthenticated() ? (
+          <li>
+            <NavLink to="/promises" activeStyle={activeLink}>
+              The Promises
+            </NavLink>
+          </li>
+          {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
             <li>
-              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
+              <NavLink to="/admin/dashboard" activeStyle={activeLink}>
                 Dashboard
-              </MenuLink>
+              </NavLink>
+            </li>
+          ) : null}
+          {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+            <li>
+              <NavLink to="/user/dashboard">Dashboard</NavLink>
             </li>
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
+              <NavLink to="/signin" activeStyle={activeLink}>
                 Signin
-              </MenuLink>
+              </NavLink>
             </li>
           ) : null}
           {isAuthenticated() ? (
@@ -242,9 +252,9 @@ const Menu = () => {
           ) : null}
           {!isAuthenticated() ? (
             <li>
-              <MenuLink onClick={handleLinkModal} activeStyle={activeLink}>
+              <NavLink to="/signup" activeStyle={activeLink}>
                 Signup
-              </MenuLink>
+              </NavLink>
             </li>
           ) : null}
         </ul>
