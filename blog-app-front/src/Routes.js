@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./core/Home";
 import Posts from "./core/Posts";
+import Doodles from "./core/Doodles";
 import Post from "./core/Post";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/the_journey" component={Posts} />
         <Route exact path="/the_journey/:slug" component={Post} />
+        <Route exact path="/doodles_and_dawdles" component={Doodles} />
         <Route exact path="/the_promises" component={Promises} />
         <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
