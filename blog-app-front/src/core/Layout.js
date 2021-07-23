@@ -24,6 +24,7 @@ const Wrapper = styled.div`
 `;
 
 const MainBody = styled.div`
+  margin-top: 100px;
   margin-bottom: 136px;
 `;
 
@@ -37,12 +38,19 @@ const Layout = ({
   <Wrapper style={{ backgroundColor: `${color}` }}>
     <Menu />
     {title || description ? (
-      <Jumbotron>
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </Jumbotron>
-    ) : null}
-    <MainBody className={className}>{children}</MainBody>
+      <div>
+        <Jumbotron>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </Jumbotron>
+        <MainBody style={{ marginTop: "0" }} className={className}>
+          {children}
+        </MainBody>
+      </div>
+    ) : (
+      <MainBody className={className}>{children}</MainBody>
+    )}
+
     <Footer />
   </Wrapper>
 );

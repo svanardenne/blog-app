@@ -4,7 +4,6 @@ import { colors } from "../colors";
 import backgroundImg from "../../assets/images/jr-korpa-unsplash.jpg";
 
 export const Headline = styled.header`
-  margin-top: 100px;
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.25) 0%,

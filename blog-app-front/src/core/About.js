@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import mainImage from "../assets/images/creativeLogo.jpg";
 
 const Container = styled.section`
-  margin-top: 100px;
   padding: 35px 24px 24px 24px;
   background-color: ${colors.dark};
   h1 {
@@ -31,7 +30,7 @@ const Container = styled.section`
     color: ${colors.menuBlue};
   }
   @media ${device.tablet} {
-    margin: 100px auto 0;
+    margin: 0 auto;
     max-width: 80%;
     h1 {
       font-size: 48px;

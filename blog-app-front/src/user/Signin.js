@@ -55,6 +55,7 @@ const Button = styled.button`
   border: 1px solid ${colors.lightBlue};
   border-radius: 0.25em;
   padding: 10px 25px;
+  margin-bottom: 24px;
 `;
 const Loading = styled.div`
   text-align: center;

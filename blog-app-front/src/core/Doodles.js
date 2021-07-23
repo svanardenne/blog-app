@@ -6,10 +6,14 @@ import BlogItem from "./BlogItem";
 import { device } from "../styles/device";
 import { colors } from "../styles/colors";
 
+const Container = styled.section``;
+
 const Doodles = () => {
   return (
     <Layout color={colors.bgBlue}>
-      <div>...</div>
+      <Container>
+        <h1>Doodles and Dawdles</h1>
+      </Container>
     </Layout>
   );
 };

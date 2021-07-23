@@ -8,8 +8,7 @@ import Layout from "./Layout";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const BlogContainer = styled.section`
-  margin-top: 140px;
-  margin: 140px 48px 0px 48px;
+  margin: 40px 48px 0px 48px;
   h3 {
     color: ${colors.bgBlueDarker};
     font-size: 28px;

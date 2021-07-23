@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import mainImage from "../assets/images/people_hanging_out.jpeg";
 
 const Container = styled.section`
-  margin-top: 100px;
   padding: 0 24px 24px 24px;
   background-color: ${colors.dark};
   h1 {

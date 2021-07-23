@@ -6,7 +6,7 @@ import BlogItem from "./BlogItem";
 import { device } from "../styles/device";
 
 const BlogsContainer = styled.section`
-  margin-top: 140px;
+  margin-top: 40px;
   margin-bottom: 40px;
   h1 {
     font-size: 40px;
@@ -14,7 +14,7 @@ const BlogsContainer = styled.section`
     text-align: center;
   }
   @media (min-width: 768px) {
-    margin-top: 156px;
+    margin-top: 56px;
     h1 {
       font-size: 48px;
     }
