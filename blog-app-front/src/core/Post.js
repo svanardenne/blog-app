@@ -145,8 +145,10 @@ const Post = (props) => {
                   width="110px"
                   height="110px"
                 />
-                <p>{recentPost.title}</p>
-                <p>{moment(recentPost.created_at).format("MMM Do, YYYY")}</p>
+                <div>
+                  <p>{recentPost.title}</p>
+                  <p>{moment(recentPost.created_at).format("MMM Do, YYYY")}</p>
+                </div>
               </div>
             ))}
           </RecentPosts>
