@@ -13,6 +13,7 @@ import { createPost } from "./apiAdmin";
 const Form = styled.form`
   width: 90%;
   margin: 0 auto 50px;
+  margin-bottom: 160px;
   @media ${device.laptop} {
     max-width: 70%;
   }
