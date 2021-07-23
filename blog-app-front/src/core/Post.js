@@ -65,13 +65,31 @@ const CaptionLink = styled.a`
   font-size: 14px;
 `;
 
+const Aside = styled.aside``;
+
+const RecentPosts = styled.div``;
+
 const Post = (props) => {
   // create slug variable to use
 
   const [slug, setSlug] = useState(props.match.params.slug);
   const [post, setPost] = useState({});
+  const [recentPosts, setRecentPosts] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [loadingRecent, setLoadingRecent] = useState(true);
+
+  const loadRecentPosts = () => {
+    setLoadingRecent(true);
+    getPosts("DESC", "createdAt", "3").then((data, err) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setRecentPosts(data);
+        setLoadingRecent(false);
+      }
+    });
+  };
 
   const getPostBySlug = (slug) => {
     setLoading(true);
@@ -87,32 +105,53 @@ const Post = (props) => {
 
   useEffect(() => {
     getPostBySlug(slug);
+    loadRecentPosts();
   }, []);
 
   const blogContainer = () => {
     return (
-      <BlogContainer>
-        <h1>The Journey</h1>
-        <Link
-          style={{ color: `${colors.bgBlue}`, textDecoration: "none" }}
-          to={`/the_journey`}
-        >{`< All Posts`}</Link>
-        <h3>{post.title}</h3>
-        <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
-        <PostImage>
-          {loading ? null : <img src={`${API}/post/photo/${post._id}`} />}
-          <Caption>
-            {post.photo_link ? (
-              <CaptionLink target="_blank" href={`${post.photo_link}`}>
-                {post.photo_info}
-              </CaptionLink>
-            ) : (
-              post.photo_info
-            )}
-          </Caption>
-        </PostImage>
-        <PostContent>{post.body}</PostContent>
-      </BlogContainer>
+      <React.Fragment>
+        <BlogContainer>
+          <h1>The Journey</h1>
+          <Link
+            style={{ color: `${colors.bgBlue}`, textDecoration: "none" }}
+            to={`/the_journey`}
+          >{`< All Posts`}</Link>
+          <h3>{post.title}</h3>
+          <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
+          <PostImage>
+            {loading ? null : <img src={`${API}/post/photo/${post._id}`} />}
+            <Caption>
+              {post.photo_link ? (
+                <CaptionLink target="_blank" href={`${post.photo_link}`}>
+                  {post.photo_info}
+                </CaptionLink>
+              ) : (
+                post.photo_info
+              )}
+            </Caption>
+          </PostImage>
+          <PostContent>{post.body}</PostContent>
+        </BlogContainer>
+        <Aside>
+          <h4>Recent Posts</h4>
+          <RecentPosts>
+            {recentPosts.map((recentPost, i) => (
+              <div>
+                <ShowBackgroundImage
+                  key={i}
+                  item={recentPost}
+                  url="post"
+                  width="110px"
+                  height="110px"
+                />
+                <p>{recentPost.title}</p>
+                <p>{moment(recentPost.created_at).format("MMM Do, YYYY")}</p>
+              </div>
+            ))}
+          </RecentPosts>
+        </Aside>
+      </React.Fragment>
     );
   };
 

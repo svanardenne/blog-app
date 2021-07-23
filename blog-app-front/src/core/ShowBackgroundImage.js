@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { device } from "../styles/device";
 
 const PostImage = styled.div`
-  width: 100%;
-  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
@@ -14,9 +12,18 @@ const PostImage = styled.div`
   }
 `;
 
-const ShowBackgroundImage = ({ item, url }) => (
+const ShowBackgroundImage = ({
+  item,
+  url,
+  width = "100%",
+  height = "100%",
+}) => (
   <PostImage
-    style={{ backgroundImage: `url(${API}/${url}/photo/${item._id})` }}
+    style={{
+      backgroundImage: `url(${API}/${url}/photo/${item._id})`,
+      width: `${width}`,
+      height: `${height}`,
+    }}
     title={`Picture relating to ${item.title}`}
   />
 );
