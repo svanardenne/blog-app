@@ -23,7 +23,7 @@ const CardWrapper = styled.div`
 
 const Card = ({ post }) => (
   <CardWrapper className="post-card">
-    <ShowImage item={post} url="post" />
+    <ShowImage item={post} url="post" type="photo" />
     <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
     <h4>{post.title}</h4>
     <Link to={`/the_journey/${post.slug}`}>Continue Reading</Link>

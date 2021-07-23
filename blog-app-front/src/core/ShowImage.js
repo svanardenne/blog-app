@@ -7,8 +7,8 @@ const PostImage = styled.img`
   max-height: 140px;
 `;
 
-const ShowImage = ({ item, url }) => (
-  <PostImage src={`${API}/${url}/photo/${item._id}`} alt={item.name} />
+const ShowImage = ({ item, url, type }) => (
+  <PostImage src={`${API}/${url}/${type}/${item._id}`} alt={item.name} />
 );
 
 export default ShowImage;

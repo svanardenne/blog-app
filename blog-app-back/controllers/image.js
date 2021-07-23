@@ -2,6 +2,19 @@ const Image = require("../models/image");
 const formidable = require("formidable");
 const fs = require("fs");
 
+// gets image object by id
+exports.imageById = (req, res, next, id) => {
+  Image.findById(id).exec((err, image) => {
+    if (err || !image) {
+      return res.status(400).json({
+        error: "Image data not found",
+      });
+    }
+    req.image = image;
+    next();
+  });
+};
+
 // creates new image and caption
 exports.create = (req, res) => {
   let formData = new formidable.IncomingForm();
@@ -47,4 +60,30 @@ exports.create = (req, res) => {
       res.json(result);
     });
   });
+};
+
+exports.getImages = (req, res) => {
+  let order = req.query.order ? req.query.order : "desc";
+  let sortBy = req.query.sortBy ? req.query.sortBy : "createdAt";
+  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+  Image.find()
+    .select("-image")
+    .sort([[sortBy, order]])
+    .limit(limit)
+    .exec((err, images) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Images not found",
+        });
+      }
+      res.json(images);
+    });
+};
+
+exports.image = (req, res) => {
+  if (req.image.image.data) {
+    res.set("Content-Type", req.image.image.contentType);
+    return res.send(req.image.image.data);
+  }
 };

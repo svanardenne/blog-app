@@ -38,7 +38,7 @@ const Posts = () => {
 
   // loads posts into state
   const loadPosts = () => {
-    getPosts("DESC", "createdAt", 1000).then((data) => {
+    getPosts("DESC", "createdAt", "1000").then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
