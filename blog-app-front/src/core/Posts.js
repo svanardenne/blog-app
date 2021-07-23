@@ -13,7 +13,7 @@ const BlogsContainer = styled.section`
     font-weight: 600;
     text-align: center;
   }
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     margin-top: 56px;
     h1 {
       font-size: 48px;

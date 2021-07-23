@@ -1,14 +1,22 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { API } from "../config";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../styles/colors";
+import { device } from "../styles/device";
 import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const BlogContainer = styled.section`
   margin: 40px 48px 0px 48px;
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 80px;
+  }
   h3 {
     color: ${colors.bgBlueDarker};
     font-size: 28px;
@@ -26,16 +34,24 @@ const BlogContainer = styled.section`
     margin-bottom: 32px;
     color: ${colors.muted};
   }
+  @media ${device.tablet} {
+    h1 {
+      font-size: 48px;
+    }
+  }
 `;
 
 const PostImage = styled.figure`
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 32px;
+  width: 100%;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
 `;
 
 const PostContent = styled.p`
   font-size: 16px;
+  margin-bottom: 80px;
   color: ${colors.muted};
 `;
 
@@ -76,11 +92,15 @@ const Post = (props) => {
   const blogContainer = () => {
     return (
       <BlogContainer>
-        <Link to={`/the_journey`}>{`< All Posts`}</Link>
+        <h1>The Journey</h1>
+        <Link
+          style={{ color: `${colors.bgBlue}`, textDecoration: "none" }}
+          to={`/the_journey`}
+        >{`< All Posts`}</Link>
         <h3>{post.title}</h3>
         <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
         <PostImage>
-          {loading ? null : <ShowBackgroundImage item={post} url="post" />}
+          {loading ? null : <img src={`${API}/post/photo/${post._id}`} />}
           <Caption>
             {post.photo_link ? (
               <CaptionLink target="_blank" href={`${post.photo_link}`}>
@@ -91,7 +111,6 @@ const Post = (props) => {
             )}
           </Caption>
         </PostImage>
-
         <PostContent>{post.body}</PostContent>
       </BlogContainer>
     );
