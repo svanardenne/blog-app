@@ -23,6 +23,10 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+const MainBody = styled.div`
+  margin-bottom: 136px;
+`;
+
 const Layout = ({
   title,
   description,
@@ -38,7 +42,7 @@ const Layout = ({
         <p>{description}</p>
       </Jumbotron>
     ) : null}
-    <div className={className}>{children}</div>
+    <MainBody className={className}>{children}</MainBody>
     <Footer />
   </Wrapper>
 );

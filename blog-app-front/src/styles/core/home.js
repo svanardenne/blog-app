@@ -202,7 +202,6 @@ export const Contact = styled.section`
   color: ${colors.offWhite};
   background-color: ${colors.bgBlue};
   padding: 56px 0 56px 0;
-  margin-bottom: 136px;
   h2 {
     font-size: 32px;
     font-weight: 600;
