@@ -14,6 +14,8 @@ const FooterSection = styled.section`
   max-height: 136px;
   span {
     font-size: 14px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   @media ${device.desktopS} {
     span {
