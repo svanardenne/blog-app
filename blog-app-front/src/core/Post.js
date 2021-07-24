@@ -8,6 +8,7 @@ import { device } from "../styles/device";
 import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
 import ShowBackgroundImage from "./ShowBackgroundImage";
+import RecentPost from "./RecentPost";
 
 const BlogContainer = styled.section`
   margin: 40px 48px 0px 48px;
@@ -65,7 +66,9 @@ const CaptionLink = styled.a`
   font-size: 14px;
 `;
 
-const Aside = styled.aside``;
+const Aside = styled.aside`
+  margin: 0 48px;
+`;
 
 const RecentPosts = styled.div``;
 
@@ -137,19 +140,7 @@ const Post = (props) => {
           <h4>Recent Posts</h4>
           <RecentPosts>
             {recentPosts.map((recentPost, i) => (
-              <div>
-                <ShowBackgroundImage
-                  key={i}
-                  item={recentPost}
-                  url="post"
-                  width="110px"
-                  height="110px"
-                />
-                <div>
-                  <p>{recentPost.title}</p>
-                  <p>{moment(recentPost.created_at).format("MMM Do, YYYY")}</p>
-                </div>
-              </div>
+              <RecentPost key={i} item={recentPost} />
             ))}
           </RecentPosts>
         </Aside>
