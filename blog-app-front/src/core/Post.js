@@ -11,7 +11,8 @@ import ShowBackgroundImage from "./ShowBackgroundImage";
 import RecentPost from "./RecentPost";
 
 const BlogContainer = styled.section`
-  margin: 40px 48px 0px 48px;
+  margin: 40px 48px 16px 48px;
+  border-bottom: 2px solid ${colors.lightGrey};
   h1 {
     font-size: 40px;
     font-weight: 600;
@@ -68,6 +69,12 @@ const CaptionLink = styled.a`
 
 const Aside = styled.aside`
   margin: 0 48px;
+  h4 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
 `;
 
 const RecentPosts = styled.div``;
