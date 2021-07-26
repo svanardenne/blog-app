@@ -60,7 +60,7 @@ export const Warning = styled.div`
   color: ${colors.warningText};
   background: ${colors.warningBG};
   border: 1px solid ${colors.warningBorder};
-  @media ${device.laptop} {
+  @media ${device.laptopS} {
     max-width: 70%;
   }
 `;

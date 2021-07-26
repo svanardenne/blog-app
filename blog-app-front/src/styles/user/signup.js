@@ -39,6 +39,18 @@ export const Warning = styled.div`
     max-width: 70%;
   }
 `;
+export const Success = styled.div`
+  width: 90%;
+  margin: 0 auto 16px;
+  border-radius: 5px;
+  padding: 16px 24px;
+  color: ${colors.successText};
+  background: ${colors.successBG};
+  border: 1px solid ${colors.successBorder};
+  @media ${device.laptopS} {
+    max-width: 70%;
+  }
+`;
 export const Button = styled.button`
   color: ${colors.offWhite};
   background: ${colors.lightBlue};
@@ -46,7 +58,4 @@ export const Button = styled.button`
   border-radius: 0.25em;
   padding: 10px 25px;
   margin-bottom: 24px;
-`;
-export const Loading = styled.div`
-  text-align: center;
 `;

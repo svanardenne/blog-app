@@ -1,74 +1,17 @@
 // Main imports
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import Layout from "../core/Layout";
-
-// Variable imports
-import { colors } from "../styles/colors";
-import { device } from "../styles/device";
+import {
+  Form,
+  FormGroup,
+  Warning,
+  Success,
+  Button,
+} from "../styles/user/signup";
 
 // Method imports
 import { signup } from "../auth";
-
-// Styled components
-const Form = styled.form`
-  width: 90%;
-  margin: 0 auto 50px;
-  @media ${device.laptop} {
-    max-width: 70%;
-  }
-`;
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  color: ${colors.muted};
-  label {
-    margin-bottom: 5px;
-  }
-  input {
-    outline: none;
-    padding: 10px;
-    border: 1px solid ${colors.muted};
-    border-radius: 0.25em;
-  }
-  input:focus {
-    border: 2px solid lightblue;
-  }
-`;
-const Warning = styled.div`
-  width: 90%;
-  margin: 0 auto 16px;
-  border-radius: 5px;
-  padding: 16px 24px;
-  color: ${colors.warningText};
-  background: ${colors.warningBG};
-  border: 1px solid ${colors.warningBorder};
-  @media ${device.laptop} {
-    max-width: 70%;
-  }
-`;
-const Success = styled.div`
-  width: 90%;
-  margin: 0 auto 16px;
-  border-radius: 5px;
-  padding: 16px 24px;
-  color: ${colors.successText};
-  background: ${colors.successBG};
-  border: 1px solid ${colors.successBorder};
-  @media ${device.laptop} {
-    max-width: 70%;
-  }
-`;
-const Button = styled.button`
-  color: ${colors.offWhite};
-  background: ${colors.lightBlue};
-  border: 1px solid ${colors.lightBlue};
-  border-radius: 0.25em;
-  padding: 10px 25px;
-  margin-bottom: 24px;
-`;
 
 const Signup = () => {
   // State
