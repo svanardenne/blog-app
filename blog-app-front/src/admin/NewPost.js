@@ -1,77 +1,17 @@
 // Main imports
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { authenticate } from "../auth";
 import { isAuthenticated } from "../auth";
 import Layout from "../core/Layout";
+import {
+  Form,
+  FormGroup,
+  Button,
+  CreatingPost,
+  Warning,
+} from "../styles/admin/newPost";
 import { colors } from "../styles/colors";
-import { device } from "../styles/device";
 import { createPost } from "./apiAdmin";
-
-// Styled Components
-const Form = styled.form`
-  width: 90%;
-  margin: 0 auto 50px;
-  @media ${device.laptop} {
-    max-width: 70%;
-  }
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  color: ${colors.muted};
-  label {
-    margin-bottom: 5px;
-  }
-  input {
-    outline: none;
-    padding: 10px;
-    border: 1px solid ${colors.muted};
-    border-radius: 0.25em;
-  }
-  input:focus {
-    border: 2px solid lightblue;
-  }
-  textarea {
-    outline: none;
-    padding: 10px;
-    height: 300px;
-    border: 1px solid ${colors.muted};
-    border-radius: 0.25em;
-  }
-  textarea:focus {
-    border: 2px solid lightblue;
-  }
-`;
-
-const Button = styled.button`
-  color: ${colors.offWhite};
-  background: ${colors.lightBlue};
-  border: 1px solid ${colors.lightBlue};
-  border-radius: 0.25em;
-  padding: 10px 25px;
-  margin-bottom: 24px;
-`;
-
-const CreatingPost = styled.div`
-  text-align: center;
-`;
-
-const Warning = styled.div`
-  width: 90%;
-  margin: 0 auto 16px;
-  border-radius: 5px;
-  padding: 16px 24px;
-  color: ${colors.warningText};
-  background: ${colors.warningBG};
-  border: 1px solid ${colors.warningBorder};
-  @media ${device.laptop} {
-    max-width: 70%;
-  }
-`;
 
 const NewPost = () => {
   // State
@@ -158,6 +98,15 @@ const NewPost = () => {
   // Form for submitting posts
   const createPostForm = () => (
     <Form>
+      <Link
+        style={{
+          color: `${colors.bgBlue}`,
+          textDecoration: "none",
+          display: "inline-block",
+          marginBottom: "32px",
+        }}
+        to={`/admin/dashboard`}
+      >{`< Back to Dashboard`}</Link>
       <FormGroup>
         <label>Photo</label>
         <input
