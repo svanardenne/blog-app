@@ -1,17 +1,6 @@
 import React from "react";
 import { API } from "../config";
-import styled from "styled-components";
-import { device } from "../styles/device";
-
-const PostImage = styled.div`
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100%;
-  margin-left: 1px;
-  @media ${device.tablet} {
-    background-position: center top;
-  }
-`;
+import { PostImage } from "../styles/core/showBackgroundImage";
 
 const ShowBackgroundImage = ({
   item,
