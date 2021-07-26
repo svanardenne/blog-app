@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { colors } from "../styles/colors";
 import styled from "styled-components";
 import moment from "moment";
-import ShowImage from "./ShowImage";
+import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const CardWrapper = styled.div`
   width: 245px;
@@ -11,6 +11,7 @@ const CardWrapper = styled.div`
   background-color: ${colors.offWhite};
   margin-bottom: 48px;
   box-shadow: 7px 7px 14px #4c5258;
+  padding-top: 1px;
   img {
     width: 243px;
     max-width: 243px;
@@ -23,7 +24,13 @@ const CardWrapper = styled.div`
 
 const Card = ({ post }) => (
   <CardWrapper className="post-card">
-    <ShowImage item={post} url="post" type="photo" />
+    <ShowBackgroundImage
+      item={post}
+      url="post"
+      width="243px"
+      height="140px"
+      orientation="center center"
+    />
     <p>{moment(post.createdAt).format("MMM Do, YYYY")}</p>
     <h4>{post.title}</h4>
     <Link to={`/the_journey/${post.slug}`}>Continue Reading</Link>
