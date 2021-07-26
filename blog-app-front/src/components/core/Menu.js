@@ -44,7 +44,7 @@ const Menu = () => {
         history.push(`/${navString.toLowerCase()}`);
       }, 500);
     } else if (e.target.textContent === "Dashboard") {
-      if (isAuthenticated() && isAuthenticated().user.isAdmin == true) {
+      if (isAuthenticated() && isAuthenticated().user.isAdmin === true) {
         setTimeout(() => {
           history.push(`/admin/dashboard`);
         }, 500);
@@ -84,7 +84,7 @@ const Menu = () => {
 
   // handles dropdown menu inside modal view
   const handleDropdown = () => {
-    if (menuPopup == false) {
+    if (menuPopup === false) {
       setMenupopup(true);
     } else {
       setMenupopup(false);
@@ -143,14 +143,14 @@ const Menu = () => {
             About
           </NavLink>
         </NavLinkItem>
-        {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
+        {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <NavLinkItem>
             <NavLink to="/admin/dashboard" activeStyle={activeLink}>
               Dashboard
             </NavLink>
           </NavLinkItem>
         ) : null}
-        {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+        {isAuthenticated() && isAuthenticated().user.isAdmin === false ? (
           <NavLinkItem>
             <NavLink to="/user/dashboard" activeStyle={activeLink}>
               Dashboard
@@ -246,7 +246,7 @@ const Menu = () => {
             About
           </NavLink>
         </li>
-        {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
+        {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <li>
             <NavLink
               onClick={handleLinkModal}
@@ -257,7 +257,7 @@ const Menu = () => {
             </NavLink>
           </li>
         ) : null}
-        {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+        {isAuthenticated() && isAuthenticated().user.isAdmin === false ? (
           <li>
             <NavLink onClick={handleLinkModal} to="/user/dashboard">
               Dashboard

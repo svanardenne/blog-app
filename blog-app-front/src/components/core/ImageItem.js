@@ -6,7 +6,7 @@ const ImageItem = ({ item }) => {
   return (
     <Wrapper>
       <ImageContainer>
-        <img src={`${API}/image/${item._id}`} />
+        <img src={`${API}/image/${item._id}`} alt={item.image_caption} />
       </ImageContainer>
       <p>{item.image_caption}</p>
     </Wrapper>

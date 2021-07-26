@@ -11,7 +11,7 @@ const Promises = () => {
     <Container>
       <h1>The Promises</h1>
       <ContentWrapper>
-        <img src={mainImage} />
+        <img src={mainImage} alt="People hanging out" />
         <div>
           <h4>I will face my Creative Misgivings</h4>
           <p>

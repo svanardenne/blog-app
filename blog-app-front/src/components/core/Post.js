@@ -83,7 +83,9 @@ const Post = (props) => {
       <h3>{post.title}</h3>
       <span>{moment(post.createdAt).format("MMM Do, YYYY")}</span>
       <PostImage>
-        {loading ? null : <img src={`${API}/post/photo/${post._id}`} />}
+        {loading ? null : (
+          <img src={`${API}/post/photo/${post._id}`} alt={post.photo_info} />
+        )}
         <Caption>
           {post.photo_link ? (
             <CaptionLink target="_blank" href={`${post.photo_link}`}>

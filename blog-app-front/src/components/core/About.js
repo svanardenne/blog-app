@@ -1,5 +1,5 @@
 // main imports
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { colors } from "../../styles/colors";
 import Layout from "./Layout";
 import { Container } from "../../styles/core/about";
@@ -9,7 +9,7 @@ const About = () => {
   // Content section
   const content = () => (
     <Container>
-      <img src={mainImage} />
+      <img src={mainImage} alt="Creative Misgivings logo" />
       <div>
         <h1>About</h1>
         <p>Hello there, Dear Reader, and thank you for visiting me here! </p>
@@ -33,7 +33,11 @@ const About = () => {
         <p>-Creative Miss</p>
         <p>
           Original banner image courtesy of{" "}
-          <a target="_blank" href="https://unsplash.com/@korpa">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://unsplash.com/@korpa"
+          >
             Jr Korpa
           </a>{" "}
           on Unsplash
