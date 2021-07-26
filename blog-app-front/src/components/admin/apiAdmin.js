@@ -1,4 +1,4 @@
-import { API } from "../config";
+import { API } from "../../config";
 
 // Creates a new post
 export const createPost = (userId, token, post) => {

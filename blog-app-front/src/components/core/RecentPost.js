@@ -1,6 +1,6 @@
 import moment from "moment";
 import ShowBackgroundImage from "./ShowBackgroundImage";
-import { Wrapper } from "../styles/core/recentPost";
+import { Wrapper } from "../../styles/core/recentPost";
 
 const RecentPost = ({ item, handleLink, i }) => {
   return (

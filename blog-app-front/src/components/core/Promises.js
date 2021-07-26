@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 import Layout from "./Layout";
-import { Container, ContentWrapper } from "../styles/core/promises";
-import mainImage from "../assets/images/people_hanging_out.jpeg";
+import { Container, ContentWrapper } from "../../styles/core/promises";
+import mainImage from "../../assets/images/people_hanging_out.jpeg";
 
 const Promises = () => {
   return (

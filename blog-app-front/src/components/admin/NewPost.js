@@ -9,8 +9,8 @@ import {
   Button,
   CreatingPost,
   Warning,
-} from "../styles/admin/newPost";
-import { colors } from "../styles/colors";
+} from "../../styles/admin/newPost";
+import { colors } from "../../styles/colors";
 import { createPost } from "./apiAdmin";
 
 const NewPost = () => {

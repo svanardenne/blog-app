@@ -18,9 +18,9 @@ import {
   DropdownModalButton,
   Dropdown,
   DropdownItemsModal,
-} from "../styles/core/menu";
+} from "../../styles/core/menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 
 const Menu = () => {
   // brings the useHistory hook into the component

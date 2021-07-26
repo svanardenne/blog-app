@@ -1,5 +1,5 @@
-import { API } from "../config";
-import { Wrapper, ImageContainer } from "../styles/core/imageItem";
+import { API } from "../../config";
+import { Wrapper, ImageContainer } from "../../styles/core/imageItem";
 
 const ImageItem = ({ item }) => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { CardWrapper } from "../styles/core/card";
+import { CardWrapper } from "../../styles/core/card";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const Card = ({ post }) => (

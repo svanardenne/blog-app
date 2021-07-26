@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
-import { Jumbotron, Wrapper, MainBody } from "../styles/core/layout";
-import { colors } from "../styles/colors";
+import { Jumbotron, Wrapper, MainBody } from "../../styles/core/layout";
+import { colors } from "../../styles/colors";
 
 const Layout = ({
   title,

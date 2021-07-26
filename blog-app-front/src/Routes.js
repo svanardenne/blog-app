@@ -1,17 +1,17 @@
 // Main Imports
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./core/Home";
-import Posts from "./core/Posts";
-import Doodles from "./core/Doodles";
-import Post from "./core/Post";
-import Signup from "./user/Signup";
-import Signin from "./user/Signin";
-import AdminRoute from "./auth/AdminRoute";
-import AdminDashboard from "./user/AdminDashboard";
-import NewPost from "./admin/NewPost";
-import Promises from "./core/Promises";
-import About from "./core/About";
+import Home from "./components/core/Home";
+import Posts from "./components/core/Posts";
+import Doodles from "./components/core/Doodles";
+import Post from "./components/core/Post";
+import Signup from "./components/user/Signup";
+import Signin from "./components/user/Signin";
+import AdminRoute from "./components/auth/AdminRoute";
+import AdminDashboard from "./components/user/AdminDashboard";
+import NewPost from "./components/admin/NewPost";
+import Promises from "./components/core/Promises";
+import About from "./components/core/About";
 
 const Routes = () => {
   return (

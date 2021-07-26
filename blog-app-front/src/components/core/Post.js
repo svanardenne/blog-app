@@ -1,9 +1,9 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { API } from "../config";
+import { API } from "../../config";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
 import RecentPost from "./RecentPost";
@@ -17,7 +17,7 @@ import {
   Aside,
   RecentPosts,
   Wrapper,
-} from "../styles/core/post";
+} from "../../styles/core/post";
 
 const Post = (props) => {
   const history = useHistory();

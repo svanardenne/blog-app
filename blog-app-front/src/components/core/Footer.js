@@ -1,5 +1,5 @@
 import React from "react";
-import { FooterSection } from "../styles/core/footer";
+import { FooterSection } from "../../styles/core/footer";
 
 const Footer = () => {
   // Gets the year for the footer

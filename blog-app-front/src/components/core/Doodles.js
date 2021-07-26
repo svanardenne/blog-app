@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getImages, getPosts } from "./apiCore";
 import Layout from "./Layout";
 import ImageItem from "./ImageItem";
-import { Container, ImagesContainer } from "../styles/core/doodles";
-import { colors } from "../styles/colors";
+import { Container, ImagesContainer } from "../../styles/core/doodles";
+import { colors } from "../../styles/colors";
 
 const Doodles = () => {
   const [images, setImages] = useState([]);

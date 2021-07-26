@@ -1,33 +1,30 @@
 // Main imports
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import {
   Form,
   FormGroup,
   Warning,
+  Success,
   Button,
-  Loading,
-} from "../styles/user/signin";
+} from "../../styles/user/signup";
 
 // Method imports
-import { signin, authenticate, isAuthenticated } from "../auth";
+import { signup } from "../auth";
 
-const Signin = () => {
+const Signup = () => {
   // State
   const [values, setValues] = useState({
+    name: "",
     email: "",
     password: "",
     error: "",
-    loading: false,
-    redirectToReferrer: false,
+    success: false,
   });
 
   // Deconstruct values from state
-  const { email, password, error, loading, redirectToReferrer } = values;
-
-  // create user object with isAuthenticated method
-  const { user } = isAuthenticated();
+  const { name, email, password, error, success } = values;
 
   // Handles changes in the input fields
   const handleChange = (name) => (e) => {
@@ -41,20 +38,30 @@ const Signin = () => {
   // Handles form submission
   const clickSubmit = (e) => {
     e.preventDefault();
-    setValues({ ...values, error: false, loading: true });
-    signin({ email, password }).then((data) => {
+    setValues({ ...values, error: false });
+    signup({ name, email, password }).then((data) => {
       if (data.error) {
-        setValues({
-          ...values,
-          error: data.error,
-          loading: false,
-        });
-      } else {
-        authenticate(data, () => {
+        if (data.error.code) {
           setValues({
             ...values,
-            redirectToReferrer: true,
+            error: "Email must be unique",
+            success: false,
           });
+        } else {
+          setValues({
+            ...values,
+            error: data.error,
+            success: false,
+          });
+        }
+      } else {
+        setValues({
+          ...values,
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          success: true,
         });
       }
     });
@@ -63,6 +70,10 @@ const Signin = () => {
   // Creates a signup form
   const signupForm = () => (
     <Form>
+      <FormGroup>
+        <label>Name</label>
+        <input onChange={handleChange("name")} type="text" value={name} />
+      </FormGroup>
       <FormGroup>
         <label>Email</label>
         <input onChange={handleChange("email")} type="text" value={email} />
@@ -86,33 +97,20 @@ const Signin = () => {
     <Warning style={{ display: error ? "" : "none" }}>{error}</Warning>
   );
 
-  // Shows or hides loading text when loading state is true
-  const showLoading = () =>
-    loading && (
-      <Loading>
-        <h2>Loading...</h2>
-      </Loading>
-    );
-
-  // Redirects user to respective dashboards based on their "isAdmin" attribute
-  const redirectUser = () => {
-    if (redirectToReferrer) {
-      if (user && user.isAdmin === true) {
-        return <Redirect to="/admin/dashboard" />;
-      } else {
-        return <Redirect to="/user/dashboard" />;
-      }
-    }
-  };
+  // Shows success message if form submit is successful
+  const showSuccess = () => (
+    <Success style={{ display: success ? "" : "none" }}>
+      New account is created. Please <Link to="/signin">Signin</Link>
+    </Success>
+  );
 
   return (
-    <Layout title="Signin" description="Signin to the Blog App">
-      {showLoading()}
+    <Layout title="Signup" description="Signup to the Blog App">
       {showWarning()}
+      {showSuccess()}
       {signupForm()}
-      {redirectUser()}
     </Layout>
   );
 };
 
-export default Signin;
+export default Signup;

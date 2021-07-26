@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
-import styled from "styled-components";
-import { colors } from "../styles/colors";
 
 const AdminDashboard = () => {
   return (

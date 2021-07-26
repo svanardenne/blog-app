@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 import Layout from "./Layout";
-import { Container } from "../styles/core/about";
-import mainImage from "../assets/images/creativeLogo.jpg";
+import { Container } from "../../styles/core/about";
+import mainImage from "../../assets/images/creativeLogo.jpg";
 
 const About = () => {
   return (

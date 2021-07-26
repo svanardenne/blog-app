@@ -1,4 +1,4 @@
-import { API } from "../config";
+import { API } from "../../config";
 
 export const getPosts = (order = "desc", sortBy = "createdAt", limit = "6") => {
   return fetch(`${API}/posts?order=${order}&sortBy=${sortBy}&limit=${limit}`, {

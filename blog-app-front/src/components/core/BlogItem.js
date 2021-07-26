@@ -8,7 +8,7 @@ import {
   Body,
   PostImage,
   PostLink,
-} from "../styles/core/blogItem";
+} from "../../styles/core/blogItem";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const BlogItem = ({ post, truncatedPostContent }) => {

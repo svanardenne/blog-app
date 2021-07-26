@@ -9,7 +9,7 @@ import {
   ProjectCards,
   Info,
   Contact,
-} from "../styles/core/home";
+} from "../../styles/core/home";
 import moment from "moment";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

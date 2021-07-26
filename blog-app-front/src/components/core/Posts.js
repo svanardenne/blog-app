@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
 import BlogItem from "./BlogItem";
-import { BlogsContainer, PostsContainer } from "../styles/core/posts";
+import { BlogsContainer, PostsContainer } from "../../styles/core/posts";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
