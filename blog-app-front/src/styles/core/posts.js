@@ -8,6 +8,7 @@ export const BlogsContainer = styled.section`
     font-size: 40px;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 80px;
   }
   @media ${device.tablet} {
     margin-top: 56px;
