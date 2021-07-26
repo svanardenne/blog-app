@@ -7,6 +7,7 @@ import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
 import RecentPost from "./RecentPost";
 import {
+  Title,
   BlogContainer,
   PostImage,
   PostContent,
@@ -14,6 +15,7 @@ import {
   CaptionLink,
   Aside,
   RecentPosts,
+  Wrapper,
 } from "../styles/core/post";
 
 const Post = (props) => {
@@ -55,7 +57,6 @@ const Post = (props) => {
 
   const blogContainer = () => (
     <BlogContainer>
-      <h1>The Journey</h1>
       <Link
         style={{ color: `${colors.bgBlue}`, textDecoration: "none" }}
         to={`/the_journey`}
@@ -91,8 +92,11 @@ const Post = (props) => {
 
   return (
     <Layout>
-      {blogContainer()}
-      {aside()}
+      <Title>The Journey</Title>
+      <Wrapper>
+        {blogContainer()}
+        {aside()}
+      </Wrapper>
     </Layout>
   );
 };
