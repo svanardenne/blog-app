@@ -17,12 +17,14 @@ const ShowBackgroundImage = ({
   url,
   width = "100%",
   height = "100%",
+  orientation = "center top",
 }) => (
   <PostImage
     style={{
       backgroundImage: `url(${API}/${url}/photo/${item._id})`,
       width: `${width}`,
       height: `${height}`,
+      backgroundPosition: `${orientation}`,
     }}
     title={`Picture relating to ${item.title}`}
   />

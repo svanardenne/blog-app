@@ -129,6 +129,11 @@ export const Aside = styled.aside`
     padding-right: 40px;
     min-width: 34%;
   }
+  @media ${device.desktopS} {
+    h4 {
+      font-size: 24px;
+    }
+  }
 `;
 
 export const RecentPosts = styled.div``;

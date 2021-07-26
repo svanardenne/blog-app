@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../colors";
+import { device } from "../device";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -18,6 +19,16 @@ export const Wrapper = styled.div`
     p:last-child {
       font-size: 14px;
       color: ${colors.muted};
+    }
+  }
+  @media ${device.desktopS} {
+    div {
+      p:first-child {
+        font-size: 18px;
+      }
+      p:last-child {
+        font-size: 16px;
+      }
     }
   }
 `;

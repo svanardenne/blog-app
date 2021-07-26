@@ -11,6 +11,7 @@ const RecentPost = ({ item, i }) => {
           url="post"
           width="110px"
           height="110px"
+          orientation="center center"
         />
       </div>
 
