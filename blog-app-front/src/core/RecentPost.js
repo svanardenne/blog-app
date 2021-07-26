@@ -2,9 +2,9 @@ import moment from "moment";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 import { Wrapper } from "../styles/core/recentPost";
 
-const RecentPost = ({ item, i }) => {
+const RecentPost = ({ item, handleLink, i }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={(e) => handleLink()}>
       <div>
         <ShowBackgroundImage
           item={item}

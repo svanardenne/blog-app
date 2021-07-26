@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   gap: 16px;
   margin-bottom: 24px;
+  cursor: pointer;
   div {
     p:first-child {
       font-size: 16px;

@@ -2,6 +2,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { API } from "../config";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { colors } from "../styles/colors";
 import { getPosts, postBySlug } from "./apiCore";
 import Layout from "./Layout";
@@ -19,6 +20,7 @@ import {
 } from "../styles/core/post";
 
 const Post = (props) => {
+  const history = useHistory();
   const [slug, setSlug] = useState(props.match.params.slug);
   const [post, setPost] = useState({});
   const [recentPosts, setRecentPosts] = useState([]);
@@ -50,10 +52,16 @@ const Post = (props) => {
     });
   };
 
+  const handleLink = (slug) => {
+    setSlug(slug);
+    history.push(`/the_journey/${slug}`);
+  };
+
   useEffect(() => {
     getPostBySlug(slug);
+    setSlug(props.match.params.slug);
     loadRecentPosts();
-  }, []);
+  }, [slug, props.match.params]);
 
   const blogContainer = () => (
     <BlogContainer>
@@ -84,7 +92,11 @@ const Post = (props) => {
       <h4>Recent Posts</h4>
       <RecentPosts>
         {recentPosts.map((recentPost, i) => (
-          <RecentPost key={i} item={recentPost} />
+          <RecentPost
+            key={i}
+            item={recentPost}
+            handleLink={() => handleLink(recentPost.slug)}
+          />
         ))}
       </RecentPosts>
     </Aside>
