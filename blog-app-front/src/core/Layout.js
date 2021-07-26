@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import styled from "styled-components";
@@ -34,25 +34,31 @@ const Layout = ({
   className,
   color = `${colors.offWhite}`,
   children,
-}) => (
-  <Wrapper style={{ backgroundColor: `${color}` }}>
-    <Menu />
-    {title || description ? (
-      <div>
-        <Jumbotron>
-          <h2>{title}</h2>
-          <p>{description}</p>
-        </Jumbotron>
-        <MainBody style={{ marginTop: "0" }} className={className}>
-          {children}
-        </MainBody>
-      </div>
-    ) : (
-      <MainBody className={className}>{children}</MainBody>
-    )}
+}) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    <Footer />
-  </Wrapper>
-);
+  return (
+    <Wrapper style={{ backgroundColor: `${color}` }}>
+      <Menu />
+      {title || description ? (
+        <div>
+          <Jumbotron>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </Jumbotron>
+          <MainBody style={{ marginTop: "0" }} className={className}>
+            {children}
+          </MainBody>
+        </div>
+      ) : (
+        <MainBody className={className}>{children}</MainBody>
+      )}
+
+      <Footer />
+    </Wrapper>
+  );
+};
 
 export default Layout;
