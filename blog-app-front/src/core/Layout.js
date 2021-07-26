@@ -1,32 +1,8 @@
 import React, { useEffect } from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
-import styled from "styled-components";
+import { Jumbotron, Wrapper, MainBody } from "../styles/core/layout";
 import { colors } from "../styles/colors";
-
-const Jumbotron = styled.div`
-  height: 200px;
-  margin-top: 0;
-  margin-bottom: 32px;
-  background: lightgrey;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-`;
-
-const Wrapper = styled.div`
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const MainBody = styled.div`
-  margin-top: 100px;
-  margin-bottom: 136px;
-`;
 
 const Layout = ({
   title,
