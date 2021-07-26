@@ -1,3 +1,4 @@
+// main imports
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { API } from "../../config";
@@ -20,6 +21,7 @@ import {
 } from "../../styles/core/post";
 
 const Post = (props) => {
+  // state
   const history = useHistory();
   const [slug, setSlug] = useState(props.match.params.slug);
   const [post, setPost] = useState({});
@@ -28,6 +30,7 @@ const Post = (props) => {
   const [loading, setLoading] = useState(true);
   const [loadingRecent, setLoadingRecent] = useState(true);
 
+  //loads recent post data
   const loadRecentPosts = () => {
     setLoadingRecent(true);
     getPosts("DESC", "createdAt", "3").then((data, err) => {
@@ -40,6 +43,7 @@ const Post = (props) => {
     });
   };
 
+  // retreives post data by slug and sets results in state
   const getPostBySlug = (slug) => {
     setLoading(true);
     postBySlug(slug).then((data, err) => {
@@ -52,17 +56,24 @@ const Post = (props) => {
     });
   };
 
+  // handles links on recent posts
   const handleLink = (slug) => {
     setSlug(slug);
     history.push(`/the_journey/${slug}`);
   };
 
-  useEffect(() => {
+  // initializes data and reloads post data on slug change
+  const init = () => {
     getPostBySlug(slug);
     setSlug(props.match.params.slug);
     loadRecentPosts();
+  };
+
+  useEffect(() => {
+    init();
   }, [slug, props.match.params]);
 
+  // main blog content
   const blogContainer = () => (
     <BlogContainer>
       <Link
@@ -87,6 +98,7 @@ const Post = (props) => {
     </BlogContainer>
   );
 
+  // aside section for recent posts
   const aside = () => (
     <Aside>
       <h4>Recent Posts</h4>

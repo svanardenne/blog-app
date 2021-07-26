@@ -1,3 +1,4 @@
+// main imports
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
@@ -16,10 +17,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getPosts } from "./apiCore";
 
 const Home = () => {
+  // state
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState([]);
   const [carousel, setCarousel] = useState(true);
 
+  // loads post data for the 3 most recent posts
   const loadPosts = () => {
     getPosts("desc", "createdAt", "3").then((data) => {
       if (data.error) {
@@ -30,6 +33,7 @@ const Home = () => {
     });
   };
 
+  // turns the carousel on and off depending on window size
   const cardFormat = () => {
     if (window.innerWidth >= 1024) {
       setCarousel(false);
@@ -38,14 +42,20 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
+  // initializes page data and sets event listener on resize
+  const init = () => {
     loadPosts();
     cardFormat();
     window.addEventListener("resize", () => {
       cardFormat();
     });
+  };
+
+  useEffect(() => {
+    init();
   }, []);
 
+  // renders headline
   const headline = () => (
     <Headline style={{ textAlign: "center" }}>
       <div>
@@ -57,6 +67,7 @@ const Home = () => {
     </Headline>
   );
 
+  // renders about info
   const about = () => (
     <About id="about">
       <h4>Hello, Dear Reader</h4>
@@ -81,6 +92,7 @@ const Home = () => {
     </About>
   );
 
+  // displays 3 most recent projects in the Home component
   const projectsDisplay = () => (
     <Projects id="projects">
       <h2>The Journey</h2>
@@ -100,6 +112,7 @@ const Home = () => {
     </Projects>
   );
 
+  // renders info
   const info = () => (
     <Info>
       <h4>The Promises</h4>
@@ -114,6 +127,7 @@ const Home = () => {
     </Info>
   );
 
+  // renders contact info
   const contact = () => (
     <Contact>
       <h2>Connect With Me</h2>

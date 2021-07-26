@@ -1,3 +1,4 @@
+// main imports
 import React, { useEffect, useState } from "react";
 import { getImages } from "./apiCore";
 import Layout from "./Layout";
@@ -6,9 +7,11 @@ import { Container, ImagesContainer } from "../../styles/core/doodles";
 import { colors } from "../../styles/colors";
 
 const Doodles = () => {
+  // state
   const [images, setImages] = useState([]);
   const [error, setError] = useState([]);
 
+  // loads image and caption data
   const loadImages = () => {
     getImages("DESC", "createdAt", "1000").then((data) => {
       if (data.error) {
@@ -23,6 +26,7 @@ const Doodles = () => {
     loadImages();
   }, []);
 
+  // creates a list of images and captions using data in state
   const imageList = () => {
     return (
       <ImagesContainer>

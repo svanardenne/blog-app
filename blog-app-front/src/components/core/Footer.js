@@ -1,3 +1,4 @@
+// main imports
 import React from "react";
 import { FooterSection } from "../../styles/core/footer";
 

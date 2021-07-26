@@ -1,3 +1,4 @@
+// main imports
 import React from "react";
 import { API } from "../../config";
 import { PostImage } from "../../styles/core/showBackgroundImage";

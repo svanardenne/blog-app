@@ -1,3 +1,4 @@
+// main imports
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -26,6 +27,7 @@ const Menu = () => {
   // brings the useHistory hook into the component
   const history = useHistory();
 
+  // state
   const [menuPopup, setMenupopup] = useState(false);
 
   /**
@@ -80,6 +82,7 @@ const Menu = () => {
     history.push(history.location.pathname);
   };
 
+  // handles dropdown menu inside modal view
   const handleDropdown = () => {
     if (menuPopup == false) {
       setMenupopup(true);
@@ -87,6 +90,210 @@ const Menu = () => {
       setMenupopup(false);
     }
   };
+
+  // non-modal nav links
+  const navLinks = () => (
+    <NavLinks>
+      <ul>
+        <NavLinkItem>
+          <NavLink exact to="/" activeStyle={activeLink}>
+            Home
+          </NavLink>
+        </NavLinkItem>
+        <NavLinkItem>
+          <Dropdown>
+            <DropdownButton onClick={handleDropdown}>
+              The Journey
+            </DropdownButton>
+            {menuPopup && (
+              <DropdownItems>
+                <NavLink
+                  style={{
+                    textTransform: "capitalize",
+                    color: `${colors.mutedLight}`,
+                  }}
+                  exact
+                  to="/the_journey"
+                  activeStyle={activeLink}
+                >
+                  The Journey
+                </NavLink>
+                <NavLink
+                  style={{
+                    textTransform: "capitalize",
+                    color: `${colors.mutedLight}`,
+                  }}
+                  exact
+                  to="/doodles_and_dawdles"
+                  activeStyle={activeLink}
+                >
+                  Doodles and Dawdles
+                </NavLink>
+              </DropdownItems>
+            )}
+          </Dropdown>
+        </NavLinkItem>
+        <NavLinkItem>
+          <NavLink exact to="/the_promises" activeStyle={activeLink}>
+            The Promises
+          </NavLink>
+        </NavLinkItem>
+        <NavLinkItem>
+          <NavLink exact to="/about" activeStyle={activeLink}>
+            About
+          </NavLink>
+        </NavLinkItem>
+        {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
+          <NavLinkItem>
+            <NavLink to="/admin/dashboard" activeStyle={activeLink}>
+              Dashboard
+            </NavLink>
+          </NavLinkItem>
+        ) : null}
+        {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+          <NavLinkItem>
+            <NavLink to="/user/dashboard" activeStyle={activeLink}>
+              Dashboard
+            </NavLink>
+          </NavLinkItem>
+        ) : null}
+        {!isAuthenticated() ? (
+          <NavLinkItem>
+            <NavLink to="/signin" activeStyle={activeLink}>
+              Signin
+            </NavLink>
+          </NavLinkItem>
+        ) : null}
+        {isAuthenticated() ? (
+          <li>
+            <MenuLink onClick={clickSignout}>Signout</MenuLink>
+          </li>
+        ) : null}
+        {!isAuthenticated() ? (
+          <NavLinkItem>
+            <NavLink to="/signup" activeStyle={activeLink}>
+              Signup
+            </NavLink>
+          </NavLinkItem>
+        ) : null}
+      </ul>
+    </NavLinks>
+  );
+
+  // modal nav links when on mobile display
+  const navLinksModal = () => (
+    <NavLinksModal className="nav-links-modal">
+      <MenuClose>
+        <FontAwesomeIcon
+          onClick={handleMenuClose}
+          icon={["fas", "window-close"]}
+          size="lg"
+        />
+      </MenuClose>
+      <ul>
+        <li>
+          <NavLink
+            onClick={handleLinkModal}
+            exact
+            to="/"
+            activeStyle={activeLinkModal}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <Dropdown>
+            <DropdownModalButton onClick={handleDropdown}>
+              The Journey
+            </DropdownModalButton>
+            {menuPopup && (
+              <DropdownItemsModal>
+                <NavLink
+                  onClick={handleLinkModal}
+                  exact
+                  to="/the_journey"
+                  activeStyle={activeLinkModal}
+                >
+                  The Journey
+                </NavLink>
+                <NavLink
+                  onClick={handleLinkModal}
+                  exact
+                  to="/doodles_and_dawdles"
+                  activeStyle={activeLinkModal}
+                >
+                  Doodles and Dawdles
+                </NavLink>
+              </DropdownItemsModal>
+            )}
+          </Dropdown>
+        </li>
+        <li>
+          <NavLink
+            onClick={handleLinkModal}
+            to="/the_promises"
+            activeStyle={activeLinkModal}
+          >
+            The Promises
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            onClick={handleLinkModal}
+            to="/about"
+            activeStyle={activeLinkModal}
+          >
+            About
+          </NavLink>
+        </li>
+        {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
+          <li>
+            <NavLink
+              onClick={handleLinkModal}
+              to="/admin/dashboard"
+              activeStyle={activeLinkModal}
+            >
+              Dashboard
+            </NavLink>
+          </li>
+        ) : null}
+        {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
+          <li>
+            <NavLink onClick={handleLinkModal} to="/user/dashboard">
+              Dashboard
+            </NavLink>
+          </li>
+        ) : null}
+        {!isAuthenticated() ? (
+          <li>
+            <NavLink
+              onClick={handleLinkModal}
+              to="/signin"
+              activeStyle={activeLinkModal}
+            >
+              Signin
+            </NavLink>
+          </li>
+        ) : null}
+        {isAuthenticated() ? (
+          <li>
+            <MenuLink onClick={clickSignout}>Signout</MenuLink>
+          </li>
+        ) : null}
+        {!isAuthenticated() ? (
+          <li>
+            <NavLink
+              onClick={handleLinkModal}
+              to="/signup"
+              activeStyle={activeLinkModal}
+            >
+              Signup
+            </NavLink>
+          </li>
+        ) : null}
+      </ul>
+    </NavLinksModal>
+  );
 
   return (
     <Nav>
@@ -100,202 +307,8 @@ const Menu = () => {
       <NavLogo>
         <h1>Logo</h1>
       </NavLogo>
-      <NavLinks>
-        <ul>
-          <NavLinkItem>
-            <NavLink exact to="/" activeStyle={activeLink}>
-              Home
-            </NavLink>
-          </NavLinkItem>
-          <NavLinkItem>
-            <Dropdown>
-              <DropdownButton onClick={handleDropdown}>
-                The Journey
-              </DropdownButton>
-              {menuPopup && (
-                <DropdownItems>
-                  <NavLink
-                    style={{
-                      textTransform: "capitalize",
-                      color: `${colors.mutedLight}`,
-                    }}
-                    exact
-                    to="/the_journey"
-                    activeStyle={activeLink}
-                  >
-                    The Journey
-                  </NavLink>
-                  <NavLink
-                    style={{
-                      textTransform: "capitalize",
-                      color: `${colors.mutedLight}`,
-                    }}
-                    exact
-                    to="/doodles_and_dawdles"
-                    activeStyle={activeLink}
-                  >
-                    Doodles and Dawdles
-                  </NavLink>
-                </DropdownItems>
-              )}
-            </Dropdown>
-          </NavLinkItem>
-          <NavLinkItem>
-            <NavLink exact to="/the_promises" activeStyle={activeLink}>
-              The Promises
-            </NavLink>
-          </NavLinkItem>
-          <NavLinkItem>
-            <NavLink exact to="/about" activeStyle={activeLink}>
-              About
-            </NavLink>
-          </NavLinkItem>
-          {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
-            <NavLinkItem>
-              <NavLink to="/admin/dashboard" activeStyle={activeLink}>
-                Dashboard
-              </NavLink>
-            </NavLinkItem>
-          ) : null}
-          {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
-            <NavLinkItem>
-              <NavLink to="/user/dashboard" activeStyle={activeLink}>
-                Dashboard
-              </NavLink>
-            </NavLinkItem>
-          ) : null}
-          {!isAuthenticated() ? (
-            <NavLinkItem>
-              <NavLink to="/signin" activeStyle={activeLink}>
-                Signin
-              </NavLink>
-            </NavLinkItem>
-          ) : null}
-          {isAuthenticated() ? (
-            <li>
-              <MenuLink onClick={clickSignout}>Signout</MenuLink>
-            </li>
-          ) : null}
-          {!isAuthenticated() ? (
-            <NavLinkItem>
-              <NavLink to="/signup" activeStyle={activeLink}>
-                Signup
-              </NavLink>
-            </NavLinkItem>
-          ) : null}
-        </ul>
-      </NavLinks>
-      <NavLinksModal className="nav-links-modal">
-        <MenuClose>
-          <FontAwesomeIcon
-            onClick={handleMenuClose}
-            icon={["fas", "window-close"]}
-            size="lg"
-          />
-        </MenuClose>
-        <ul>
-          <li>
-            <NavLink
-              onClick={handleLinkModal}
-              exact
-              to="/"
-              activeStyle={activeLinkModal}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <Dropdown>
-              <DropdownModalButton onClick={handleDropdown}>
-                The Journey
-              </DropdownModalButton>
-              {menuPopup && (
-                <DropdownItemsModal>
-                  <NavLink
-                    onClick={handleLinkModal}
-                    exact
-                    to="/the_journey"
-                    activeStyle={activeLinkModal}
-                  >
-                    The Journey
-                  </NavLink>
-                  <NavLink
-                    onClick={handleLinkModal}
-                    exact
-                    to="/doodles_and_dawdles"
-                    activeStyle={activeLinkModal}
-                  >
-                    Doodles and Dawdles
-                  </NavLink>
-                </DropdownItemsModal>
-              )}
-            </Dropdown>
-          </li>
-          <li>
-            <NavLink
-              onClick={handleLinkModal}
-              to="/the_promises"
-              activeStyle={activeLinkModal}
-            >
-              The Promises
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              onClick={handleLinkModal}
-              to="/about"
-              activeStyle={activeLinkModal}
-            >
-              About
-            </NavLink>
-          </li>
-          {isAuthenticated() && isAuthenticated().user.isAdmin == true ? (
-            <li>
-              <NavLink
-                onClick={handleLinkModal}
-                to="/admin/dashboard"
-                activeStyle={activeLinkModal}
-              >
-                Dashboard
-              </NavLink>
-            </li>
-          ) : null}
-          {isAuthenticated() && isAuthenticated().user.isAdmin == false ? (
-            <li>
-              <NavLink onClick={handleLinkModal} to="/user/dashboard">
-                Dashboard
-              </NavLink>
-            </li>
-          ) : null}
-          {!isAuthenticated() ? (
-            <li>
-              <NavLink
-                onClick={handleLinkModal}
-                to="/signin"
-                activeStyle={activeLinkModal}
-              >
-                Signin
-              </NavLink>
-            </li>
-          ) : null}
-          {isAuthenticated() ? (
-            <li>
-              <MenuLink onClick={clickSignout}>Signout</MenuLink>
-            </li>
-          ) : null}
-          {!isAuthenticated() ? (
-            <li>
-              <NavLink
-                onClick={handleLinkModal}
-                to="/signup"
-                activeStyle={activeLinkModal}
-              >
-                Signup
-              </NavLink>
-            </li>
-          ) : null}
-        </ul>
-      </NavLinksModal>
+      {navLinks()}
+      {navLinksModal()}
     </Nav>
   );
 };

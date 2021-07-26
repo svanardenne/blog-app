@@ -1,3 +1,4 @@
+// main imports
 import React, { useEffect } from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
@@ -11,6 +12,7 @@ const Layout = ({
   color = `${colors.offWhite}`,
   children,
 }) => {
+  // sets all components which use layout to scroll to page top on load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

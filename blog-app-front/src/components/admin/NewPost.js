@@ -13,6 +13,7 @@ import {
 import { colors } from "../../styles/colors";
 import { createPost } from "./apiAdmin";
 
+// Post component
 const NewPost = () => {
   // State
   const [values, setValues] = useState({
@@ -45,6 +46,7 @@ const NewPost = () => {
   // for user authentication
   const { user, token } = isAuthenticated();
 
+  // Data initializer
   const init = () => {
     setValues({ ...values, formData: new FormData() });
   };
@@ -69,6 +71,7 @@ const NewPost = () => {
     setValues({ ...values, error: false, [name]: value });
   };
 
+  // handles the submission of the form
   const clickSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, error: false, creatingPost: true });

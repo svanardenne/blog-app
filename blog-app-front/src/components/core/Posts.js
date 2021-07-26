@@ -1,3 +1,4 @@
+// main imports
 import React, { useEffect, useState } from "react";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
@@ -5,6 +6,7 @@ import BlogItem from "./BlogItem";
 import { BlogsContainer, PostsContainer } from "../../styles/core/posts";
 
 const Posts = () => {
+  // state
   const [posts, setPosts] = useState([]);
   const [truncatedPostContent, setTruncatedPostContent] = useState([]);
   const [error, setError] = useState([]);
@@ -36,6 +38,7 @@ const Posts = () => {
     truncatePostContent();
   }, [posts]);
 
+  // creates a list of posts to display on page
   const postList = () => {
     return (
       <PostsContainer>

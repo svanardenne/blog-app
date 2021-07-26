@@ -1,3 +1,4 @@
+// main imports
 import { API } from "../../config";
 import { Wrapper, ImageContainer } from "../../styles/core/imageItem";
 
