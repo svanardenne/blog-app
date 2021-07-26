@@ -1,35 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { getPosts } from "./apiCore";
 import Layout from "./Layout";
 import BlogItem from "./BlogItem";
-import { device } from "../styles/device";
-
-const BlogsContainer = styled.section`
-  margin-top: 40px;
-  margin-bottom: 40px;
-  h1 {
-    font-size: 40px;
-    font-weight: 600;
-    text-align: center;
-  }
-  @media ${device.tablet} {
-    margin-top: 56px;
-    h1 {
-      font-size: 48px;
-    }
-  }
-`;
-
-const PostsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 24px 0 24px;
-  @media ${device.laptopS} {
-    max-width: 50%;
-    margin: 0 auto;
-  }
-`;
+import { BlogsContainer, PostsContainer } from "../styles/core/posts";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
