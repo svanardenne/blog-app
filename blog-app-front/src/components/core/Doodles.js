@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getImages, getPosts } from "./apiCore";
+import { getImages } from "./apiCore";
 import Layout from "./Layout";
 import ImageItem from "./ImageItem";
 import { Container, ImagesContainer } from "../../styles/core/doodles";

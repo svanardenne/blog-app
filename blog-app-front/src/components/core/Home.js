@@ -10,7 +10,6 @@ import {
   Info,
   Contact,
 } from "../../styles/core/home";
-import moment from "moment";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
