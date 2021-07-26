@@ -25,6 +25,7 @@ export const Wrapper = styled.section`
   @media ${device.laptopS} {
     flex-direction: row;
     max-width: 984px;
+    padding: 0 24px 0 24px;
   }
   @media ${device.laptopM} {
     max-width: 1160px;
@@ -35,7 +36,7 @@ export const Wrapper = styled.section`
 `;
 
 export const BlogContainer = styled.section`
-  margin: 40px 48px 16px 48px;
+  margin: 40px 40px 16px 40px;
   border-bottom: 1px solid ${colors.lightGrey};
   h3 {
     color: ${colors.bgBlueDarker};
@@ -67,6 +68,7 @@ export const BlogContainer = styled.section`
     padding-right: 40px;
     padding-left: 40px;
     margin-left: 0;
+    margin-right: 32px;
     border-right: 1px solid ${colors.lightGrey};
   }
   @media ${device.laptopM} {
@@ -124,6 +126,8 @@ export const Aside = styled.aside`
   }
   @media ${device.laptopS} {
     margin: 0;
+    padding-right: 40px;
+    min-width: 34%;
   }
 `;
 
