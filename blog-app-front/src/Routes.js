@@ -5,7 +5,6 @@ import Home from "./components/core/Home";
 import Posts from "./components/core/Posts";
 import Doodles from "./components/core/Doodles";
 import Post from "./components/core/Post";
-import Signup from "./components/user/Signup";
 import Signin from "./components/user/Signin";
 import AdminRoute from "./components/auth/AdminRoute";
 import AdminDashboard from "./components/user/AdminDashboard";
@@ -23,7 +22,6 @@ const Routes = () => {
         <Route exact path="/doodles_and_dawdles" component={Doodles} />
         <Route exact path="/the_promises" component={Promises} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/post/create" component={NewPost} />
