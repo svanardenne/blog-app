@@ -7,6 +7,7 @@ const AdminDashboard = () => {
   return (
     <Layout title="Admin Dashboard" description="Manage your app!">
       <Link to="/post/create">Create Post</Link>
+      <Link to="/doodle/create">Create Doodle</Link>
     </Layout>
   );
 };

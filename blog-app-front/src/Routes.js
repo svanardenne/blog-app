@@ -9,6 +9,7 @@ import Signin from "./components/user/Signin";
 import AdminRoute from "./components/auth/AdminRoute";
 import AdminDashboard from "./components/user/AdminDashboard";
 import NewPost from "./components/admin/NewPost";
+import NewDoodle from "./components/admin/NewDoodle";
 import Promises from "./components/core/Promises";
 import About from "./components/core/About";
 
@@ -25,6 +26,7 @@ const Routes = () => {
         <Route exact path="/signin" component={Signin} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/post/create" component={NewPost} />
+        <AdminRoute exact path="/doodle/create" component={NewDoodle} />
       </Switch>
     </BrowserRouter>
   );
