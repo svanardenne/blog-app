@@ -150,31 +150,10 @@ const Menu = () => {
             </NavLink>
           </NavLinkItem>
         ) : null}
-        {isAuthenticated() && isAuthenticated().user.isAdmin === false ? (
-          <NavLinkItem>
-            <NavLink to="/user/dashboard" activeStyle={activeLink}>
-              Dashboard
-            </NavLink>
-          </NavLinkItem>
-        ) : null}
-        {!isAuthenticated() ? (
-          <NavLinkItem>
-            <NavLink to="/signin" activeStyle={activeLink}>
-              Signin
-            </NavLink>
-          </NavLinkItem>
-        ) : null}
         {isAuthenticated() ? (
           <li>
             <MenuLink onClick={clickSignout}>Signout</MenuLink>
           </li>
-        ) : null}
-        {!isAuthenticated() ? (
-          <NavLinkItem>
-            <NavLink to="/signup" activeStyle={activeLink}>
-              Signup
-            </NavLink>
-          </NavLinkItem>
         ) : null}
       </ul>
     </NavLinks>
@@ -257,38 +236,9 @@ const Menu = () => {
             </NavLink>
           </li>
         ) : null}
-        {isAuthenticated() && isAuthenticated().user.isAdmin === false ? (
-          <li>
-            <NavLink onClick={handleLinkModal} to="/user/dashboard">
-              Dashboard
-            </NavLink>
-          </li>
-        ) : null}
-        {!isAuthenticated() ? (
-          <li>
-            <NavLink
-              onClick={handleLinkModal}
-              to="/signin"
-              activeStyle={activeLinkModal}
-            >
-              Signin
-            </NavLink>
-          </li>
-        ) : null}
         {isAuthenticated() ? (
           <li>
             <MenuLink onClick={clickSignout}>Signout</MenuLink>
-          </li>
-        ) : null}
-        {!isAuthenticated() ? (
-          <li>
-            <NavLink
-              onClick={handleLinkModal}
-              to="/signup"
-              activeStyle={activeLinkModal}
-            >
-              Signup
-            </NavLink>
           </li>
         ) : null}
       </ul>
