@@ -36,7 +36,7 @@ export const Title = styled.h4`
   overflow-wrap: break-word;
 `;
 
-export const Body = styled.p`
+export const Body = styled.div`
   font-size: 16px;
   overflow-wrap: break-word;
   font-weight: 400;

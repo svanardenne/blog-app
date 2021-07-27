@@ -100,7 +100,7 @@ export const PostImage = styled.figure`
   }
 `;
 
-export const PostContent = styled.p`
+export const PostContent = styled.div`
   font-size: 16px;
   margin-bottom: 80px;
   color: ${colors.muted};

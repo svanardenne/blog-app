@@ -19,6 +19,7 @@ import {
   RecentPosts,
   Wrapper,
 } from "../../styles/core/post";
+import ReactMarkdown from "react-markdown";
 
 const Post = (props) => {
   // state
@@ -96,7 +97,9 @@ const Post = (props) => {
           )}
         </Caption>
       </PostImage>
-      <PostContent>{post.body}</PostContent>
+      <PostContent>
+        <ReactMarkdown>{post.body}</ReactMarkdown>
+      </PostContent>
     </BlogContainer>
   );
 

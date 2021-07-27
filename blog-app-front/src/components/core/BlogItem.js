@@ -10,6 +10,7 @@ import {
   PostImage,
   PostLink,
 } from "../../styles/core/blogItem";
+import ReactMarkdown from "react-markdown";
 import ShowBackgroundImage from "./ShowBackgroundImage";
 
 const BlogItem = ({ post, truncatedPostContent }) => {
@@ -21,7 +22,9 @@ const BlogItem = ({ post, truncatedPostContent }) => {
       <InfoContainer className="post-container">
         <CreatedAt>{moment(post.createdAt).format("MMM Do, YYYY")}</CreatedAt>
         <Title>{post.title}</Title>
-        <Body>{truncatedPostContent}</Body>
+        <Body>
+          <ReactMarkdown>{truncatedPostContent}</ReactMarkdown>
+        </Body>
         <Link to={`/the_journey/${post.slug}`}>
           <PostLink>Continue Reading</PostLink>
         </Link>
