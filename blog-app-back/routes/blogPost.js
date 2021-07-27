@@ -6,11 +6,8 @@ const { userById } = require("../controllers/user");
 const {
   postById,
   postBySlug,
-  read,
   create,
   listAll,
-  update,
-  remove,
   photo,
 } = require("../controllers/blogPost");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
