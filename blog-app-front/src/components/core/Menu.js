@@ -28,7 +28,8 @@ const Menu = () => {
   const history = useHistory();
 
   // state
-  const [menuPopup, setMenupopup] = useState(false);
+  const [menuPopupJourney, setMenupopupJourney] = useState(false);
+  const [menuPopupUser, setMenupopupUser] = useState(false);
 
   /**
    * Handles the linking of nav items and allows the modal nav menu to
@@ -83,11 +84,19 @@ const Menu = () => {
   };
 
   // handles dropdown menu inside modal view
-  const handleDropdown = () => {
-    if (menuPopup === false) {
-      setMenupopup(true);
+  const handleDropdownJourney = () => {
+    if (menuPopupJourney === false) {
+      setMenupopupJourney(true);
     } else {
-      setMenupopup(false);
+      setMenupopupJourney(false);
+    }
+  };
+
+  const handleDropdownUser = () => {
+    if (menuPopupUser === false) {
+      setMenupopupUser(true);
+    } else {
+      setMenupopupUser(false);
     }
   };
 
@@ -102,10 +111,10 @@ const Menu = () => {
         </NavLinkItem>
         <NavLinkItem>
           <Dropdown>
-            <DropdownButton onClick={handleDropdown}>
+            <DropdownButton onClick={handleDropdownJourney}>
               The Journey
             </DropdownButton>
-            {menuPopup && (
+            {menuPopupJourney && (
               <DropdownItems>
                 <NavLink
                   style={{
@@ -145,15 +154,42 @@ const Menu = () => {
         </NavLinkItem>
         {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <NavLinkItem>
-            <NavLink to="/admin/dashboard" activeStyle={activeLink}>
-              Dashboard
-            </NavLink>
+            <Dropdown>
+              <DropdownButton onClick={handleDropdownUser}>
+                Hello {isAuthenticated().user.name}
+              </DropdownButton>
+              {menuPopupUser && (
+                <DropdownItems>
+                  {isAuthenticated() &&
+                  isAuthenticated().user.isAdmin === true ? (
+                    <NavLink
+                      to="/admin/dashboard"
+                      activeStyle={activeLink}
+                      style={{
+                        textTransform: "capitalize",
+                        color: `${colors.mutedLight}`,
+                      }}
+                    >
+                      Dashboard
+                    </NavLink>
+                  ) : null}
+                  {isAuthenticated() ? (
+                    <div>
+                      <MenuLink
+                        style={{
+                          textTransform: "capitalize",
+                          color: `${colors.mutedLight}`,
+                        }}
+                        onClick={clickSignout}
+                      >
+                        Signout
+                      </MenuLink>
+                    </div>
+                  ) : null}
+                </DropdownItems>
+              )}
+            </Dropdown>
           </NavLinkItem>
-        ) : null}
-        {isAuthenticated() ? (
-          <li>
-            <MenuLink onClick={clickSignout}>Signout</MenuLink>
-          </li>
         ) : null}
       </ul>
     </NavLinks>
@@ -182,10 +218,10 @@ const Menu = () => {
         </li>
         <li>
           <Dropdown>
-            <DropdownModalButton onClick={handleDropdown}>
+            <DropdownModalButton onClick={handleDropdownJourney}>
               The Journey
             </DropdownModalButton>
-            {menuPopup && (
+            {menuPopupJourney && (
               <DropdownItemsModal>
                 <NavLink
                   onClick={handleLinkModal}

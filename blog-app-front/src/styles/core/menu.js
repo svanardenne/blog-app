@@ -145,7 +145,12 @@ export const DropdownItems = styled.div`
   bottom: -100px;
   width: 270px;
   padding: 16px;
+  max-height: 100px;
   a {
+    padding: 4px 0 4px 0;
+    border: none !important;
+  }
+  div {
     padding: 4px 0 4px 0;
     border: none !important;
   }
