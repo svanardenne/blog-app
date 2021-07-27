@@ -263,18 +263,28 @@ const Menu = () => {
         </li>
         {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <li>
-            <NavLink
-              onClick={handleLinkModal}
-              to="/admin/dashboard"
-              activeStyle={activeLinkModal}
-            >
-              Dashboard
-            </NavLink>
-          </li>
-        ) : null}
-        {isAuthenticated() ? (
-          <li>
-            <MenuLink onClick={clickSignout}>Signout</MenuLink>
+            <Dropdown>
+              <DropdownModalButton onClick={handleDropdownUser}>
+                Hello {isAuthenticated().user.name}
+              </DropdownModalButton>
+              {menuPopupUser && (
+                <DropdownItemsModal>
+                  {isAuthenticated() &&
+                  isAuthenticated().user.isAdmin === true ? (
+                    <NavLink
+                      onClick={handleLinkModal}
+                      to="/admin/dashboard"
+                      activeStyle={activeLinkModal}
+                    >
+                      Dashboard
+                    </NavLink>
+                  ) : null}
+                  {isAuthenticated() ? (
+                    <MenuLink onClick={clickSignout}>Signout</MenuLink>
+                  ) : null}
+                </DropdownItemsModal>
+              )}
+            </Dropdown>
           </li>
         ) : null}
       </ul>

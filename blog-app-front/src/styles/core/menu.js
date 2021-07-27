@@ -182,4 +182,13 @@ export const DropdownItemsModal = styled.div`
     padding: 16px 24px;
     cursor: pointer;
   }
+  div {
+    text-decoration: none;
+    font-size: 16px;
+    color: ${colors.muted};
+    display: block;
+    position: relative;
+    padding: 16px 24px;
+    cursor: pointer;
+  }
 `;
