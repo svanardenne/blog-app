@@ -85,10 +85,13 @@ const Menu = () => {
 
   // handles dropdown menu inside modal view
   const handleDropdownJourney = () => {
+    const dropdown = document.getElementById("dropdown");
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
+      dropdown.style.display = "block";
     } else {
       setMenupopupJourney(false);
+      dropdown.style.display = "none";
     }
   };
 
@@ -114,32 +117,30 @@ const Menu = () => {
             <DropdownButton onClick={handleDropdownJourney}>
               The Journey
             </DropdownButton>
-            {menuPopupJourney && (
-              <DropdownItems>
-                <NavLink
-                  style={{
-                    textTransform: "capitalize",
-                    color: `${colors.mutedLight}`,
-                  }}
-                  exact
-                  to="/the_journey"
-                  activeStyle={activeLink}
-                >
-                  The Journey
-                </NavLink>
-                <NavLink
-                  style={{
-                    textTransform: "capitalize",
-                    color: `${colors.mutedLight}`,
-                  }}
-                  exact
-                  to="/doodles_and_dawdles"
-                  activeStyle={activeLink}
-                >
-                  Doodles and Dawdles
-                </NavLink>
-              </DropdownItems>
-            )}
+            <DropdownItems id="dropdown">
+              <NavLink
+                style={{
+                  textTransform: "capitalize",
+                  color: `${colors.mutedLight}`,
+                }}
+                exact
+                to="/the_journey"
+                activeStyle={activeLink}
+              >
+                The Journey
+              </NavLink>
+              <NavLink
+                style={{
+                  textTransform: "capitalize",
+                  color: `${colors.mutedLight}`,
+                }}
+                exact
+                to="/doodles_and_dawdles"
+                activeStyle={activeLink}
+              >
+                Doodles and Dawdles
+              </NavLink>
+            </DropdownItems>
           </Dropdown>
         </NavLinkItem>
         <NavLinkItem>
@@ -159,7 +160,7 @@ const Menu = () => {
                 Hello {isAuthenticated().user.name}
               </DropdownButton>
               {menuPopupUser && (
-                <DropdownItems>
+                <DropdownItems className="dropdown">
                   {isAuthenticated() &&
                   isAuthenticated().user.isAdmin === true ? (
                     <NavLink
