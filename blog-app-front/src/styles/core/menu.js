@@ -57,6 +57,10 @@ export const NavLinksModal = styled.div`
       &:last-child {
         border-bottom: none;
       }
+      a {
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
   }
   @media ${device.laptopS} {
@@ -164,6 +168,8 @@ export const DropdownModalButton = styled.button`
   border: none;
   cursor: pointer;
   padding: 16px 24px;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Dropdown = styled.div`
