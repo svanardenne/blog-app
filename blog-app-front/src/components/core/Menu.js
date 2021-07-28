@@ -88,10 +88,10 @@ const Menu = () => {
     const dropdown = document.getElementsByClassName("dropdown")[index];
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
-      dropdown.style.display = "block";
+      dropdown.style.height = "112px";
     } else {
       setMenupopupJourney(false);
-      dropdown.style.display = "none";
+      dropdown.style.height = 0;
     }
   };
 
@@ -99,10 +99,10 @@ const Menu = () => {
     const dropdown = document.getElementsByClassName("dropdown-user")[index];
     if (menuPopupUser === false) {
       setMenupopupUser(true);
-      dropdown.style.display = "block";
+      dropdown.style.height = "112px";
     } else {
       setMenupopupUser(false);
-      dropdown.style.display = "none";
+      dropdown.style.height = 0;
     }
   };
 
