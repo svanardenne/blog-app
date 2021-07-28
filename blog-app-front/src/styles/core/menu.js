@@ -171,7 +171,7 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownItemsModal = styled.div`
-  display: block;
+  display: none;
   background-color: transparent;
   overflow: hidden;
   a {

@@ -84,8 +84,8 @@ const Menu = () => {
   };
 
   // handles dropdown menu inside modal view
-  const handleDropdownJourney = () => {
-    const dropdown = document.getElementById("dropdown");
+  const handleDropdownJourney = (index) => {
+    const dropdown = document.getElementsByClassName("dropdown")[index];
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
       dropdown.style.display = "block";
@@ -95,8 +95,8 @@ const Menu = () => {
     }
   };
 
-  const handleDropdownUser = () => {
-    const dropdown = document.getElementById("dropdown-user");
+  const handleDropdownUser = (index) => {
+    const dropdown = document.getElementsByClassName("dropdown-user")[index];
     if (menuPopupUser === false) {
       setMenupopupUser(true);
       dropdown.style.display = "block";
@@ -117,10 +117,10 @@ const Menu = () => {
         </NavLinkItem>
         <NavLinkItem>
           <Dropdown>
-            <DropdownButton onClick={handleDropdownJourney}>
+            <DropdownButton onClick={() => handleDropdownJourney(0)}>
               The Journey
             </DropdownButton>
-            <DropdownItems id="dropdown">
+            <DropdownItems className="dropdown">
               <NavLink
                 style={{
                   textTransform: "capitalize",
@@ -159,10 +159,10 @@ const Menu = () => {
         {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <NavLinkItem>
             <Dropdown>
-              <DropdownButton onClick={handleDropdownUser}>
+              <DropdownButton onClick={() => handleDropdownUser(0)}>
                 Hello {isAuthenticated().user.name}
               </DropdownButton>
-              <DropdownItems id="dropdown-user">
+              <DropdownItems className="dropdown-user">
                 {isAuthenticated() &&
                 isAuthenticated().user.isAdmin === true ? (
                   <NavLink
@@ -220,29 +220,27 @@ const Menu = () => {
         </li>
         <li>
           <Dropdown>
-            <DropdownModalButton onClick={handleDropdownJourney}>
+            <DropdownModalButton onClick={() => handleDropdownJourney(1)}>
               The Journey
             </DropdownModalButton>
-            {menuPopupJourney && (
-              <DropdownItemsModal>
-                <NavLink
-                  onClick={handleLinkModal}
-                  exact
-                  to="/the_journey"
-                  activeStyle={activeLinkModal}
-                >
-                  The Journey
-                </NavLink>
-                <NavLink
-                  onClick={handleLinkModal}
-                  exact
-                  to="/doodles_and_dawdles"
-                  activeStyle={activeLinkModal}
-                >
-                  Doodles and Dawdles
-                </NavLink>
-              </DropdownItemsModal>
-            )}
+            <DropdownItemsModal className="dropdown">
+              <NavLink
+                onClick={handleLinkModal}
+                exact
+                to="/the_journey"
+                activeStyle={activeLinkModal}
+              >
+                The Journey
+              </NavLink>
+              <NavLink
+                onClick={handleLinkModal}
+                exact
+                to="/doodles_and_dawdles"
+                activeStyle={activeLinkModal}
+              >
+                Doodles and Dawdles
+              </NavLink>
+            </DropdownItemsModal>
           </Dropdown>
         </li>
         <li>
@@ -266,26 +264,24 @@ const Menu = () => {
         {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <li>
             <Dropdown>
-              <DropdownModalButton onClick={handleDropdownUser}>
+              <DropdownModalButton onClick={() => handleDropdownUser(1)}>
                 Hello {isAuthenticated().user.name}
               </DropdownModalButton>
-              {menuPopupUser && (
-                <DropdownItemsModal>
-                  {isAuthenticated() &&
-                  isAuthenticated().user.isAdmin === true ? (
-                    <NavLink
-                      onClick={handleLinkModal}
-                      to="/admin/dashboard"
-                      activeStyle={activeLinkModal}
-                    >
-                      Dashboard
-                    </NavLink>
-                  ) : null}
-                  {isAuthenticated() ? (
-                    <MenuLink onClick={clickSignout}>Signout</MenuLink>
-                  ) : null}
-                </DropdownItemsModal>
-              )}
+              <DropdownItemsModal className="dropdown-user">
+                {isAuthenticated() &&
+                isAuthenticated().user.isAdmin === true ? (
+                  <NavLink
+                    onClick={handleLinkModal}
+                    to="/admin/dashboard"
+                    activeStyle={activeLinkModal}
+                  >
+                    Dashboard
+                  </NavLink>
+                ) : null}
+                {isAuthenticated() ? (
+                  <MenuLink onClick={clickSignout}>Signout</MenuLink>
+                ) : null}
+              </DropdownItemsModal>
             </Dropdown>
           </li>
         ) : null}
