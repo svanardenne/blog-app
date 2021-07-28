@@ -143,7 +143,7 @@ export const DropdownButton = styled.button`
 
 export const DropdownItems = styled.div`
   position: absolute;
-  display: none;
+  opacity: 0;
   z-index: 10000;
   background-color: ${colors.dark};
   position: absolute;
@@ -151,6 +151,7 @@ export const DropdownItems = styled.div`
   width: 270px;
   padding: 16px;
   max-height: 100px;
+  transition: opacity 0.5s ease;
   a {
     padding: 4px 0 4px 0;
     border: none !important;

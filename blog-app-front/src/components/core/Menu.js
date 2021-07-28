@@ -83,8 +83,31 @@ const Menu = () => {
     history.push(history.location.pathname);
   };
 
-  // handles dropdown menu inside modal view
+  // handles dropdown menu on full screen nav
   const handleDropdownJourney = (index) => {
+    const dropdown = document.getElementsByClassName("dropdown")[index];
+    if (menuPopupJourney === false) {
+      setMenupopupJourney(true);
+      dropdown.style.opacity = 1;
+    } else {
+      setMenupopupJourney(false);
+      dropdown.style.opacity = 0;
+    }
+  };
+
+  const handleDropdownUser = (index) => {
+    const dropdown = document.getElementsByClassName("dropdown-user")[index];
+    if (menuPopupUser === false) {
+      setMenupopupUser(true);
+      dropdown.style.opacity = 1;
+    } else {
+      setMenupopupUser(false);
+      dropdown.style.opacity = 0;
+    }
+  };
+
+  // handles dropdown menu inside modal view
+  const handleDropdownJourneyModal = (index) => {
     const dropdown = document.getElementsByClassName("dropdown")[index];
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
@@ -95,7 +118,7 @@ const Menu = () => {
     }
   };
 
-  const handleDropdownUser = (index) => {
+  const handleDropdownUserModal = (index) => {
     const dropdown = document.getElementsByClassName("dropdown-user")[index];
     if (menuPopupUser === false) {
       setMenupopupUser(true);
@@ -220,7 +243,7 @@ const Menu = () => {
         </li>
         <li>
           <Dropdown>
-            <DropdownModalButton onClick={() => handleDropdownJourney(1)}>
+            <DropdownModalButton onClick={() => handleDropdownJourneyModal(1)}>
               The Journey
             </DropdownModalButton>
             <DropdownItemsModal className="dropdown">
@@ -264,7 +287,7 @@ const Menu = () => {
         {isAuthenticated() && isAuthenticated().user.isAdmin === true ? (
           <li>
             <Dropdown>
-              <DropdownModalButton onClick={() => handleDropdownUser(1)}>
+              <DropdownModalButton onClick={() => handleDropdownUserModal(1)}>
                 Hello {isAuthenticated().user.name}
               </DropdownModalButton>
               <DropdownItemsModal className="dropdown-user">
