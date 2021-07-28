@@ -96,10 +96,13 @@ const Menu = () => {
   };
 
   const handleDropdownUser = () => {
+    const dropdown = document.getElementById("dropdown-user");
     if (menuPopupUser === false) {
       setMenupopupUser(true);
+      dropdown.style.display = "block";
     } else {
       setMenupopupUser(false);
+      dropdown.style.display = "none";
     }
   };
 
@@ -159,36 +162,34 @@ const Menu = () => {
               <DropdownButton onClick={handleDropdownUser}>
                 Hello {isAuthenticated().user.name}
               </DropdownButton>
-              {menuPopupUser && (
-                <DropdownItems className="dropdown">
-                  {isAuthenticated() &&
-                  isAuthenticated().user.isAdmin === true ? (
-                    <NavLink
-                      to="/admin/dashboard"
-                      activeStyle={activeLink}
+              <DropdownItems id="dropdown-user">
+                {isAuthenticated() &&
+                isAuthenticated().user.isAdmin === true ? (
+                  <NavLink
+                    to="/admin/dashboard"
+                    activeStyle={activeLink}
+                    style={{
+                      textTransform: "capitalize",
+                      color: `${colors.mutedLight}`,
+                    }}
+                  >
+                    Dashboard
+                  </NavLink>
+                ) : null}
+                {isAuthenticated() ? (
+                  <div>
+                    <MenuLink
                       style={{
                         textTransform: "capitalize",
                         color: `${colors.mutedLight}`,
                       }}
+                      onClick={clickSignout}
                     >
-                      Dashboard
-                    </NavLink>
-                  ) : null}
-                  {isAuthenticated() ? (
-                    <div>
-                      <MenuLink
-                        style={{
-                          textTransform: "capitalize",
-                          color: `${colors.mutedLight}`,
-                        }}
-                        onClick={clickSignout}
-                      >
-                        Signout
-                      </MenuLink>
-                    </div>
-                  ) : null}
-                </DropdownItems>
-              )}
+                      Signout
+                    </MenuLink>
+                  </div>
+                ) : null}
+              </DropdownItems>
             </Dropdown>
           </NavLinkItem>
         ) : null}
