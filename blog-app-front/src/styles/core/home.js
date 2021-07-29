@@ -13,7 +13,6 @@ export const Headline = styled.header`
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 75px;
   min-height: 500px;
   color: ${colors.offWhite};
   display: flex;
@@ -35,26 +34,18 @@ export const Headline = styled.header`
     font-size: 28px;
     margin: 0;
   }
-  @media ${device.mobileM} {
-    background-position-y: -10px;
-  }
   @media ${device.tablet} {
-    background-position-y: -110px;
     h1 {
       font-size: 72px;
     }
   }
   @media ${device.laptopS} {
-    background-position-y: -15px;
     min-height: 75vh;
   }
   @media ${device.laptopM} {
     h1 {
       font-size: 96px;
     }
-  }
-  @media ${device.desktopS} {
-    background-position-y: -110px;
   }
 `;
 
