@@ -175,6 +175,9 @@ export const DropdownModalButton = styled.button`
 
 export const Dropdown = styled.div`
   position: relative;
+  svg {
+    transition: transform 0.5s ease;
+  }
 `;
 
 export const DropdownItemsModal = styled.div`

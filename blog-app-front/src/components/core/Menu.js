@@ -86,22 +86,28 @@ const Menu = () => {
   // handles dropdown menu on full screen nav
   const handleDropdownJourney = (index) => {
     const dropdown = document.getElementsByClassName("dropdown")[index];
+    const arrow = document.getElementsByClassName("arrow-journey")[index];
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
+      arrow.style.transform = "rotateZ(180deg)";
       dropdown.style.opacity = 1;
     } else {
       setMenupopupJourney(false);
+      arrow.style.transform = "rotateZ(0deg)";
       dropdown.style.opacity = 0;
     }
   };
 
   const handleDropdownUser = (index) => {
     const dropdown = document.getElementsByClassName("dropdown-user")[index];
+    const arrow = document.getElementsByClassName("arrow-user")[index];
     if (menuPopupUser === false) {
       setMenupopupUser(true);
+      arrow.style.transform = "rotateZ(180deg)";
       dropdown.style.opacity = 1;
     } else {
       setMenupopupUser(false);
+      arrow.style.transform = "rotateZ(0deg)";
       dropdown.style.opacity = 0;
     }
   };
@@ -109,22 +115,29 @@ const Menu = () => {
   // handles dropdown menu inside modal view
   const handleDropdownJourneyModal = (index) => {
     const dropdown = document.getElementsByClassName("dropdown")[index];
+    const arrow = document.getElementsByClassName("arrow-journey")[index];
     if (menuPopupJourney === false) {
       setMenupopupJourney(true);
+      arrow.style.transform = "rotateZ(180deg)";
       dropdown.style.height = "112px";
     } else {
       setMenupopupJourney(false);
+      arrow.style.transform = "rotateZ(0deg)";
       dropdown.style.height = 0;
     }
   };
 
   const handleDropdownUserModal = (index) => {
     const dropdown = document.getElementsByClassName("dropdown-user")[index];
+    const arrow = document.getElementsByClassName("arrow-user")[index];
+
     if (menuPopupUser === false) {
       setMenupopupUser(true);
+      arrow.style.transform = "rotateZ(180deg)";
       dropdown.style.height = "112px";
     } else {
       setMenupopupUser(false);
+      arrow.style.transform = "rotateZ(0deg)";
       dropdown.style.height = 0;
     }
   };
@@ -143,6 +156,12 @@ const Menu = () => {
             <DropdownButton onClick={() => handleDropdownJourney(0)}>
               The Journey
             </DropdownButton>
+            <FontAwesomeIcon
+              onClick={() => handleDropdownJourney(0)}
+              icon={["fas", "angle-up"]}
+              size="lg"
+              className="arrow-journey"
+            />
             <DropdownItems className="dropdown">
               <NavLink
                 style={{
@@ -185,6 +204,12 @@ const Menu = () => {
               <DropdownButton onClick={() => handleDropdownUser(0)}>
                 Hello {isAuthenticated().user.name}
               </DropdownButton>
+              <FontAwesomeIcon
+                onClick={() => handleDropdownUser(0)}
+                icon={["fas", "angle-up"]}
+                size="lg"
+                className="arrow-user"
+              />
               <DropdownItems className="dropdown-user">
                 {isAuthenticated() &&
                 isAuthenticated().user.isAdmin === true ? (
@@ -246,6 +271,12 @@ const Menu = () => {
             <DropdownModalButton onClick={() => handleDropdownJourneyModal(1)}>
               The Journey
             </DropdownModalButton>
+            <FontAwesomeIcon
+              onClick={() => handleDropdownJourneyModal(1)}
+              icon={["fas", "angle-up"]}
+              size="lg"
+              className="arrow-journey"
+            />
             <DropdownItemsModal className="dropdown">
               <NavLink
                 onClick={handleLinkModal}
@@ -290,6 +321,12 @@ const Menu = () => {
               <DropdownModalButton onClick={() => handleDropdownUserModal(1)}>
                 Hello {isAuthenticated().user.name}
               </DropdownModalButton>
+              <FontAwesomeIcon
+                onClick={() => handleDropdownUserModal(1)}
+                icon={["fas", "angle-up"]}
+                size="lg"
+                className="arrow-user"
+              />
               <DropdownItemsModal className="dropdown-user">
                 {isAuthenticated() &&
                 isAuthenticated().user.isAdmin === true ? (
