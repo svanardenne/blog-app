@@ -9,10 +9,10 @@ export const Headline = styled.header`
       rgba(0, 0, 0, 0.25) 0%,
       rgba(0, 0, 0, 0.25) 100%
     ),
-    url(${backgroundImg}) center center;
+    url(${backgroundImg}) center top;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 1200px;
   min-height: 500px;
   color: ${colors.offWhite};
   display: flex;
@@ -41,6 +41,8 @@ export const Headline = styled.header`
   }
   @media ${device.laptopS} {
     min-height: 75vh;
+    background-size: cover;
+    background-position: center center;
   }
   @media ${device.laptopM} {
     h1 {
