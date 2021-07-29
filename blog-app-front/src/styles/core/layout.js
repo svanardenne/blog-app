@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Jumbotron = styled.div`
   margin-top: 0;
+  height: 250px;
   margin-bottom: 32px;
   background: lightgrey;
   display: flex;
@@ -9,6 +10,9 @@ export const Jumbotron = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 100px;
+  div {
+    text-align: center;
+  }
 `;
 
 export const Wrapper = styled.div`

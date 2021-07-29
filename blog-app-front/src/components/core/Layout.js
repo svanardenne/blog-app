@@ -25,14 +25,16 @@ const Layout = ({
       {title || description ? (
         <div>
           <Jumbotron>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            {quote !== "undefined" ? <p>{quote}</p> : <p>Loading Quote...</p>}
-            {quote !== "undefined" ? (
-              <p>{quoteAuthor}</p>
-            ) : (
-              <p>Loading Quote...</p>
-            )}
+            <div>
+              <h2>{title}</h2>
+              <p>{description}</p>
+              {quote !== "undefined" ? <p>{quote}</p> : <p>Loading Quote...</p>}
+              {quote !== "undefined" ? (
+                <p>{quoteAuthor}</p>
+              ) : (
+                <p>Loading Quote...</p>
+              )}
+            </div>
           </Jumbotron>
           <MainBody style={{ marginTop: "0" }} className={className}>
             {children}
