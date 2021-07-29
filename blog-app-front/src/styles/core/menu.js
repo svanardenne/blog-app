@@ -175,8 +175,10 @@ export const DropdownModalButton = styled.button`
 
 export const Dropdown = styled.div`
   position: relative;
+  white-space: nowrap;
   svg {
     transition: transform 0.5s ease;
+    display: inline-block;
   }
 `;
 
