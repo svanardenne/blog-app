@@ -8,6 +8,8 @@ import { colors } from "../../styles/colors";
 const Layout = ({
   title,
   description,
+  quote,
+  quoteAuthor,
   className,
   color = `${colors.offWhite}`,
   children,
@@ -25,6 +27,12 @@ const Layout = ({
           <Jumbotron>
             <h2>{title}</h2>
             <p>{description}</p>
+            {quote !== "undefined" ? <p>{quote}</p> : <p>Loading Quote...</p>}
+            {quote !== "undefined" ? (
+              <p>{quoteAuthor}</p>
+            ) : (
+              <p>Loading Quote...</p>
+            )}
           </Jumbotron>
           <MainBody style={{ marginTop: "0" }} className={className}>
             {children}

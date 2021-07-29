@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Jumbotron = styled.div`
-  height: 200px;
   margin-top: 0;
   margin-bottom: 32px;
   background: lightgrey;
