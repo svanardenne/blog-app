@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import Layout from "../core/Layout";
+import { LinkList } from "../../styles/user/adminDashboard";
 
 const AdminDashboard = () => {
   return (
@@ -10,8 +11,16 @@ const AdminDashboard = () => {
       title={`Welcome, ${isAuthenticated().user.name}`}
       description="Manage your app from here!"
     >
-      <Link to="/post/create">Create Post</Link>
-      <Link to="/doodle/create">Create Doodle</Link>
+      <nav>
+        <LinkList>
+          <li>
+            <Link to="/post/create">Create Post</Link>
+          </li>
+          <li>
+            <Link to="/doodle/create">Create Doodle</Link>
+          </li>
+        </LinkList>
+      </nav>
     </Layout>
   );
 };
