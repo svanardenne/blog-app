@@ -43,16 +43,12 @@ const Layout = ({
             <div>
               <h2>{title}</h2>
               <p style={{ fontSize: "20px" }}>{description}</p>
-              {quote !== "undefined" ? (
+              {quote !== "" ? (
                 <p>"{quote.content}"</p>
               ) : (
                 <p>Loading Quote...</p>
               )}
-              {quote !== "undefined" ? (
-                <p>{quote.author}</p>
-              ) : (
-                <p>Loading Quote...</p>
-              )}
+              {quote !== "" ? <p>{quote.author}</p> : <p>Loading Quote...</p>}
             </div>
           </Jumbotron>
           <MainBody style={{ marginTop: "0" }} className={className}>
