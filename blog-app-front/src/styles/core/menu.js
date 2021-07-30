@@ -119,6 +119,9 @@ export const NavLinkItem = styled.li`
     display: block;
     position: relative;
     cursor: pointer;
+    &:hover {
+      color: ${colors.menuBlue};
+    }
   }
 `;
 export const activeLink = {
@@ -139,6 +142,9 @@ export const DropdownButton = styled.button`
   font-size: 18px;
   border: none;
   cursor: pointer;
+  &:hover {
+    color: ${colors.menuBlue};
+  }
 `;
 
 export const DropdownItems = styled.div`
@@ -153,12 +159,24 @@ export const DropdownItems = styled.div`
   max-height: 100px;
   transition: opacity 0.5s ease;
   a {
+    text-transform: capitalize;
+    color: ${colors.mutedLight};
     padding: 4px 0 4px 0;
     border: none !important;
+    &:hover {
+      color: ${colors.menuBlue} !important;
+    }
   }
   div {
     padding: 4px 0 4px 0;
     border: none !important;
+    .signout {
+      text-transform: capitalize;
+      color: ${colors.mutedLight};
+      &:hover {
+        color: ${colors.menuBlue};
+      }
+    }
   }
 `;
 

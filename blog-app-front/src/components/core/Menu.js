@@ -163,26 +163,10 @@ const Menu = () => {
               className="arrow-journey"
             />
             <DropdownItems className="dropdown">
-              <NavLink
-                style={{
-                  textTransform: "capitalize",
-                  color: `${colors.mutedLight}`,
-                }}
-                exact
-                to="/the_journey"
-                activeStyle={activeLink}
-              >
+              <NavLink exact to="/the_journey" activeStyle={activeLink}>
                 The Journey
               </NavLink>
-              <NavLink
-                style={{
-                  textTransform: "capitalize",
-                  color: `${colors.mutedLight}`,
-                }}
-                exact
-                to="/doodles_and_dawdles"
-                activeStyle={activeLink}
-              >
+              <NavLink exact to="/doodles_and_dawdles" activeStyle={activeLink}>
                 Doodles and Dawdles
               </NavLink>
             </DropdownItems>
@@ -226,13 +210,7 @@ const Menu = () => {
                 ) : null}
                 {isAuthenticated() ? (
                   <div>
-                    <MenuLink
-                      style={{
-                        textTransform: "capitalize",
-                        color: `${colors.mutedLight}`,
-                      }}
-                      onClick={clickSignout}
-                    >
+                    <MenuLink className="signout" onClick={clickSignout}>
                       Signout
                     </MenuLink>
                   </div>
