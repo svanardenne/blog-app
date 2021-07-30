@@ -25,6 +25,8 @@ export const Headline = styled.header`
   h1,
   p {
     text-shadow: 1px 1px ${colors.muted};
+    -webkit-transform: scaleX(1.1);
+    transform: scaleX(1.1);
   }
   h1 {
     font-size: 48px;
