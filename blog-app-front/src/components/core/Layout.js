@@ -1,21 +1,36 @@
 // main imports
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import { Jumbotron, Wrapper, MainBody } from "../../styles/core/layout";
 import { colors } from "../../styles/colors";
+import { fetchQuote } from "../user/apiUser";
 
 const Layout = ({
   title,
   description,
-  quote,
-  quoteAuthor,
   className,
   color = `${colors.offWhite}`,
   children,
 }) => {
+  // state
+  const [quote, setQuote] = useState("");
+  const { error, setError } = useState([]);
+
+  // fetches a random quote to display in jumbotron
+  const fetchRandomQuote = () => {
+    fetchQuote().then((data) => {
+      if (!data || data.error) {
+        setError(data.error);
+      } else {
+        setQuote(data);
+      }
+    });
+  };
+
   // sets all components which use layout to scroll to page top on load
   useEffect(() => {
+    fetchRandomQuote();
     window.scrollTo(0, 0);
   }, []);
 
@@ -29,12 +44,12 @@ const Layout = ({
               <h2>{title}</h2>
               <p style={{ fontSize: "20px" }}>{description}</p>
               {quote !== "undefined" ? (
-                <p>"{quote}"</p>
+                <p>"{quote.content}"</p>
               ) : (
                 <p>Loading Quote...</p>
               )}
               {quote !== "undefined" ? (
-                <p>{quoteAuthor}</p>
+                <p>{quote.author}</p>
               ) : (
                 <p>Loading Quote...</p>
               )}
