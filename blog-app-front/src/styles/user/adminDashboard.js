@@ -5,7 +5,7 @@ import { device } from "../device";
 export const LinkList = styled.ul`
   list-style-type: none;
   padding: 0;
-  max-width: 50%;
+  max-width: 90%;
   margin: 0 auto;
   border: 1px solid ${colors.mediumGrey};
   border-radius: 5px;
@@ -20,7 +20,17 @@ export const LinkList = styled.ul`
       padding: 16px 24px;
       text-decoration: none;
       color: ${colors.bgBlue};
-      font-size: 22px;
+      font-size: 16px;
     }
+  }
+  @media ${device.mobileM} {
+    li {
+      a {
+        font-size: 22px;
+      }
+    }
+  }
+  @media ${device.tablet} {
+    max-width: 50%;
   }
 `;

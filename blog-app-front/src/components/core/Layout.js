@@ -27,8 +27,12 @@ const Layout = ({
           <Jumbotron>
             <div>
               <h2>{title}</h2>
-              <p>{description}</p>
-              {quote !== "undefined" ? <p>{quote}</p> : <p>Loading Quote...</p>}
+              <p style={{ fontSize: "20px" }}>{description}</p>
+              {quote !== "undefined" ? (
+                <p>"{quote}"</p>
+              ) : (
+                <p>Loading Quote...</p>
+              )}
               {quote !== "undefined" ? (
                 <p>{quoteAuthor}</p>
               ) : (
